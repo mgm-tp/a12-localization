@@ -1,0 +1,37 @@
+# npm / yarn
+.npm
+node_modules
+npm-debug.log*
+yarn.lock
+
+# Gradle
+build
+target
+.gradle
+/gradle
+/gradlew
+/gradlew.bat
+
+# IDE (including symlinks)
+.idea
+*.classpath
+.settings
+.metadata
+*.project
+*.iml
+*.launch
+atlassian-ide-plugin.xml
+
+# Other
+*.log
+.DS_Store
+.eslintcache
+
+# Build artifact
+cyclonedx.json
+
+# Atlas Bundles
+atlas-archives
+
+# prevents checking in temporary local npm packages created with npm pack
+*.tgz

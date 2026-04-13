@@ -1,0 +1,8 @@
+{
+	"extends": "@com.mgmtp.a12.devtools/tsconfig",
+	"include": ["./src"],
+	"compilerOptions": {
+		"outDir": "./lib",
+		"rootDir": "./src"
+	}
+}

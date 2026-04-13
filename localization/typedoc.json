@@ -1,0 +1,16 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "Localization API Documentation",
+  "out": "../documentation/src/assets/localization-typedoc",
+  "readme": "./resources/typedoc/README.md",
+  "theme": "default",
+  "entryPoints": [
+    "./src/main/*"
+  ],
+  "entryPointStrategy": "expand",
+  "exclude": [
+    "./src/test/**"
+  ],
+  "excludePrivate": true,
+  "excludeProtected": false
+}

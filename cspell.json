@@ -1,0 +1,54 @@
+{
+	"version": "0.2",
+	"language": "en",
+	"ignoreRegExpList": [
+		"/from\\s+(['\"])\\S+(['\"])/", // import statements (TS)
+		"/import\\s(static\\s)?\\S+/", // import statements (Java, Groovy)
+		"/package\\s\\S+/", // package declaration (Java, Groovy)
+		"/(include|image)::\\S+/", // asciidoc file/image includes
+		"/link:\\S+/", // asciidoc (external) links
+		"/<<\\S+(,.*)?>>/", // asciidoc cross-references
+		"/:\\S+:\\s\\S+/", // asciidoc attributes (e.g. :sourcedir:})
+		"/\\[#\\S+\\]/", // asciidoc section anchors
+		"/@com\\.mgmtp\\.a12\\.\\S+/" // A12 package names
+	],
+	"ignorePaths": [
+		"**/*.json",
+		"**/*.gradle",
+		"**/*.xml",
+		"**/*.csv",
+		"**/*.yaml",
+		"**/*.yml",
+		"**/*.patch",
+		"**/*.png",
+		"**/*.jpg",
+		"**/*.svg",
+		"**/*.gif",
+		"**/*.code-workspace",
+		"**/.editorconfig",
+		"**/.gitignore",
+		"**/.dockerignore",
+		// contains asciidoc attributes
+		"documentation/convert.ts"
+	],
+	"words": [
+		"actioncontentbox",
+		"adoc",
+		"appsetup",
+		"Asciidoctor",
+		"codemod",
+		"codemods",
+		"devapp",
+		"enablements",
+		"leveloffset",
+		"localizable",
+		"localizables",
+		"mgmtp",
+		"navigationcontentboxcontext",
+		"osgi",
+		"unmarshall",
+		"unmarshalling"
+	],
+	"useGitignore": true,
+	"flagWords": ["wether->whether"]
+}

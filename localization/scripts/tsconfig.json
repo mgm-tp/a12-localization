@@ -1,0 +1,10 @@
+{
+	"extends": "@com.mgmtp.a12.devtools/tsconfig",
+	"include": ["**/*.ts", "**/*.js", "**/*.cjs"],
+	"compilerOptions": {
+		"noEmit": true,
+		"allowJs": true,
+		"module": "NodeNext",
+		"lib": ["ESNext"]
+	}
+}

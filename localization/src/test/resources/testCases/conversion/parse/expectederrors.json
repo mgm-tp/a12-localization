@@ -1,0 +1,967 @@
+{
+    "testCases": [
+        {
+            "id": "error_date_0",
+            "active": true,
+            "description": "DATUM_FORMAT",
+            "parameters": {
+                "value": "14.12.14",
+                "conversionConfigId": "Date_defaultValues"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.DATUM_FORMAT",
+                "errorText": {
+                    "key": "kernel.formalErrors.DATUM_FORMAT",
+                    "args": {
+                        "dateFormat": {
+                            "type": "dataFormat",
+                            "value": "yyyy-MM-dd",
+                            "properties": {
+                            "type": "date"
+                            }
+                        }
+                    },
+                    "defaults": {
+                    "de": "Es sind nur Daten im Format $dateFormat$ erlaubt.",
+                    "en": "Only dates in the format '$dateFormat$' are allowed.",
+                    "fr": "Seules les dates au format '$dateFormat$' sont autorisées.",
+                    "nl": "De datum dient in het formaat '$dateFormat$' te staan."
+                    }
+                },
+                "errorCode": "datumFormatFalsch",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_date_1a",
+            "active": true,
+            "description": "wrong date",
+            "parameters": {
+                "value": "2000-13-32",
+                "conversionConfigId": "Date_defaultValues"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_1b",
+            "active": true,
+            "description": "too many separators",
+            "parameters": {
+                "value": "2000--01-01",
+                "conversionConfigId": "Date_defaultValues"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_2a",
+            "active": true,
+            "description": "date type format dd.MM.yyyy with wrong given format",
+            "parameters": {
+                "value": "2014-01-01",
+                "conversionConfigId": "Date_dd.MM.yyyy"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_2b",
+            "active": true,
+            "description": "date type dd.MM.yy is not syntactically correct as we do not support this format",
+            "parameters": {
+                "value": "04.02.24",
+                "conversionConfigId": "Date_dd.MM.yy"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_2c",
+            "active": true,
+            "description": "date type format dd.MM.yyyy with wrong given format",
+            "parameters": {
+                "value": "01.01.2014Z",
+                "conversionConfigId": "Date_dd.MM.yyyy"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_2d",
+            "active": true,
+            "description": "date type format dd.MM.yyyy with wrong given format",
+            "parameters": {
+                "value": "01.01.1",
+                "conversionConfigId": "Date_dd.MM.y"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_5a",
+            "active": true,
+            "description": "date type with nothing set, but dateprecision FULL -> should return error",
+            "parameters": {
+                "value": "0000-00-00",
+                "conversionConfigId": "Date_defaultValues"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_5b",
+            "active": true,
+            "description": "date type with no year set, but dateprecision FULL -> should return error",
+            "parameters": {
+                "value": "0000-01-01",
+                "conversionConfigId": "Date_defaultValues"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_5c",
+            "active": true,
+            "description": "date type with no month set, but dateprecision FULL -> should return error",
+            "parameters": {
+                "value": "2000-00-01",
+                "conversionConfigId": "Date_defaultValues"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_5d",
+            "active": true,
+            "description": "date type with no day set, but dateprecision FULL -> should return error",
+            "parameters": {
+                "value": "2000-01-00",
+                "conversionConfigId": "Date_defaultValues"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_9",
+            "active": true,
+            "description": "date type dd.M.yyyy",
+            "parameters": {
+                "value": "4.2.2024",
+                "conversionConfigId": "Date_dd.MM.yyyy"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_10",
+            "active": true,
+            "description": "date type d.MM.yyyy",
+            "parameters": {
+                "value": "4.2.2004",
+                "conversionConfigId": "Date_dd.MM.yyyy"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_12",
+            "active": true,
+            "description": "date type Mdyy",
+            "parameters": {
+                "value": "2424",
+                "conversionConfigId": "Date_Mdyy"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_date_19",
+            "active": true,
+            "description": "date type dd.MM.yyy",
+            "parameters": {
+                "value": "17.04.333",
+                "conversionConfigId": "Date_dd.MM.yyy"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_datefragment_0",
+            "active": true,
+            "description": "DATUM_FORMAT",
+            "parameters": {
+                "value": "14.12.",
+                "conversionConfigId": "DateFragment_defaultValues"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.DATUM_FORMAT",
+                "errorText": {
+                    "key": "kernel.formalErrors.DATUM_FORMAT",
+                    "args": {
+                        "dateFormat": {
+                            "type": "dataFormat",
+                            "value": "MM-dd",
+                            "properties": {
+                            "type": "date"
+                            }
+                        }
+                    },
+                    "defaults": {
+                    "de": "Es sind nur Daten im Format $dateFormat$ erlaubt.",
+                    "en": "Only dates in the format '$dateFormat$' are allowed.",
+                    "fr": "Seules les dates au format '$dateFormat$' sont autorisées.",
+                    "nl": "De datum dient in het formaat '$dateFormat$' te staan."
+                    }
+                },
+                "errorCode": "datumFormatFalsch",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_datefragment_0a",
+            "active": true,
+            "description": "02-29 not allowed in baseYear",
+            "parameters": {
+                "value": "02-29",
+                "conversionConfigId": "DateFragment_MM-dd_by2002"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.DATUM_FORMAT",
+                "errorText": {
+                    "key": "kernel.formalErrors.DATUM_FORMAT",
+                    "args": {
+                        "dateFormat": {
+                            "type": "dataFormat",
+                            "value": "MM-dd",
+                            "properties": {
+                                "type": "date"
+                            }
+                        }
+                    },
+                    "defaults": {
+                      "de": "Es sind nur Daten im Format $dateFormat$ erlaubt.",
+                      "en": "Only dates in the format '$dateFormat$' are allowed.",
+                      "fr": "Seules les dates au format '$dateFormat$' sont autorisées.",
+                      "nl": "De datum dient in het formaat '$dateFormat$' te staan."
+                    }
+                },
+                "errorCode": "datumFormatFalsch",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_datefragment_1",
+            "active": true,
+            "description": "date fragment MM only 1 digit",
+            "parameters": {
+                "value": "2",
+                "conversionConfigId": "DateFragment_MM"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.DATUM_FORMAT",
+                "errorText": {
+                    "key": "kernel.formalErrors.DATUM_FORMAT",
+                    "args": {
+                        "dateFormat": {
+                            "type": "dataFormat",
+                            "value": "MM",
+                            "properties": {
+                            "type": "date"
+                            }
+                        }
+                    },
+                    "defaults": {
+                    "de": "Es sind nur Daten im Format $dateFormat$ erlaubt.",
+                    "en": "Only dates in the format '$dateFormat$' are allowed.",
+                    "fr": "Seules les dates au format '$dateFormat$' sont autorisées.",
+                    "nl": "De datum dient in het formaat '$dateFormat$' te staan."
+                    }
+                },
+                "errorCode": "datumFormatFalsch",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_datefragment_2",
+            "active": true,
+            "description": "date fragment dd only 1 digit",
+            "parameters": {
+                "value": "2",
+                "conversionConfigId": "DateFragment_dd"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.DATUM_FORMAT",
+                "errorText": {
+                    "key": "kernel.formalErrors.DATUM_FORMAT",
+                    "args": {
+                        "dateFormat": {
+                            "type": "dataFormat",
+                            "value": "dd",
+                            "properties": {
+                            "type": "date"
+                            }
+                        }
+                    },
+                    "defaults": {
+                    "de": "Es sind nur Daten im Format $dateFormat$ erlaubt.",
+                    "en": "Only dates in the format '$dateFormat$' are allowed.",
+                    "fr": "Seules les dates au format '$dateFormat$' sont autorisées.",
+                    "nl": "De datum dient in het formaat '$dateFormat$' te staan."
+                    }
+                },
+                "errorCode": "datumFormatFalsch",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_datefragment_9a",
+            "active": false,
+            "activeJava": true,
+            "description": "date fragment dM",
+            "parameters": {
+                "value": "111",
+                "conversionConfigId": "DateFragment_dM"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_datefragment_11a",
+            "active": false,
+            "activeJava": true,
+            "description": "date fragment Md",
+            "parameters": {
+                "value": "111",
+                "conversionConfigId": "DateFragment_Md"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_datefragment_12a",
+            "active": false,
+            "activeJava": true,
+            "description": "date fragment dMyyyy",
+            "parameters": {
+                "value": "1111111",
+                "conversionConfigId": "DateFragment_dMyyyy"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_datetime_0",
+            "active": true,
+            "description": "DATUM_FORMAT",
+            "parameters": {
+                "value": "14.12.14 10:00",
+                "conversionConfigId": "DateTime_defaultValues"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.DATUM_FORMAT",
+                "errorText": {
+                    "key": "kernel.formalErrors.DATUM_FORMAT",
+                    "args": {
+                        "dateFormat": {
+                            "type": "dataFormat",
+                            "value": "yyyy-MM-dd'T'HH:mm:ss",
+                            "properties": {
+                            "type": "date"
+                            }
+                        }
+                    },
+                    "defaults": {
+                    "de": "Es sind nur Daten im Format $dateFormat$ erlaubt.",
+                    "en": "Only dates in the format '$dateFormat$' are allowed.",
+                    "fr": "Seules les dates au format '$dateFormat$' sont autorisées.",
+                    "nl": "De datum dient in het formaat '$dateFormat$' te staan."
+                    }
+                },
+                "errorCode": "datumFormatFalsch",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_datetime_18",
+            "active": true,
+            "description": "datetime type format yyyy-M-d'v'Hmmssa -> Not parseable in Java",
+            "parameters": {
+                "value": "2001-1-1v131427PM",
+                "conversionConfigId": "DateTime_yyyy-M-d'v'Hmmssa"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.DATUM_FORMAT",
+                "errorText": {
+                    "key": "kernel.formalErrors.DATUM_FORMAT",
+                    "args": {
+                        "dateFormat": {
+                            "type": "dataFormat",
+                            "value": "yyyy-M-d'v'Hmmssa",
+                            "properties": {
+                            "type": "date"
+                            }
+                        }
+                    },
+                    "defaults": {
+                    "de": "Es sind nur Daten im Format $dateFormat$ erlaubt.",
+                    "en": "Only dates in the format '$dateFormat$' are allowed.",
+                    "fr": "Seules les dates au format '$dateFormat$' sont autorisées.",
+                    "nl": "De datum dient in het formaat '$dateFormat$' te staan."
+                    }
+                },
+                "errorCode": "datumFormatFalsch",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_datetime_19",
+            "active": true,
+            "description": "datetime type format a yyyy-M-d'v'Hmmss  -> Not parseable in Java",
+            "parameters": {
+                "value": "PM 2001-1-1v131427",
+                "conversionConfigId": "DateTime_a_yyyy-M-d'v'Hmmss"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.DATUM_FORMAT",
+                "errorText": {
+                    "key": "kernel.formalErrors.DATUM_FORMAT",
+                    "args": {
+                        "dateFormat": {
+                            "type": "dataFormat",
+                            "value": "a yyyy-M-d'v'Hmmss",
+                            "properties": {
+                            "type": "date"
+                            }
+                        }
+                    },
+                    "defaults": {
+                    "de": "Es sind nur Daten im Format $dateFormat$ erlaubt.",
+                    "en": "Only dates in the format '$dateFormat$' are allowed.",
+                    "fr": "Seules les dates au format '$dateFormat$' sont autorisées.",
+                    "nl": "De datum dient in het formaat '$dateFormat$' te staan."
+                    }
+                },
+                "errorCode": "datumFormatFalsch",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_datetime_20",
+            "active": true,
+            "description": "datetime type format yyyy-M-d'ct'H:mm:ssa -> luxon does not allow H and a, only h and a",
+            "parameters": {
+                "value": "2001-1-1ct13:14:27PM",
+                "conversionConfigId": "DateTime_yyyy-M-d'ct'H:mm:ssa"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.DATUM_FORMAT",
+                "errorText": {
+                    "key": "kernel.formalErrors.DATUM_FORMAT",
+                    "args": {
+                        "dateFormat": {
+                            "type": "dataFormat",
+                            "value": "yyyy-M-d'ct'H:mm:ssa",
+                            "properties": {
+                            "type": "date"
+                            }
+                        }
+                    },
+                    "defaults": {
+                    "de": "Es sind nur Daten im Format $dateFormat$ erlaubt.",
+                    "en": "Only dates in the format '$dateFormat$' are allowed.",
+                    "fr": "Seules les dates au format '$dateFormat$' sont autorisées.",
+                    "nl": "De datum dient in het formaat '$dateFormat$' te staan."
+                    }
+                },
+                "errorCode": "datumFormatFalsch",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_time_0",
+            "active": true,
+            "description": "DATUM_FORMAT",
+            "parameters": {
+                "value": "10:00",
+                "conversionConfigId": "Time_defaultValues"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.DATUM_FORMAT",
+                "errorText": {
+                    "key": "kernel.formalErrors.DATUM_FORMAT",
+                    "args": {
+                        "dateFormat": {
+                            "type": "dataFormat",
+                            "value": "HH:mm:ss",
+                            "properties": {
+                            "type": "date"
+                            }
+                        }
+                    },
+                    "defaults": {
+                    "de": "Es sind nur Daten im Format $dateFormat$ erlaubt.",
+                    "en": "Only dates in the format '$dateFormat$' are allowed.",
+                    "fr": "Seules les dates au format '$dateFormat$' sont autorisées.",
+                    "nl": "De datum dient in het formaat '$dateFormat$' te staan."
+                    }
+                },
+                "errorCode": "datumFormatFalsch",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_daterange_0",
+            "active": true,
+            "description": "DATUM_BEREICH_FORMAT",
+            "parameters": {
+                "value": "14.12.14 14.12.24",
+                "conversionConfigId": "DateRange_defaultValues"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.DATUM_BEREICH_FORMAT",
+                "errorText": {
+                    "key": "kernel.formalErrors.DATUM_BEREICH_FORMAT",
+                    "args": {
+                        "timeIntervalFormat": {
+                            "type": "dataFormat",
+                            "value": {
+                                "dateFormat": "yyyy-MM-dd",
+                                "dateRangeSeparator": "/"
+                            },
+                            "properties": {
+                                "type": "dateRange"
+                            }
+                        }
+                    },
+                    "defaults": {
+                        "de": "Es sind nur Datumsbereiche vom Format $timeIntervalFormat$ erlaubt.",
+                        "en": "Only date ranges of the format $timeIntervalFormat$ are allowed.",
+                        "fr": "Seules les plages de dates au format $timeIntervalFormat$ sont autorisées.",
+                        "nl": "Alleen datumbereiken van het formaat $timeIntervalFormat$ zijn toegestaan."
+                    }
+                },
+                "errorCode": "datumBereichTrennerFehlt",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_daterange_1",
+            "active": true,
+            "description": "DATUM_BEREICH_FORMAT",
+            "parameters": {
+                "value": "14.12.14/14.12.24",
+                "conversionConfigId": "DateRange_defaultValues"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.DATUM_BEREICH_FORMAT",
+                "errorText": {
+                    "key": "kernel.formalErrors.DATUM_BEREICH_FORMAT",
+                    "args": {
+                        "timeIntervalFormat": {
+                            "type": "dataFormat",
+                            "value": {
+                                "dateFormat": "yyyy-MM-dd",
+                                "dateRangeSeparator": "/"
+                            },
+                            "properties": {
+                                "type": "dateRange"
+                            }
+                        }
+                    },
+                    "defaults": {
+                        "de": "Es sind nur Datumsbereiche vom Format $timeIntervalFormat$ erlaubt.",
+                        "en": "Only date ranges of the format $timeIntervalFormat$ are allowed.",
+                        "fr": "Seules les plages de dates au format $timeIntervalFormat$ sont autorisées.",
+                        "nl": "Alleen datumbereiken van het formaat $timeIntervalFormat$ zijn toegestaan."
+                    }
+                },
+                "errorCode": "datumBereichFormatFalsch",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_daterange_8",
+            "active": true,
+            "description": "date range type dd.MM.yyy range separator",
+            "parameters": {
+                "value": "17.04.000-18.04.000",
+                "conversionConfigId": "DateRange_dd.MM.yyy_rsm"
+            },
+            "expectation": {
+                "errorCode": "datumBereichFormatFalsch"
+            }
+        },
+        {
+            "id": "error_daterange_5a",
+            "active": true,
+            "description": "date range type, single date allowed, date not valid",
+            "parameters": {
+                "value": "2023-02-29",
+                "conversionConfigId": "DateRange_yyyy-MM-dd_sdat"
+            },
+            "expectation": {
+                "errorCode": "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_daterange_5b",
+            "active": true,
+            "description": "date range type, single date not valid",
+            "parameters": {
+                "value": "2023-02-29/2024-02-29",
+                "conversionConfigId": "DateRange_yyyy-MM-dd_sdat"
+            },
+            "expectation": {
+                "errorCode": "datumBereichFormatFalsch"
+            }
+        },
+        {
+            "id": "error_daterange_5c",
+            "active": true,
+            "description": "date range type, single date not valid",
+            "parameters": {
+                "value": "2024-02-29/2023-02-29",
+                "conversionConfigId": "DateRange_yyyy-MM-dd_sdat"
+            },
+            "expectation": {
+                "errorCode": "datumBereichFormatFalsch"
+            }
+        },
+        {
+            "id": "error_daterange_5d",
+            "active": true,
+            "description": "date range type test: single date allowed + range separator empty",
+            "parameters": {
+                "value": "2024-02-14",
+                "conversionConfigId": "DateRange_yyyy-MM-dd_sdat_rse"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "Invalid date range conversion configuration: if a single date is allowed, the range separator must not be empty."
+            }
+        },
+        {
+            "id": "error_daterange_5e",
+            "active": true,
+            "description": "date range type single date only, but value to convert is an array",
+            "parameters": {
+                "value": "2024-02-01/2023-02-14",
+                "conversionConfigId": "DateRange_yyyy-MM-dd_sdo"
+            },
+            "expectation": {
+                "errorCode" : "datumFormatFalsch"
+            }
+        },
+        {
+            "id": "error_daterange_17",
+            "active": true,
+            "description": "date range type format MMdd with baseyear=2009 and interpretationOfYear=FROM > 29.2.2009 existiert nicht",
+            "parameters": {
+                "value": "0229/0227",
+                "conversionConfigId": "DateRange_MMdd_by2009_from"
+            },
+            "expectation": {
+                "errorCode": "datumBereichFormatFalsch"
+            }
+        },
+        {
+            "id": "error_daterange_24a",
+            "active": true,
+            "description": "date range type format M with single date allowed and empty range separator > ok for formatting but not parsable",
+            "parameters": {
+                "value": "12",
+                "conversionConfigId": "DateRange_M_sdat_rse"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "Invalid date range conversion configuration: if a single date is allowed, the range separator must not be empty."
+            }
+        },
+        {
+            "id": "error_daterange_24b",
+            "active": true,
+            "description": "date range type format M with single date allowed and empty range separator > ok for formatting but not parsable",
+            "parameters": {
+                "value": "0102",
+                "conversionConfigId": "DateRange_M_sdat_rse"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "Invalid date range conversion configuration: if a single date is allowed, the range separator must not be empty."
+            }
+        },
+        {
+            "id": "error_number_0",
+            "active": true,
+            "description": "ZAHL_MIT_UNGUELTIGEN_ZEICHEN",
+            "parameters": {
+                "value": "1234$",
+                "conversionConfigId": "Num_defaultValues"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.ZAHL_MIT_UNGUELTIGEN_ZEICHEN",
+                "errorText": {
+                    "key": "kernel.formalErrors.ZAHL_MIT_UNGUELTIGEN_ZEICHEN",
+                    "args": {
+                        "decimalSeparator": {
+                            "type": "dataFormat",
+                            "value": ".",
+                            "properties": {
+                                "type": "decimalSeparator"
+                            }
+                        }
+                    },
+                    "defaults": {
+                        "de": "Es sind nur Zahlen erlaubt.",
+                        "en": "Only numbers are allowed.",
+                        "fr": "Seuls les nombres sont autorisés.",
+                        "nl": "Gelieve een getal invullen."
+                    }
+                },
+                "errorCode": "zahlHatUngueltigeZeichen",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_number_1a",
+            "active": true,
+            "description": "STELLIGKEIT_ZU_LANG",
+            "parameters": {
+                "value": "1.1234567890123456",
+                "conversionConfigId": "Num_defaultValues"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.STELLIGKEIT_ZU_LANG",
+                "errorText": {
+                    "key": "kernel.formalErrors.STELLIGKEIT_ZU_LANG",
+                    "args": {
+                        "decimalSeparator": {
+                            "type": "dataFormat",
+                            "value": ".",
+                            "properties": {
+                                "type": "decimalSeparator"
+                            }
+                        }
+                    },
+                    "defaults": {
+                        "de": "Es sind maximal 15 Stellen erlaubt.",
+                        "en": "Only values with up to 15 digits are allowed.",
+                        "fr": "Seules les valeurs contenant jusqu'à 15 chiffres sont autorisées.",
+                        "nl": "Er mogen alleen waardes van maximaal 15 cijfers worden ingevuld."
+                    }
+                },
+                "errorCode": "stelligkeitZuLang",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_number_1b",
+            "active": true,
+            "description": "string instead of number",
+            "parameters": {
+                "value": "test",
+                "conversionConfigId": "Num_defaultValues"
+            },
+            "expectation": {
+                "errorCode" : "zahlHatUngueltigeZeichen"
+            }
+        },
+        {
+            "id": "error_number_1c",
+            "active": true,
+            "description": "wrong decimal separator",
+            "parameters": {
+                "value": "0,5",
+                "conversionConfigId": "Num_defaultValues"
+            },
+            "expectation": {
+                "errorCode" : "zahlHatUngueltigeZeichen"
+            }
+        },
+        {
+            "id": "error_number_2",
+            "active": true,
+            "description": "decimal separator empty to . > empty decimal separator is not allowed",
+            "parameters": {
+                "value": "405",
+                "conversionConfigId": "Num_dse"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "Invalid number conversion configuration: The decimal separator '' is invalid."
+            }
+        },
+        {
+            "id": "error_number_8a",
+            "active": true,
+            "description": "decimalPlacesOptional true with decimal separator empty and thousand separator '.' with empty decimal separator > empty decimal separator is not allowed",
+            "parameters": {
+                "value": "4.050",
+                "conversionConfigId": "Num_dse_dpot_tsp_mfd2_lzaf"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "Invalid number conversion configuration: The decimal separator '' is invalid."
+            }
+        },
+        {
+            "id": "error_number_8b",
+            "active": true,
+            "description": "decimal and thousands separator . > separators are not allowed to be the same",
+            "parameters": {
+                "value": "4.050.22",
+                "conversionConfigId": "Num_dsp_dpof_tsp_mfd2_lzaf"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "Decimal separator and thousands separator must not be the same!"
+            }
+        },
+        {
+            "id": "error_number_11",
+            "active": true,
+            "description": "leadingZerosAllowed true with string value",
+            "parameters": {
+                "value": "040.5test",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "errorCode" : "zahlHatUngueltigeZeichen"
+            }
+        },
+        {
+            "id": "error_number_15",
+            "active": true,
+            "description": "decimal separator . at the beginning is not allowed",
+            "parameters": {
+                "value": ".12345",
+                "conversionConfigId": "Num_default"
+            },
+            "expectation": {
+                "errorCode" : "zahlHatUngueltigeZeichen"
+            }
+        },
+        {
+            "id": "error_number_31a",
+            "active": true,
+            "description": "conversion with big integer numbers with too many digits (>15)",
+            "parameters": {
+                "value": "1234567890123456",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "errorKey": "kernel.formalErrors.STELLIGKEIT_ZU_LANG",
+                "errorText": {
+                    "key": "kernel.formalErrors.STELLIGKEIT_ZU_LANG",
+                    "args": {
+                        "decimalSeparator": {
+                            "type": "dataFormat",
+                            "value": ",",
+                            "properties": {
+                                "type": "decimalSeparator"
+                            }
+                        }
+                    },
+                    "defaults": {
+                        "de": "Es sind maximal 15 Stellen erlaubt.",
+                        "en": "Only values with up to 15 digits are allowed.",
+                        "fr": "Seules les valeurs contenant jusqu'à 15 chiffres sont autorisées.",
+                        "nl": "Er mogen alleen waardes van maximaal 15 cijfers worden ingevuld."
+                    }
+                },
+                "errorCode": "stelligkeitZuLang",
+                "severity": "ERROR"
+            }
+        },
+        {
+            "id": "error_number_31b",
+            "active": true,
+            "description": "conversion with big integer numbers with too many digits (>15)",
+            "parameters": {
+                "value": "1234567890123456789012345",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "errorCode" : "stelligkeitZuLang"
+            }
+        },
+        {
+            "id": "error_number_32a",
+            "active": true,
+            "description": "conversion with big float numbers, number of digits == 15 > different errorMessage is expected as we do not support leading decimal separators",
+            "parameters": {
+                "value": ",123456789012345",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "errorCode" : "zahlHatUngueltigeZeichen"
+            }
+        },
+        {
+            "id": "error_number_32b",
+            "active": true,
+            "description": "conversion with big float numbers with too many digits (>15)",
+            "parameters": {
+                "value": "0,123456789012345",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "errorCode" : "stelligkeitZuLang"
+            }
+        },
+        {
+            "id": "error_number_32c",
+            "active": true,
+            "description": "conversion with big float numbers with too many digits (>15)",
+            "parameters": {
+                "value": "0,1234567890123456789012345",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "errorCode" : "stelligkeitZuLang"
+            }
+        },
+        {
+            "id": "error_number_33a",
+            "active": true,
+            "description": "conversion with numbers with too many digits (>15)",
+            "parameters": {
+                "value": "1234567890,123456",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "errorCode" : "stelligkeitZuLang"
+            }
+        },
+        {
+            "id": "error_number_33b",
+            "active": true,
+            "description": "conversion with numbers with too many digits (>15)",
+            "parameters": {
+                "value": "12345678901234,12345678901234",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "errorCode" : "stelligkeitZuLang"
+            }
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+# typedoc assets are copied during build
+src/assets
+
+# other
+LICENSE
+NOTICE
+THIRD_PARTY_NOTICES
+licenses/

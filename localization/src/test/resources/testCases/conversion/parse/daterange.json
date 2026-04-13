@@ -1,0 +1,547 @@
+{
+    "testCases": [
+        {
+            "id": "daterange_0",
+            "active": true,
+            "description": "template + default date range type",
+            "parameters": {
+                "value": "2024-02-01/2024-02-14",
+                "conversionConfigId": "DateRange_defaultValues"
+            },
+            "expectation": {
+                "convertedValue": ["2024-02-01T00:00:00.000Z","2024-02-14T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_1",
+            "active": true,
+            "description": "template + default date range type without config",
+            "parameters": {
+                "value": "2024-02-01/2024-02-14",
+                "conversionConfigId": "DateRange_default"
+            },
+            "expectation": {
+                "convertedValue": ["2024-02-01T00:00:00.000Z","2024-02-14T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_2",
+            "active": true,
+            "description": "date range type from",
+            "parameters": {
+                "value": "01.12/01.01",
+                "conversionConfigId": "DateRange_dd.MM_from"
+            },
+            "expectation": {
+                "convertedValue": ["2000-12-01T00:00:00.000Z","2001-01-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_3",
+            "active": true,
+            "description": "date range type to",
+            "parameters": {
+                "value": "01.12/01.01",
+                "conversionConfigId": "DateRange_dd.MM_to"
+            },
+            "expectation": {
+                "convertedValue": ["1999-12-01T00:00:00.000Z","2000-01-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_4",
+            "active": true,
+            "description": "date range type range seperator -",
+            "parameters": {
+                "value": "01.02.2023-14.02.2023",
+                "conversionConfigId": "DateRange_dd.MM.yyyy_rsm"
+            },
+            "expectation": {
+                "convertedValue": ["2023-02-01T00:00:00.000Z","2023-02-14T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_5a",
+            "active": true,
+            "description": "date range type, single date allowed",
+            "parameters": {
+                "value": "2024-02-14",
+                "conversionConfigId": "DateRange_yyyy-MM-dd_sdat"
+            },
+            "expectation": {
+                "convertedValue": "2024-02-14T00:00:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "daterange_5b",
+            "active": true,
+            "description": "date range type, single date allowed, but an array should be parsed, in this case the configuration single date allowed is ignored",
+            "parameters": {
+                "value": "2024-02-01/2023-02-14",
+                "conversionConfigId": "DateRange_yyyy-MM-dd_sdat"
+            },
+            "expectation": {
+                "convertedValue": ["2024-02-01T00:00:00.000Z","2023-02-14T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_5c",
+            "active": true,
+            "description": "date range type, single date only",
+            "parameters": {
+                "value": "2024-02-14",
+                "conversionConfigId": "DateRange_yyyy-MM-dd_sdo"
+            },
+            "expectation": {
+                "convertedValue": "2024-02-14T00:00:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "daterange_6",
+            "active": true,
+            "description": "date range type dd.MM range separator - wrong order but still convertable",
+            "parameters": {
+                "value": "29.02-28.02",
+                "conversionConfigId": "DateRange_dd.MM_rsm"
+            },
+            "expectation": {
+                "convertedValue": ["2000-02-29T00:00:00.000Z","2000-02-28T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_7a",
+            "active": true,
+            "description": "date range type d.M",
+            "parameters": {
+                "value": "7.4/8.4",
+                "conversionConfigId": "DateRange_d.M"
+            },
+            "expectation": {
+                "convertedValue": ["2000-04-07T00:00:00.000Z","2000-04-08T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_7b",
+            "active": true,
+            "description": "date range type d.M",
+            "parameters": {
+                "value": "07.04/08.04",
+                "conversionConfigId": "DateRange_d.M"
+            },
+            "expectation": {
+                "convertedValue": ["2000-04-07T00:00:00.000Z","2000-04-08T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_8",
+            "active": true,
+            "description": "date range type dd.MM.yyy range separator -> the format only defines which date parts should be present",
+            "parameters": {
+                "value": "17.04.2024-18.04.2024",
+                "conversionConfigId": "DateRange_dd.MM.yyy_rsm"
+            },
+            "expectation": {
+                "convertedValue": ["2024-04-17T00:00:00.000Z","2024-04-18T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_9",
+            "active": true,
+            "description": "date range type dd.MM.yyy range separator - before 1970",
+            "parameters": {
+                "value": "17.04.1963-27.01.2010",
+                "conversionConfigId": "DateRange_dd.MM.yyyy_rsm"
+            },
+            "expectation": {
+                "convertedValue": ["1963-04-17T00:00:00.000Z","2010-01-27T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_10a",
+            "active": true,
+            "description": "date range type M range separator -",
+            "parameters": {
+                "value": "1-11",
+                "conversionConfigId": "DateRange_M_rsm"
+            },
+            "expectation": {
+                "convertedValue": ["2000-01-01T00:00:00.000Z","2000-11-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_10b",
+            "active": true,
+            "description": "date range type M range separator -",
+            "parameters": {
+                "value": "01-11",
+                "conversionConfigId": "DateRange_M_rsm"
+            },
+            "expectation": {
+                "convertedValue": ["2000-01-01T00:00:00.000Z","2000-11-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_11a",
+            "active": true,
+            "description": "date range type M range separator -",
+            "parameters": {
+                "value": "4-4",
+                "conversionConfigId": "DateRange_M_rsm"
+            },
+            "expectation": {
+                "convertedValue": ["2000-04-01T00:00:00.000Z","2000-04-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_11b",
+            "active": true,
+            "description": "date range type M range separator -",
+            "parameters": {
+                "value": "04-04",
+                "conversionConfigId": "DateRange_M_rsm"
+            },
+            "expectation": {
+                "convertedValue": ["2000-04-01T00:00:00.000Z","2000-04-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_12",
+            "active": true,
+            "description": "date range type M range separator -",
+            "parameters": {
+                "value": "03.12",
+                "conversionConfigId": "DateRange_M_rsp"
+            },
+            "expectation": {
+                "convertedValue": ["2000-03-01T00:00:00.000Z","2000-12-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_13",
+            "active": true,
+            "description": "date range type M range separator -",
+            "parameters": {
+                "value": "1111",
+                "conversionConfigId": "DateRange_M_rse"
+            },
+            "expectation": {
+                "convertedValue": ["2000-11-01T00:00:00.000Z","2000-11-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_14a",
+            "active": true,
+            "description": "date range type M range separator",
+            "parameters": {
+                "value": "111",
+                "conversionConfigId": "DateRange_M_rse"
+            },
+            "expectation": {
+                "convertedValue": ["2000-01-01T00:00:00.000Z","2000-11-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_14b",
+            "active": true,
+            "description": "date range type M range separator",
+            "parameters": {
+                "value": "0111",
+                "conversionConfigId": "DateRange_M_rse"
+            },
+            "expectation": {
+                "convertedValue": ["2000-01-01T00:00:00.000Z","2000-11-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_15a",
+            "active": true,
+            "description": "date range type M range separator -",
+            "parameters": {
+                "value": "11",
+                "conversionConfigId": "DateRange_M_rse"
+            },
+            "expectation": {
+                "convertedValue": ["2000-01-01T00:00:00.000Z","2000-01-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_15b",
+            "active": true,
+            "description": "date range type M range separator -",
+            "parameters": {
+                "value": "0101",
+                "conversionConfigId": "DateRange_M_rse"
+            },
+            "expectation": {
+                "convertedValue": ["2000-01-01T00:00:00.000Z","2000-01-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_16a",
+            "active": true,
+            "description": "date range type format MMdd with baseyear=2009 and interpretationOfYear=TO",
+            "parameters": {
+                "value": "0229/0228",
+                "conversionConfigId": "DateRange_MMdd_by2009_to"
+            },
+            "expectation": {
+                "convertedValue": ["2008-02-29T00:00:00.000Z","2009-02-28T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_16b",
+            "active": true,
+            "description": "date range type format dd.MM with baseyear=2009 and interpretationOfYear=TO",
+            "parameters": {
+                "value": "29.02-28.02",
+                "conversionConfigId": "DateRange_dd.MM_by2009_rsm_to"
+            },
+            "expectation": {
+                "convertedValue": ["2008-02-29T00:00:00.000Z","2009-02-28T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_17a",
+            "active": true,
+            "description": "date range type format MMdd with baseyear=2009 and interpretationOfYear=FROM",
+            "parameters": {
+                "value": "0228/0227",
+                "conversionConfigId": "DateRange_MMdd_by2009_from"
+            },
+            "expectation": {
+                "convertedValue": ["2009-02-28T00:00:00.000Z","2010-02-27T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_17b",
+            "active": true,
+            "description": "date range type format dd.MM with baseyear=2009 and interpretationOfYear=FROM",
+            "parameters": {
+                "value": "28.02-27.02",
+                "conversionConfigId": "DateRange_dd.MM_by2009_rsm_from"
+            },
+            "expectation": {
+                "convertedValue": ["2009-02-28T00:00:00.000Z","2010-02-27T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_18",
+            "active": true,
+            "description": "date range type format yyyy",
+            "parameters": {
+                "value": "1999/2005",
+                "conversionConfigId": "DateRange_yyyy"
+            },
+            "expectation": {
+                "convertedValue": ["1999-01-01T00:00:00.000Z","2005-01-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_19a",
+            "active": true,
+            "description": "date range type format yyyyMMdd",
+            "parameters": {
+                "value": "20001231/20051010",
+                "conversionConfigId": "DateRange_yyyyMMdd"
+            },
+            "expectation": {
+                "convertedValue": ["2000-12-31T00:00:00.000Z","2005-10-10T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_19b",
+            "active": true,
+            "description": "date range type format yyyy-MM-dd",
+            "parameters": {
+                "value": "2000-12-31/2005-10-10",
+                "conversionConfigId": "DateRange_default"
+            },
+            "expectation": {
+                "convertedValue": ["2000-12-31T00:00:00.000Z","2005-10-10T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_20a",
+            "active": true,
+            "description": "date range type format MM",
+            "parameters": {
+                "value": "10/12",
+                "conversionConfigId": "DateRange_MM"
+            },
+            "expectation": {
+                "convertedValue": ["2000-10-01T00:00:00.000Z","2000-12-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_20b",
+            "active": true,
+            "description": "date range type test format MM",
+            "parameters": {
+                "value": "12/10",
+                "conversionConfigId": "DateRange_MM"
+            },
+            "expectation": {
+                "convertedValue": ["2000-12-01T00:00:00.000Z","2000-10-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_21a",
+            "active": true,
+            "description": "date range type format yyyyMM",
+            "parameters": {
+                "value": "200012/200510",
+                "conversionConfigId": "DateRange_yyyyMM"
+            },
+            "expectation": {
+                "convertedValue": ["2000-12-01T00:00:00.000Z","2005-10-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_21b",
+            "active": true,
+            "description": "date range type format yyyy-MM",
+            "parameters": {
+                "value": "2000-12/2005-10",
+                "conversionConfigId": "DateRange_yyyy-MM"
+            },
+            "expectation": {
+                "convertedValue": ["2000-12-01T00:00:00.000Z","2005-10-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_22a",
+            "active": true,
+            "description": "date range type format dd.MM with range separator - and interpretationOfYear=TO",
+            "parameters": {
+                "value": "01.03-29.02",
+                "conversionConfigId": "DateRange_dd.MM_rsm_to"
+            },
+            "expectation": {
+                "convertedValue": ["1999-03-01T00:00:00.000Z","2000-02-29T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_22b",
+            "active": true,
+            "description": "date range type format MM-dd with interpretationOfYear=TO",
+            "parameters": {
+                "value": "03-01/02-29",
+                "conversionConfigId": "DateRange_MM-dd_to"
+            },
+            "expectation": {
+                "convertedValue": ["1999-03-01T00:00:00.000Z","2000-02-29T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_23a",
+            "active": true,
+            "description": "date range type format M with single date allowed and range separator /",
+            "parameters": {
+                "value": "1/2",
+                "conversionConfigId": "DateRange_M_sdat"
+            },
+            "expectation": {
+                "convertedValue": ["2000-01-01T00:00:00.000Z","2000-02-01T00:00:00.000Z"],
+                "type": "DateArray"
+            }
+        },
+        {
+            "id": "daterange_23b",
+            "active": true,
+            "description": "date range type format M with single date allowed and range separator /",
+            "parameters": {
+                "value": "1",
+                "conversionConfigId": "DateRange_M_sdat"
+            },
+            "expectation": {
+                "convertedValue": "2000-01-01T00:00:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "daterange_23c",
+            "active": true,
+            "description": "date range type format M with single date only and range separator /",
+            "parameters": {
+                "value": "1",
+                "conversionConfigId": "DateRange_M_sdo"
+            },
+            "expectation": {
+                "convertedValue": "2000-01-01T00:00:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "daterange_null",
+            "active": true,
+            "description": "date range type null",
+            "parameters": {
+                "value": null,
+                "conversionConfigId": "DateRange_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        },
+        {
+            "id": "daterange_empty_1",
+            "active": true,
+            "description": "date range type empty",
+            "parameters": {
+                "value": "",
+                "conversionConfigId": "DateRange_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        },
+        {
+            "id": "daterange_empty_2",
+            "active": true,
+            "description": "date range type empty, single date allowed",
+            "parameters": {
+                "value": "",
+                "conversionConfigId": "DateRange_yyyy-MM-dd_sdat"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        }
+    ]
+}

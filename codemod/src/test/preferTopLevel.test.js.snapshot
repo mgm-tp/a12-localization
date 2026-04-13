@@ -1,0 +1,5 @@
+exports[`codemod.recipes.preferTopLevel > Rewrites import paths correctly > should migrate imports.ts correctly 1`] = `
+import { type LocalizationTree, createTextResolverForTreeMap, Locale } from "@com.mgmtp.a12.utils/utils-localization";
+import { DefaultLocalizerContextProvider } from "@com.mgmtp.a12.utils/utils-localization-react";
+
+`;

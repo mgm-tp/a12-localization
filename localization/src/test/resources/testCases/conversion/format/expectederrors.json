@@ -1,0 +1,152 @@
+{
+    "testCases": [
+        {
+            "id": "error_boolean_1",
+            "active": true,
+            "description": "string input",
+            "parameters": {
+                "value": "true",
+                "type": "string",
+                "conversionConfigId": "Bool_default"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "The type of the value (string) is not a boolean",
+                "errorMessageJava" : "The type of the value (String) is not a boolean"
+            }
+        },
+        {
+            "id": "error_confirm_1",
+            "active": true,
+            "description": "string input",
+            "parameters": {
+                "value": "true",
+                "type": "string",
+                "conversionConfigId": "Con_default"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "The type of the value (string) is not a boolean",
+                "errorMessageJava" : "The type of the value (String) is not a boolean"
+            }
+        },
+        {
+          "id": "error_confirm_2",
+          "active": true,
+          "description": "false as input",
+          "parameters": {
+              "value": false,
+              "type": "boolean",
+              "conversionConfigId": "Con_default"
+          },
+          "expectation": {
+              "errorCode" : "exception",
+              "errorMessage" : "false is not a valid value for a confirm type."
+          }
+      },
+        {
+            "id": "error_date_1",
+            "active": true,
+            "description": "correct date as string",
+            "parameters": {
+                "value": "2024-02-04",
+                "type": "string",
+                "conversionConfigId": "Date_defaultValues"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "The type of the value (string) is not a Date",
+                "errorMessageJava" : "The type of the value (String) is not a Date"
+            }
+        },
+        {
+            "id": "error_dateRange_1",
+            "active": true,
+            "description": "date range type single date only, but value to convert is an array -> TODO SM: pruefen warum hier String und nicht Array?",
+            "parameters": {
+                "value": ["2024-02-14T00:00:00.000Z","2023-02-14T00:00:00.000Z"],
+                "type": "DateArray",
+                "conversionConfigId": "DateRange_yyyy-MM-dd_sdo"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "The type of the value (object) is not a Date",
+                "errorMessageJava" : "The type of the value (Date[]) is not a Date"
+            }
+        },
+        {
+            "id": "error_number_2",
+            "active": true,
+            "activeJava": false,
+            "description": "decimal separator - . to empty > empty decimal separator is not allowed -> deactivated for Java as empty decimal seperator is not readable as char",
+            "parameters": {
+                "value": 0.405,
+                "type": "number",
+                "conversionConfigId": "Num_dse"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "Invalid number conversion configuration: The decimal separator '' is invalid."
+            }
+        },
+        {
+            "id": "error_number_3",
+            "active": true,
+            "activeJava": false,
+            "description": "decimalPlacesOptional true and thousand separator '.' with decimalPlaces - empty to . > empty decimal separator is not allowed -> deactivated for Java as empty decimal seperator is not readable as char",
+            "parameters": {
+                "value": 1405.405,
+                "type": "number",
+                "conversionConfigId": "Num_dse_dpot_tsp_mfd2_lzaf"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "Invalid number conversion configuration: The decimal separator '' is invalid."
+            }
+        },
+        {
+            "id": "error_number_8",
+            "active": true,
+            "description": "decimal and thousands separator . > separators are not allowed to be the same",
+            "parameters": {
+                "value": 405022,
+                "type": "number",
+                "conversionConfigId": "Num_dsp_dpof_tsp_mfd2_lzaf"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "Decimal separator and thousands separator must not be the same!"
+            }
+        },
+        {
+            "id": "error_number_11",
+            "active": true,
+            "description": "string input and leading zeros allowed false",
+            "parameters": {
+                "value": "405022",
+                "type": "string",
+                "conversionConfigId": "Num_dsp_dpof_tsp_mfd2_lzaf"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "The type of the value (string) is not a number",
+                "errorMessageJava" : "The type of the value (String) is not a BigDecimal"
+            }
+        },
+        {
+            "id": "error_number_12",
+            "active": true,
+            "description": "string input and leading zeros allowed true, but without leading zeros",
+            "parameters": {
+                "value": "405022",
+                "type": "string",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "errorCode" : "exception",
+                "errorMessage" : "The type of the value (string) is not a number",
+                "errorMessageJava" : "The type of the value (String) is not a BigDecimal"
+            }
+        }
+    ]
+}

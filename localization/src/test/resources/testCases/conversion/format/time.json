@@ -1,0 +1,132 @@
+{
+    "testCases": [
+        {
+            "id": "time_0",
+            "active": true,
+            "description": "template + default time type",
+            "parameters": {
+                "value": "2024-02-14T14:14:14.000Z",
+                "type": "Date",
+                "conversionConfigId": "Time_defaultValues"
+            },
+            "expectation": {
+                "convertedValue": "14:14:14"
+            }
+        },
+        {
+            "id": "time_1",
+            "active": true,
+            "description": "template + default time type without config",
+            "parameters": {
+                "value": "2024-02-14T14:14:14.000Z",
+                "type": "Date",
+                "conversionConfigId": "Time_default"
+            },
+            "expectation": {
+                "convertedValue": "14:14:14"
+            }
+        },
+        {
+            "id": "time_2",
+            "active": true,
+            "description": "time type format ss.mm.HH",
+            "parameters": {
+                "value": "2000-01-01T10:22:36.000Z",
+                "type": "Date",
+                "conversionConfigId": "Time_ss.mm.HH"
+            },
+            "expectation": {
+                "convertedValue": "36.22.10"
+            }
+        },
+        {
+            "id": "time_3",
+            "active": true,
+            "description": "time type format ss'x'mm'x'hha",
+            "parameters": {
+                "value": "2000-01-01T22:22:36.000Z",
+                "type": "Date",
+                "conversionConfigId": "Time_ss'x'mm'x'hha"
+            },
+            "expectation": {
+                "convertedValue": "36x22x10PM"
+            }
+        },
+        {
+            "id": "time_4",
+            "active": true,
+            "description": "time type format HH:mm",
+            "parameters": {
+                "value": "2000-01-01T10:22:36.000Z",
+                "type": "Date",
+                "conversionConfigId": "Time_HH:mm"
+            },
+            "expectation": {
+                "convertedValue": "10:22"
+            }
+        },
+        {
+            "id": "time_5",
+            "active": true,
+            "description": "time type format HH",
+            "parameters": {
+                "value": "2000-01-01T10:22:36.000Z",
+                "type": "Date",
+                "conversionConfigId": "Time_HH"
+            },
+            "expectation": {
+                "convertedValue": "10"
+            }
+        },
+        {
+            "id": "time_6",
+            "active": true,
+            "description": "time type format hh a",
+            "parameters": {
+                "value": "2000-01-01T22:22:36.000Z",
+                "type": "Date",
+                "conversionConfigId": "Time_hh_a"
+            },
+            "expectation": {
+                "convertedValue": "10 PM"
+            }
+        },
+        {
+            "id": "time_7",
+            "active": true,
+            "description": "time type format mm",
+            "parameters": {
+                "value": "2000-01-01T22:22:36.000Z",
+                "type": "Date",
+                "conversionConfigId": "Time_mm"
+            },
+            "expectation": {
+                "convertedValue": "22"
+            }
+        },
+        {
+            "id": "time_null",
+            "active": true,
+            "description": "time type null",
+            "parameters": {
+                "value": null,
+                "conversionConfigId": "Time_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        },
+        {
+            "id": "time_empty",
+            "active": true,
+            "description": "time type empty",
+            "parameters": {
+                "value": "",
+                "conversionConfigId": "Time_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        }
+    ]
+}

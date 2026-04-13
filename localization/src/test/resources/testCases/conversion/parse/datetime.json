@@ -1,0 +1,263 @@
+{
+    "testCases": [
+        {
+            "id": "datetime_0",
+            "active": true,
+            "description": "template + default datetime type",
+            "parameters": {
+                "value": "2024-02-14T00:00:00",
+                "conversionConfigId": "DateTime_defaultValues"
+            },
+            "expectation": {
+                "convertedValue": "2024-02-14T00:00:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_1",
+            "active": true,
+            "description": "template + default datetime type without config",
+            "parameters": {
+                "value": "2024-02-14T00:00:00",
+                "conversionConfigId": "DateTime_default"
+            },
+            "expectation": {
+                "convertedValue": "2024-02-14T00:00:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_2",
+            "active": true,
+            "description": "datetime type dd.MM.yyyy-HH:mm",
+            "parameters": {
+                "value": "14.02.2024-12:30",
+                "conversionConfigId": "DateTime_dd.MM.yyyy-HH:mm"
+            },
+            "expectation": {
+                "convertedValue": "2024-02-14T12:30:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_3",
+            "active": true,
+            "description": "datetime type timezone 'Europe/Berlin' wintertime",
+            "parameters": {
+                "value": "2024-02-14T00:00:00",
+                "conversionConfigId": "DateTime_yyyy-MM-dd_tzBerlin"
+            },
+            "expectation": {
+                "convertedValue": "2024-02-13T23:00:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_4",
+            "active": true,
+            "description": "datetime type timezone 'Europe/Berlin' summertime",
+            "parameters": {
+                "value": "2024-07-14T00:00:00",
+                "conversionConfigId": "DateTime_yyyy-MM-dd_tzBerlin"
+            },
+            "expectation": {
+                "convertedValue": "2024-07-13T22:00:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_5",
+            "active": true,
+            "activeJava": false,
+            "description": "datetime type non-existing time, while changing to summer time does not lead to error, but is parsed to an existing time by luxon",
+            "parameters": {
+                "value": "2022-03-27T02:30:00",
+                "conversionConfigId": "DateTime_yyyy-MM-dd_tzBerlin"
+            },
+            "expectation": {
+                "convertedValue": "2022-03-27T01:30:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_6",
+            "active": false, 
+            "description": "datetime type non-existing time, while changing to winter time does not lead to error, but is parsed to an existing time by luxon // testcase was deactivated as the conversion behaves differently in winter and summer time",
+            "parameters": {
+                "value": "30.10.2022 02:30:00",
+                "conversionConfigId": "DateTime_dd.MM.yyyy_hh:mm:ss_tzBerlin"
+            },
+            "expectation": {
+                "convertedValue": "2022-10-30T00:30:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_7",
+            "active": true,
+            "description": "datetime type format yyyy'x'MM'x'dd'T'ss.mm.hha AM",
+            "parameters": {
+                "value": "2001x05x17T36.22.10AM",
+                "conversionConfigId": "DateTime_yyyy'x'MM'x'dd'T'ss.mm.hha"
+            },
+            "expectation": {
+                "convertedValue": "2001-05-17T10:22:36.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_8",
+            "active": true,
+            "description": "datetime type format yyyy'x'MM'x'dd'T'ss.mm.hha PM",
+            "parameters": {
+                "value": "2001x05x17T36.22.10PM",
+                "conversionConfigId": "DateTime_yyyy'x'MM'x'dd'T'ss.mm.hha"
+            },
+            "expectation": {
+                "convertedValue": "2001-05-17T22:22:36.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_9",
+            "active": true,
+            "description": "datetime type format dd.MM.yyyy HH:mm",
+            "parameters": {
+                "value": "17.05.2001 10:22",
+                "conversionConfigId": "DateTime_dd.MM.yyyy_HH:mm"
+            },
+            "expectation": {
+                "convertedValue": "2001-05-17T10:22:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_10",
+            "active": true,
+            "description": "datetime type format dd.MM.yyyy hh a",
+            "parameters": {
+                "value": "17.05.2001 10 PM",
+                "conversionConfigId": "DateTime_dd.MM.yyyy_hh_a"
+            },
+            "expectation": {
+                "convertedValue": "2001-05-17T22:00:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_11",
+            "active": true,
+            "description": "datetime type format dd.MM HH:mm:ss",
+            "parameters": {
+                "value": "17.05 22:22:36",
+                "conversionConfigId": "DateTime_dd.MM_HH:mm:ss"
+            },
+            "expectation": {
+                "convertedValue": "2000-05-17T22:22:36.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_12",
+            "active": true,
+            "description": "datetime type format MM/yyyy HH:mm:ss",
+            "parameters": {
+                "value": "05/2001 22:22:36",
+                "conversionConfigId": "DateTime_MM/yyyy_HH:mm:ss"
+            },
+            "expectation": {
+                "convertedValue": "2001-05-01T22:22:36.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_13",
+            "active": true,
+            "description": "datetime type format dd/yyyy HH:mm:ss",
+            "parameters": {
+                "value": "17/2001 22:22:36",
+                "conversionConfigId": "DateTime_dd/yyyy_HH:mm:ss"
+            },
+            "expectation": {
+                "convertedValue": "2001-01-17T22:22:36.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_14",
+            "active": true,
+            "description": "datetime type format yyyy HH:mm:ss",
+            "parameters": {
+                "value": "2001 22:22:36",
+                "conversionConfigId": "DateTime_yyyy_HH:mm:ss"
+            },
+            "expectation": {
+                "convertedValue": "2001-01-01T22:22:36.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_15",
+            "active": true,
+            "description": "datetime type format yyyy hh a",
+            "parameters": {
+                "value": "2001 10AM",
+                "conversionConfigId": "DateTime_yyyy_hha"
+            },
+            "expectation": {
+                "convertedValue": "2001-01-01T10:00:00.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_16",
+            "active": true,
+            "description": "datetime type format yyyy-M-d'v'hmmssa",
+            "parameters": {
+                "value": "2001-1-1v11427PM",
+                "conversionConfigId": "DateTime_yyyy-M-d'v'hmmssa"
+            },
+            "expectation": {
+                "convertedValue": "2001-01-01T13:14:27.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_17",
+            "active": true,
+            "description": "datetime type format yyyy-M-d' von 'h:mm:ssa",
+            "parameters": {
+                "value": "2001-12-12 von 12:14:27PM",
+                "conversionConfigId": "DateTime_yyyy-M-d'von'h:mm:ssa"
+            },
+            "expectation": {
+                "convertedValue": "2001-12-12T12:14:27.000Z",
+                "type": "Date"
+            }
+        },
+        {
+            "id": "datetime_null",
+            "active": true,
+            "description": "date time type null",
+            "parameters": {
+                "value": null,
+                "conversionConfigId": "DateTime_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        },
+        {
+            "id": "datetime_empty",
+            "active": true,
+            "description": "date time type empty",
+            "parameters": {
+                "value": "",
+                "conversionConfigId": "DateTime_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        }
+    ]
+}

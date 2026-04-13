@@ -1,0 +1,223 @@
+{
+    "testCases": [
+        {
+            "id": "datefragment_0",
+            "active": true,
+            "description": "template + default date fragment MM-dd",
+            "parameters": {
+                "value": "2000-02-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_defaultValues"
+            },
+            "expectation": {
+                "convertedValue": "02-14"
+            }
+        },
+        {
+            "id": "datefragment_1",
+            "active": true,
+            "description": "template + default date fragment MM-dd without config",
+            "parameters": {
+                "value": "2000-02-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_default"
+            },
+            "expectation": {
+                "convertedValue": "02-14"
+            }
+        },
+        {
+            "id": "datefragment_2",
+            "active": true,
+            "description": "date fragment MM/yyyy",
+            "parameters": {
+                "value": "2024-02-01T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_MM/yyyy"
+            },
+            "expectation": {
+                "convertedValue": "02/2024"
+            }
+        },
+        {
+            "id": "datefragment_3a",
+            "active": true,
+            "description": "date fragment dd.MM",
+            "parameters": {
+                "value": "2000-02-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_dd.MM"
+            },
+            "expectation": {
+                "convertedValue": "14.02"
+            }
+        },
+        {
+            "id": "datefragment_3b",
+            "active": true,
+            "description": "date fragment dd.MM.",
+            "parameters": {
+                "value": "2000-02-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_dd.MM."
+            },
+            "expectation": {
+                "convertedValue": "14.02."
+            }
+        },
+        {
+            "id": "datefragment_4",
+            "active": true,
+            "description": "date fragment yyyy",
+            "parameters": {
+                "value": "2024-01-01T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_yyyy"
+            },
+            "expectation": {
+                "convertedValue": "2024"
+            }
+        },
+        {
+            "id": "datefragment_5",
+            "active": true,
+            "description": "date fragment MM-dd with baseYear 1400",
+            "parameters": {
+                "value": "1400-02-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_MM-dd_by1400"
+            },
+            "expectation": {
+                "convertedValue": "02-14"
+            }
+        },
+        {
+            "id": "datefragment_6",
+            "active": true,
+            "description": "date fragment MM",
+            "parameters": {
+                "value": "2000-02-01T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_MM"
+            },
+            "expectation": {
+                "convertedValue": "02"
+            }
+        },
+        {
+            "id": "datefragment_7",
+            "active": true,
+            "description": "date fragment dd",
+            "parameters": {
+                "value": "2000-01-02T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_dd"
+            },
+            "expectation": {
+                "convertedValue": "02"
+            }
+        },
+        {
+            "id": "datefragment_8",
+            "active": true,
+            "description": "date fragment M",
+            "parameters": {
+                "value": "2000-02-01T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_M"
+            },
+            "expectation": {
+                "convertedValue": "02"
+            }
+        },
+        {
+            "id": "datefragment_9",
+            "active": true,
+            "description": "date fragment dM with added zeros",
+            "parameters": {
+                "value": "2000-01-11T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_dM"
+            },
+            "expectation": {
+                "convertedValue": "1101"
+            }
+        },
+        {
+            "id": "datefragment_10",
+            "active": true,
+            "description": "date fragment dM with added zeros",
+            "parameters": {
+                "value": "2000-01-01T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_dM"
+            },
+            "expectation": {
+                "convertedValue": "0101"
+            }
+        },
+        {
+            "id": "datefragment_11",
+            "active": true,
+            "description": "date fragment Md with added zeros",
+            "parameters": {
+                "value": "2000-11-01T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_Md"
+            },
+            "expectation": {
+                "convertedValue": "1101"
+            }
+        },
+        {
+            "id": "datefragment_12",
+            "active": true,
+            "description": "date fragment dMyyyy with added zeros",
+            "parameters": {
+                "value": "1111-01-11T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_dMyyyy"
+            },
+            "expectation": {
+                "convertedValue": "11011111"
+            }
+        },
+        {
+            "id": "datefragment_13",
+            "active": true,
+            "description": "date fragment yyyyMd with added zeros",
+            "parameters": {
+                "value": "1111-11-01T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "DateFragment_yyyyMd"
+            },
+            "expectation": {
+                "convertedValue": "11111101"
+            }
+        },
+        {
+            "id": "datefragment_null",
+            "active": true,
+            "description": "date type null",
+            "parameters": {
+                "value": null,
+                "conversionConfigId": "DateFragment_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        },
+        {
+            "id": "datefragment_empty",
+            "active": true,
+            "description": "datefragment type empty",
+            "parameters": {
+                "value": "",
+                "conversionConfigId": "DateFragment_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        }
+    ]
+}

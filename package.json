@@ -1,0 +1,47 @@
+{
+  "name": "@com.mgmtp.a12.utils/utils-localization-parent",
+  "version": "7.3.0-SNAPSHOT",
+  "a12ReleaseLine": "2025.06",
+  "description": "utils-localization umbrella project",
+  "author": "mgm technology partners",
+  "license": "(EUPL-1.2 OR LicenseRef-commercial)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "pnpm run -r --parallel clean",
+    "compile": "pnpm run -r compile",
+    "build": "pnpm run -r build",
+    "test": "pnpm run -r test",
+    "deploy": "pnpm run -r deploy",
+    "verify": "pnpm run \"/^(format|lint|spellcheck)$/\"",
+    "verify:fix": "pnpm run \"/^(format:fix|lint:fix)$/\"",
+    "updateForAudit": "pnpm update --prod --recursive --no-save",
+    "audit": "pnpm audit --prod",
+    "format": "prettier \"**/src/**/*.{ts,tsx}\" --check --cache --cache-strategy metadata",
+    "format:fix": "prettier \"**/src/**/*.{ts,tsx}\" --check -w",
+    "lint": "eslint . --cache",
+    "lint:onlyErrors": "node --run lint -- --quiet",
+    "lint:inspect": "pnpm dlx @eslint/config-inspector",
+    "lint:fix": "eslint . --fix",
+    "spellcheck": "cspell ./documentation"
+  },
+  "engines": {
+    "node": "^24",
+    "pnpm": "^11"
+  },
+  "devDependencies": {
+    "@com.mgmtp.a12.devtools/eslint-config": "catalog:a12ranges",
+    "@com.mgmtp.a12.devtools/prettier-config": "catalog:a12ranges",
+    "@types/node": "catalog:ranges",
+    "cspell": "catalog:ranges",
+    "eslint": "catalog:ranges",
+    "eslint-plugin-import": "catalog:ranges",
+    "eslint-plugin-no-null": "catalog:ranges",
+    "eslint-plugin-notice": "catalog:ranges",
+    "eslint-plugin-workspaces": "catalog:ranges",
+    "prettier": "catalog:ranges",
+    "react": "catalog:fix",
+    "typescript": "catalog:ranges"
+  },
+  "packageManager": "pnpm@11.1.2"
+}

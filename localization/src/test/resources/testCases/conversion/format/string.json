@@ -1,0 +1,43 @@
+{
+    "testCases": [
+        {
+            "id": "string_0",
+            "active": true,
+            "description": "template + default string type",
+            "parameters": {
+                "value": "test",
+                "type": "string",
+                "conversionConfigId": "String_default"
+            },
+            "expectation": {
+                "convertedValue": "test"
+            }
+        },
+        {
+            "id": "string_null",
+            "active": true,
+            "description": "string type null",
+            "parameters": {
+                "value": null,
+                "conversionConfigId": "String_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        },
+        {
+            "id": "string_empty",
+            "active": true,
+            "description": "string type empty",
+            "parameters": {
+                "value": "",
+                "type": "string",
+                "conversionConfigId": "String_default"
+            },
+            "expectation": {
+                "convertedValue": "",
+                "type": "string"
+            }
+        }
+    ]
+}

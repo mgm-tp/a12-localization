@@ -1,0 +1,80 @@
+{
+    "testCases": [
+        {
+            "id": "confirm_0",
+            "active": true,
+            "description": "template + default confirm type",
+            "parameters": {
+                "value": true,
+                "type": "boolean",
+                "conversionConfigId": "Con_true"
+            },
+            "expectation": {
+                "convertedValue": "true"
+            }
+        },
+        {
+            "id": "confirm_1",
+            "active": true,
+            "description": "template + default confirm type without config",
+            "parameters": {
+                "value": true,
+                "type": "boolean",
+                "conversionConfigId": "Con_default"
+            },
+            "expectation": {
+                "convertedValue": "true"
+            }
+        },
+        {
+            "id": "confirm_2",
+            "active": true,
+            "description": "confirm type ja",
+            "parameters": {
+                "value": true,
+                "type": "boolean",
+                "conversionConfigId": "Con_ja"
+            },
+            "expectation": {
+                "convertedValue": "ja"
+            }
+        },
+        {
+            "id": "confirm_3",
+            "active": true,
+            "description": "confirm type X",
+            "parameters": {
+                "value": true,
+                "type": "boolean",
+                "conversionConfigId": "Con_X"
+            },
+            "expectation": {
+                "convertedValue": "X"
+            }
+        },
+        {
+            "id": "confirm_null",
+            "active": true,
+            "description": "confirm type null",
+            "parameters": {
+                "value": null,
+                "conversionConfigId": "Con_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        },
+        {
+            "id": "confirm_empty",
+            "active": true,
+            "description": "confirm type empty",
+            "parameters": {
+                "value": "",
+                "conversionConfigId": "Con_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        }
+    ]
+}

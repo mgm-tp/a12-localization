@@ -1,0 +1,814 @@
+{
+    "Con_default": {
+        "type": "ConfirmType"
+    },
+    "Con_true": {
+        "type": "ConfirmType",
+        "trueValue": "true"
+    },
+    "Con_ja": {
+        "type": "ConfirmType",
+        "trueValue": "ja"
+    },
+    "Con_X": {
+        "type": "ConfirmType",
+        "trueValue": "X"
+    },
+    "Custom_default": {
+        "type": "CustomFieldType"
+    },
+    "Bool_default": {
+        "type": "BooleanType"
+    },
+    "Bool_true_false": {
+        "type": "BooleanType",
+        "trueValue": "true",
+        "falseValue": "false"
+    },
+    "Bool_ja_nein": {
+        "type": "BooleanType",
+        "trueValue": "ja",
+        "falseValue": "nein"
+    },
+    "Bool_1_false": {
+        "type": "BooleanType",
+        "trueValue": "1"
+    },
+    "Bool_1_10": {
+        "type": "BooleanType",
+        "trueValue": "1",
+        "falseValue": "10"
+    },
+
+    "Date_default": {
+        "type": "DateType",
+        "format": "yyyy-MM-dd"
+    },
+    "Date_defaultValues": {
+        "type": "DateType",
+        "format": "yyyy-MM-dd",
+        "baseYear": 2000,
+        "timeZone": "UTC",
+        "datePrecision": "FULL"
+    },
+    "Date_yyyy-MM-dd_oday": {
+        "type": "DateType",
+        "format": "yyyy-MM-dd",
+        "datePrecision": "DAY_OPTIONAL"
+    },
+    "Date_yyyy-MM-dd_omonth": {
+        "type": "DateType",
+        "format": "yyyy-MM-dd",
+        "datePrecision": "MONTH_OPTIONAL"
+    },
+    "Date_yyyy-MM-dd_oyear": {
+        "type": "DateType",
+        "format": "yyyy-MM-dd",
+        "datePrecision": "YEAR_OPTIONAL"
+    },
+    "Date_dd.MM.yyyy_oyear": {
+        "type": "DateType",
+        "format": "dd.MM.yyyy",
+        "datePrecision": "YEAR_OPTIONAL",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "."
+    },
+    "Date_dd.MM.yyyy": {
+        "type": "DateType",
+        "format": "dd.MM.yyyy",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "."
+    },
+    "Date_ddMMyyyy": {
+        "type": "DateType",
+        "format": "ddMMyyyy",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ""
+    },
+    "Date_dd.MM.yyy": {
+        "type": "DateType",
+        "format": "dd.MM.yyy",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "."
+    },
+    "Date_dd.MM.yy": {
+        "type": "DateType",
+        "format": "dd.MM.yy",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "."
+    },
+    "Date_dd.MM.y": {
+        "type": "DateType",
+        "format": "dd.MM.y",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "."
+    },
+    "Date_dd.M.yyyy": {
+        "type": "DateType",
+        "format": "dd.M.yyyy",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ".",
+        "dateZeroOptional": true
+    },
+    "Date_d.MM.yyyy": {
+        "type": "DateType",
+        "format": "d.MM.yyyy",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ".",
+        "dateZeroOptional": true
+    },
+    "Date_yyyy.M.d": {
+        "type": "DateType",
+        "format": "yyyy.M.d",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": ".",
+        "dateZeroOptional": true
+    },
+    "Date_Mdyy": {
+        "type": "DateType",
+        "format": "Mdyy",
+        "dateFragmentOrdering": "MONTH_DAY_YEAR",
+		"dateSeparator": "",
+        "dateZeroOptional": true
+    },
+    "Date_dd.MM": {
+        "type": "DateType",
+        "format": "dd.MM",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "."
+    },
+    "Date_ddMM": {
+        "type": "DateType",
+        "format": "ddMM",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ""
+    },
+    "Date_dM": {
+        "type": "DateType",
+        "format": "dM",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "",
+        "dateZeroOptional": true
+    },
+    "Date_yyyyMM": {
+        "type": "DateType",
+        "format": "yyyyMM",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": ""
+    },
+    "Date_yyyy.MM": {
+        "type": "DateType",
+        "format": "yyyy.MM",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "."
+    },
+    "Date_yyyyM": {
+        "type": "DateType",
+        "format": "yyyyM",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "",
+        "dateZeroOptional": true
+    },
+    "Date_MM/dd": {
+        "type": "DateType",
+        "format": "MM/dd",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "/"
+    },
+    "Date_MM/dd_by2024": {
+        "type": "DateType",
+        "format": "MM/dd",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "/",
+        "baseYear": 2024
+    },
+    "Date_d/M": {
+        "type": "DateType",
+        "format": "d/M",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "/",
+        "dateZeroOptional": true
+    },
+    "Date_dd/MM/": {
+        "type": "DateType",
+        "format": "dd/MM/",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "/"
+    },
+    "Date_HH:mm:ss": {
+        "type": "DateType",
+        "format": "HH:mm:ss"
+    },
+
+    "DateFragment_default": {
+        "type": "DateFragmentType",
+        "format": "MM-dd",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "-"
+    },
+    "DateFragment_defaultValues": {
+        "type": "DateFragmentType",
+        "format": "MM-dd",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "-",
+        "baseYear": 2000,
+        "timeZone": "UTC"
+    },
+    "DateFragment_MM-dd_by1400": {
+        "type": "DateFragmentType",
+        "format": "MM-dd",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "-",
+        "baseYear": 1400
+    },
+    "DateFragment_MM-dd_by2002": {
+        "type": "DateFragmentType",
+        "format": "MM-dd",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "-",
+        "baseYear": 2002
+    },
+    "DateFragment_MM/yyyy": {
+        "type": "DateFragmentType",
+        "format": "MM/yyyy",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "/"
+    },
+    "DateFragment_dd.MM.": {
+        "type": "DateFragmentType",
+        "format": "dd.MM.",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "."
+    },
+    "DateFragment_dd.MM": {
+        "type": "DateFragmentType",
+        "format": "dd.MM",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "."
+    },
+    "DateFragment_yyyy": {
+        "type": "DateFragmentType",
+        "format": "yyyy"
+    },
+    "DateFragment_MM": {
+        "type": "DateFragmentType",
+        "format": "MM"
+    },
+    "DateFragment_M": {
+        "type": "DateFragmentType",
+        "format": "M",
+        "dateZeroOptional": true
+    },
+    "DateFragment_dd": {
+        "type": "DateFragmentType",
+        "format": "dd"
+    },
+    "DateFragment_dM": {
+        "type": "DateFragmentType",
+        "format": "dM",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "",
+        "dateZeroOptional": true
+    },
+    "DateFragment_Md": {
+        "type": "DateFragmentType",
+        "format": "Md",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "",
+        "dateZeroOptional": true
+    },
+    "DateFragment_dMyyyy": {
+        "type": "DateFragmentType",
+        "format": "dMyyyy",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": "",
+        "dateZeroOptional": true
+    },
+    "DateFragment_yyyyMd": {
+        "type": "DateFragmentType",
+        "format": "yyyyMd",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "",
+        "dateZeroOptional": true
+    },
+
+    "DateTime_default": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss"
+    },
+    "DateTime_defaultValues": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "baseYear": 2000,
+        "timeZone": "UTC"
+    },
+    "DateTime_dd.MM.yyyy-HH:mm": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "dd.MM.yyyy-HH:mm"
+    },
+    "DateTime_dd.MM.yyyy_hh:mm:ss_tzBerlin": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "dd.MM.yyyy hh:mm:ss",
+        "timeZone": "Europe/Berlin"
+    },
+    "DateTime_yyyy-MM-dd_tzBerlin": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "yyyy-MM-dd'T'HH:mm:ss",
+        "timeZone": "Europe/Berlin"
+    },
+    "DateTime_yyyy'x'MM'x'dd'T'ss.mm.hha": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "yyyy'x'MM'x'dd'T'ss.mm.hha"
+    },
+    "DateTime_dd.MM.yyyy_HH:mm": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "dd.MM.yyyy HH:mm"
+    },
+    "DateTime_dd.MM.yyyy_hh_a": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "dd.MM.yyyy hh a"
+    },
+    "DateTime_dd.MM_HH:mm:ss": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "dd.MM HH:mm:ss"
+    },
+    "DateTime_MM/yyyy_HH:mm:ss": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "MM/yyyy HH:mm:ss"
+    },
+    "DateTime_dd/yyyy_HH:mm:ss": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "dd/yyyy HH:mm:ss"
+    },
+    "DateTime_yyyy_HH:mm:ss": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "yyyy HH:mm:ss"
+    },
+    "DateTime_yyyy_hha": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "yyyy hha"
+    },
+    "DateTime_yyyy-M-d'v'hmmssa": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "yyyy-M-d'v'hmmssa"
+    },
+    "DateTime_yyyy-M-d'von'h:mm:ssa": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "yyyy-M-d' von 'h:mm:ssa"
+    },
+    "DateTime_yyyy-M-d'v'Hmmssa": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "yyyy-M-d'v'Hmmssa"
+    },
+    "DateTime_a_yyyy-M-d'v'Hmmss": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "a yyyy-M-d'v'Hmmss"
+    },
+    "DateTime_yyyy-M-d'ct'H:mm:ssa": {
+        "type": "DateTimeType",
+        "format": "yyyy-MM-dd'T'HH:mm:ss",
+        "dateTimeFormat": "yyyy-M-d'ct'H:mm:ssa"
+    },
+
+    "Time_default": {
+        "type": "TimeType",
+        "format": "HH:mm:ss"
+    },
+    "Time_defaultValues": {
+        "type": "TimeType",
+        "format": "HH:mm:ss",
+        "baseYear": 2000,
+        "timeZone": "UTC"
+    },
+    "Time_ss.mm.HH": {
+        "type": "TimeType",
+        "format": "HH:mm:ss",
+        "timeFormat": "ss.mm.HH"
+    },
+    "Time_ss'x'mm'x'hha": {
+        "type": "TimeType",
+        "format": "HH:mm:ss",
+        "timeFormat": "ss'x'mm'x'hha"
+    },
+    "Time_HH:mm": {
+        "type": "TimeType",
+        "format": "HH:mm:ss",
+        "timeFormat": "HH:mm"
+    },
+    "Time_HH": {
+        "type": "TimeType",
+        "format": "HH:mm:ss",
+        "timeFormat": "HH"
+    },
+    "Time_hh_a": {
+        "type": "TimeType",
+        "format": "HH:mm:ss",
+        "timeFormat": "hh a"
+    },
+    "Time_mm": {
+        "type": "TimeType",
+        "format": "HH:mm:ss",
+        "timeFormat": "mm"
+    },
+
+    "DateRange_default": {
+        "type": "DateRangeType",
+        "format": "yyyy-MM-dd",
+        "singleDate": "notAllowed"
+    },
+    "DateRange_defaultValues": {
+        "type": "DateRangeType",
+        "format": "yyyy-MM-dd",
+        "singleDate": "notAllowed",
+        "baseYear": 2000,
+        "timeZone": "UTC",
+        "dateRangeSeparator": "/"
+    },
+    "DateRange_yyyy": {
+        "type": "DateRangeType",
+        "format": "yyyy"
+    },
+    "DateRange_yyyyMMdd": {
+        "type": "DateRangeType",
+        "format": "yyyyMMdd",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": ""
+    },
+    "DateRange_MM": {
+        "type": "DateRangeType",
+        "format": "MM"
+    },
+    "DateRange_yyyyMM": {
+        "type": "DateRangeType",
+        "format": "yyyyMM",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": ""
+    },
+    "DateRange_yyyy-MM": {
+        "type": "DateRangeType",
+        "format": "yyyy-MM",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "-"
+    },
+    "DateRange_dd.MM.yyyy_rsm": {
+        "type": "DateRangeType",
+        "format": "dd.MM.yyyy",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ".",
+        "dateRangeSeparator": "-"
+    },
+    "DateRange_dd.MM.yyy_rsm": {
+        "type": "DateRangeType",
+        "format": "dd.MM.yyy",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ".",
+        "dateRangeSeparator": "-"
+    },
+    "DateRange_yyyy-MM-dd_sdat": {
+        "type": "DateRangeType",
+        "format": "yyyy-MM-dd",
+        "singleDate": "allowed"
+    },
+    "DateRange_yyyy-MM-dd_sdat_rse": {
+        "type": "DateRangeType",
+        "format": "yyyy-MM-dd",
+        "singleDate": "allowed",
+        "dateRangeSeparator": ""
+    },
+    "DateRange_M_sdat": {
+        "type": "DateRangeType",
+        "format": "M",
+        "singleDate": "allowed",
+        "dateZeroOptional": true
+    },
+    "DateRange_M_sdat_rse": {
+        "type": "DateRangeType",
+        "format": "M",
+        "singleDate": "allowed",
+        "dateZeroOptional": true,
+        "dateRangeSeparator": ""
+    },
+    "DateRange_yyyy-MM-dd_sdo": {
+        "type": "DateRangeType",
+        "format": "yyyy-MM-dd",
+        "singleDate": "only"
+    },
+    "DateRange_yyyy-MM-dd_sdo_rse": {
+        "type": "DateRangeType",
+        "format": "yyyy-MM-dd",
+        "singleDate": "only",
+        "dateRangeSeparator": ""
+    },
+    "DateRange_M_sdo": {
+        "type": "DateRangeType",
+        "format": "M",
+        "singleDate": "only",
+        "dateZeroOptional": true
+    },
+    "DateRange_M_sdo_rse": {
+        "type": "DateRangeType",
+        "format": "M",
+        "singleDate": "only",
+        "dateZeroOptional": true,
+        "dateRangeSeparator": ""
+    },
+    "DateRange_dd.MM_from": {
+        "type": "DateRangeType",
+        "format": "dd.MM",
+        "singleDate": "allowed",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ".",
+        "interpretationOfYear": "FROM"
+    },
+    "DateRange_dd.MM_to": {
+        "type": "DateRangeType",
+        "format": "dd.MM",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ".",
+        "interpretationOfYear": "TO"
+    },
+    "DateRange_dd.MM_rsm_to": {
+        "type": "DateRangeType",
+        "format": "dd.MM",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ".",
+        "dateRangeSeparator": "-",
+        "interpretationOfYear": "TO"
+    },
+    "DateRange_MM-dd_to": {
+        "type": "DateRangeType",
+        "format": "MM-dd",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "-",
+        "interpretationOfYear": "TO"
+    },
+    "DateRange_dd.MM_by2009_rsm_from": {
+        "type": "DateRangeType",
+        "format": "dd.MM",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ".",
+        "baseYear": 2009,
+        "dateRangeSeparator": "-",
+        "interpretationOfYear": "FROM"
+    },
+    "DateRange_dd.MM_by2009_rsm_to": {
+        "type": "DateRangeType",
+        "format": "dd.MM",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ".",
+        "baseYear": 2009,
+        "dateRangeSeparator": "-",
+        "interpretationOfYear": "TO"
+    },
+    "DateRange_MMdd_by2009_from": {
+        "type": "DateRangeType",
+        "format": "MMdd",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "",
+        "baseYear": 2009,
+        "interpretationOfYear": "FROM"
+    },
+    "DateRange_MMdd_by2009_to": {
+        "type": "DateRangeType",
+        "format": "MMdd",
+        "dateFragmentOrdering": "YEAR_MONTH_DAY",
+		"dateSeparator": "",
+        "baseYear": 2009,
+        "interpretationOfYear": "TO"
+    },
+    "DateRange_dd.MM_rsm": {
+        "type": "DateRangeType",
+        "format": "dd.MM",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ".",
+        "dateRangeSeparator": "-"
+    },
+    "DateRange_d.M": {
+        "type": "DateRangeType",
+        "format": "d.M",
+        "dateFragmentOrdering": "DAY_MONTH_YEAR",
+		"dateSeparator": ".",
+        "dateZeroOptional": true
+    },
+    "DateRange_M_rsm": {
+        "type": "DateRangeType",
+        "format": "M",
+        "dateZeroOptional": true,
+        "dateRangeSeparator": "-"
+    },
+    "DateRange_M_rsp": {
+        "type": "DateRangeType",
+        "format": "M",
+        "dateZeroOptional": true,
+        "dateRangeSeparator": "."
+    },
+    "DateRange_M_rse": {
+        "type": "DateRangeType",
+        "format": "M",
+        "dateZeroOptional": true,
+        "dateRangeSeparator": ""
+    },
+
+    "Num_default": {
+        "type": "NumberType"
+    },
+    "Num_defaultValues": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "decimalPlacesOptional": false,
+        "thousandsSeparator": "",
+        "minFractionalDigits": 0,
+        "leadingZerosAllowed": false
+    },
+    "Num_dse": {
+        "type": "NumberType",
+        "decimalSeparator": ""
+    },
+    "Num_dsp_dpof_tse_mfd2_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "decimalPlacesOptional": false,
+        "thousandsSeparator": "",
+        "minFractionalDigits": 2,
+        "leadingZerosAllowed": false
+    },
+    "Num_dsp_dpof_tse_mfd_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "decimalPlacesOptional": false,
+        "thousandsSeparator": "",
+        "leadingZerosAllowed": false
+    },
+    "Num_dsp_dpof_tsc_mfd0_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "decimalPlacesOptional": false,
+        "thousandsSeparator": ",",
+        "minFractionalDigits": 0,
+        "leadingZerosAllowed": false
+    },
+    "Num_dsp_dpof_tss_mfd0_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "decimalPlacesOptional": false,
+        "thousandsSeparator": " ",
+        "minFractionalDigits": 0,
+        "leadingZerosAllowed": false
+    },
+    "Num_dsp_dpot_tse_mfd0_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "decimalPlacesOptional": true,
+        "thousandsSeparator": "",
+        "minFractionalDigits": 0,
+        "leadingZerosAllowed": false
+    },
+    "Num_dsp_dpot_tse_mfd2_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "decimalPlacesOptional": true,
+        "thousandsSeparator": "",
+        "minFractionalDigits": 2,
+        "leadingZerosAllowed": false
+    },
+    "Num_dsp_dpo_tse_mfd0_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "thousandsSeparator": "",
+        "minFractionalDigits": 0,
+        "leadingZerosAllowed": false
+    },
+    "Num_dsc_dpof_tse_mfd0_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": ",",
+        "decimalPlacesOptional": false,
+        "thousandsSeparator": "",
+        "minFractionalDigits": 0,
+        "leadingZerosAllowed": false
+    },
+    "Num_dsc_dpof_tsp_mfd0_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": ",",
+        "decimalPlacesOptional": false,
+        "thousandsSeparator": ".",
+        "minFractionalDigits": 0,
+        "leadingZerosAllowed": false
+    },
+    "Num_dsc_dpot_tsp_mfd0_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": ",",
+        "decimalPlacesOptional": true,
+        "thousandsSeparator": ".",
+        "minFractionalDigits": 0,
+        "leadingZerosAllowed": false
+    },
+    "Num_dse_dpot_tsp_mfd2_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": "",
+        "decimalPlacesOptional": true,
+        "thousandsSeparator": ".",
+        "minFractionalDigits": 2,
+        "leadingZerosAllowed": false
+    },
+    "Num_dsp_dpof_tse_mfd0_lzat": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "decimalPlacesOptional": false,
+        "thousandsSeparator": "",
+        "minFractionalDigits": 0,
+        "leadingZerosAllowed": true
+    },
+    "Num_dsp_dpof_tsc_mfd0_lzat": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "decimalPlacesOptional": false,
+        "thousandsSeparator": ",",
+        "minFractionalDigits": 0,
+        "leadingZerosAllowed": true
+    },
+    "Num_dsp_dpot_tsc_mfd0_lzat": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "decimalPlacesOptional": true,
+        "thousandsSeparator": ",",
+        "minFractionalDigits": 0,
+        "leadingZerosAllowed": true
+    },
+    "Num_dsp_dpof_tsp_mfd2_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "decimalPlacesOptional": false,
+        "thousandsSeparator": ".",
+        "minFractionalDigits": 2,
+        "leadingZerosAllowed": false
+    },
+    "Num_dsc_dpot_tsp_mfd1_lzat": {
+        "type": "NumberType",
+        "decimalSeparator": ",",
+        "decimalPlacesOptional": true,
+        "thousandsSeparator": ".",
+        "minFractionalDigits": 1,
+        "leadingZerosAllowed": true
+    },
+    "Num_dsc_dpot_tsd_mfd1_lzat": {
+        "type": "NumberType",
+        "decimalSeparator": ",",
+        "decimalPlacesOptional": true,
+        "thousandsSeparator": "$",
+        "minFractionalDigits": 1,
+        "leadingZerosAllowed": true
+    },
+    "Num_dsc_dpot_tss_mfd1_lzat": {
+        "type": "NumberType",
+        "decimalSeparator": ",",
+        "decimalPlacesOptional": true,
+        "thousandsSeparator": " ",
+        "minFractionalDigits": 1,
+        "leadingZerosAllowed": true
+    },
+    "Num_dsc_dpot_tsnbs_mfd1_lzat": {
+        "type": "NumberType",
+        "decimalSeparator": ",",
+        "decimalPlacesOptional": true,
+        "thousandsSeparator": "&#xA0;",
+        "minFractionalDigits": 1,
+        "leadingZerosAllowed": true
+    },
+    "Num_dsp_dpof_tse_mfd14_lzaf": {
+        "type": "NumberType",
+        "decimalSeparator": ".",
+        "decimalPlacesOptional": false,
+        "thousandsSeparator": ",",
+        "minFractionalDigits": 14,
+        "leadingZerosAllowed": false
+    },
+    "Num_dsc_dpof_tse_mfd0_lzat": {
+        "type": "NumberType",
+        "decimalSeparator": ",",
+        "decimalPlacesOptional": false,
+        "thousandsSeparator": "",
+        "minFractionalDigits": 0,
+        "leadingZerosAllowed": true
+    },
+    "String_default": {
+        "type": "StringType"
+    },
+    "Enum_default": {
+        "type": "EnumerationType"
+    }
+}

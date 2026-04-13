@@ -1,0 +1,24 @@
+{
+  "name": "@com.mgmtp.a12.utils/utils-localization-documentation",
+  "version": "7.3.0-SNAPSHOT",
+  "description": "AsciiDoc Sources and TypeDoc for A12 Localization",
+  "author": "mgm technology partners",
+  "license": "(EUPL-1.2 OR LicenseRef-commercial)",
+  "type": "module",
+  "scripts": {
+    "clean": "rimraf build",
+    "build": "node --run createHtml",
+    "compile": "tsc",
+    "createHtml": "node convert.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "devDependencies": {
+    "asciidoctor": "catalog:ranges",
+    "asciidoctor-highlight.js": "catalog:ranges",
+    "highlight.js": "catalog:ranges",
+    "typescript": "catalog:ranges",
+    "rimraf": "catalog:ranges"
+  }
+}

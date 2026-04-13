@@ -1,0 +1,44 @@
+{
+  "name": "@com.mgmtp.a12.utils/utils-localization-react",
+  "version": "7.3.0-SNAPSHOT",
+  "description": "React-adapter for localization library",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/main/index.js",
+  "types": "./lib/main/index.d.ts",
+  "scripts": {
+    "clean": "rimraf ./lib ./target cyclonedx.json",
+    "build": "node --run compile && node --run dist",
+    "compile": "tsc",
+    "dist": "typedoc ./src",
+    "watch": "tsc -w",
+    "test": "mocha"
+  },
+  "author": "mgm technology partners",
+  "license": "(EUPL-1.2 OR LicenseRef-commercial)",
+  "devDependencies": {
+    "@com.mgmtp.a12.devtools/tsconfig": "catalog:a12ranges",
+    "@com.mgmtp.a12.utils/utils-localization": "workspace:*",
+    "@types/mocha": "catalog:ranges",
+    "@types/node": "catalog:ranges",
+    "@types/react": "catalog:ranges",
+    "mocha": "catalog:ranges",
+    "react": "catalog:fix",
+    "rimraf": "catalog:ranges",
+    "typedoc": "catalog:ranges",
+    "typescript": "catalog:ranges"
+  },
+  "peerDependencies": {
+    "react": "catalog:ranges"
+  },
+  "files": [
+    "lib",
+    "!lib/test",
+    "src",
+    "!src/test",
+    "cyclonedx.json",
+    "NOTICE",
+    "THIRD_PARTY_NOTICES",
+    "licenses"
+  ]
+}

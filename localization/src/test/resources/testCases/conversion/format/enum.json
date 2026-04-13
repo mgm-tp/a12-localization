@@ -1,0 +1,56 @@
+{
+    "testCases": [
+        {
+            "id": "enum_0",
+            "active": true,
+            "description": "template + default enum type",
+            "parameters": {
+                "value": "test",
+                "type": "string",
+                "conversionConfigId": "Enum_default"
+            },
+            "expectation": {
+                "convertedValue": "test"
+            }
+        },
+        {
+            "id": "enum_1",
+            "active": true,
+            "description": "enum type number is treated as string",
+            "parameters": {
+                "value": "12.3",
+                "type": "string",
+                "conversionConfigId": "Enum_default"
+            },
+            "expectation": {
+                "convertedValue": "12.3"
+            }
+        },
+        {
+            "id": "enum_null",
+            "active": true,
+            "description": "enum type null",
+            "parameters": {
+                "value": null,
+                "conversionConfigId": "Enum_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        },
+        {
+            "id": "enum_empty",
+            "active": true,
+            "description": "enum type empty",
+            "parameters": {
+                "value": "",
+                "type": "string",
+                "conversionConfigId": "Enum_default"
+            },
+            "expectation": {
+                "convertedValue": "",
+                "type": "string"
+            }
+        }
+    ]
+}

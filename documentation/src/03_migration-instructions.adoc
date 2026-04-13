@@ -1,0 +1,124 @@
+////
+SPDX-License-Identifier: EUPL-1.2 OR LicenseRef-commercial
+
+Copyright (c) 2012-2026 mgm technology partners GmbH
+
+Dual License
+------------
+This source file is part of the mgm A12 Platform and available under
+a choice of two different licenses:
+
+1. Open-Source License – EUPL v1.2
+   You may redistribute and/or modify this file under the terms of the
+   European Union Public License, version 1.2 - see https://eupl.eu/.
+
+2. Commercial License
+   Alternatively, you may obtain a commercial license from
+   mgm technology partners GmbH, that permits use of this software
+   under different terms (including support and maintenance services).
+
+   Please contact a12-license@mgm-tp.com for more information.
+
+You must select and comply with exactly one of the above license options.
+
+Warranty Disclaimer (applies to either option)
+----------------------------------------------
+THIS SOFTWARE IS PROVIDED “AS IS” AND WITHOUT WARRANTY OF ANY KIND,
+WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
+LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
+////
+
+= Migration Instructions
+
+== 2025.06-ext4
+
+=== Deprecation
+
+==== Deep import paths of A12 Localization npm packages
+
+Nested imports from the npm packages `@com.mgmtp.a12.utils/utils-localization` and `@com.mgmtp.a12.utils/utils-localization-react` (e.g. `@com.mgmtp.a12.utils/utils-localization/lib/main/index.js`)
+are now deprecated in favor of top-level imports to avoid unnecessary breaking changes and reduce ongoing maintenance effort.
+
+The ability to use the old-style ("long") imports will be removed in the next breaking release.
+
+To migrate, first install or update the codemod with your preferred package manager, e.g. with `pnpm`:
+[source,bash]
+----
+pnpm install -g @com.mgmtp.a12.utils/utils-localization-codemod
+----
+
+Then run the specific recipe:
+[source,bash]
+----
+utils-localization-codemod preferTopLevel <path to directory with tsconfig.json>
+
+// or as a single command
+pnpx @com.mgmtp.a12.utils/utils-localization-codemod preferTopLevel <path to directory with tsconfig.json>
+----
+
+For further details, run the codemod with the `--help` flag.
+
+== 2025.06-ext2
+
+[NOTE]
+====
+Please be aware that due to changes in A12 internal api, you should not use this version of localization without Kernel version 30.3.0 which is also part of the 2025.06-ext2 coordinated and end-to-end tested release
+====
+
+== 2025.06
+
+=== Breaking Changes
+
+==== singleDateAllowed removed
+
+Deprecated property DateRangeConversionConfig.singleDateAllowed was removed and DateRangeConversionConfig.singleDate is now required.
+
+==== Forbid false as confirm type value
+
+The formatValue function of ValueConversion used to allow `false` as a valid value for confirm types (it was treated analogous to `null`). This special handling was removed and formatValue will now throw an error in this case.
+
+==== Default FallbackLocales Implementation Changed
+
+In the `defaultLocalizerFactory`, the default implementation for looking up fallback locales has been changed to not return Locales or PartialLocales of the language "en", if the given locale is of a different language.
+
+Now, by default only PartialLocales of the same language are returned.
+
+This was changed since it was an unusual default fallback behavior which could lead to a mix of different languages in the application ui.
+
+If your application uses the defaultLocalizerFactory and relied on this fallback to english, it is easy to restore the old behavior by providing custom fallbackLocales when you configure your localizer:
+
+[source,typescript,options="nowrap"]
+----
+
+const localizer = defaultLocalizerFactory({
+	locale,
+	fallbackLocales: createFallbackLocales(locale)
+});
+
+function createFallbackLocales(locale: PartialLocale): PartialLocale[] {
+	if (Locale.isLocale(locale)) {
+		if (locale.language === "en") {
+			return [{ language: "en" }];
+		} else {
+			return [{ language: locale.language }, { language: "en" }];
+		}
+	}
+	if (locale.language !== "en") {
+		return [{ language: "en" }];
+	}
+	return [];
+}
+
+----
+
+==== Migration to ESM
+
+The npm artifacts `@com.mgmtp.a12.utils/utils-localization` and `@com.mgmtp.a12.utils/utils-localization-react` were migrated from CommonJS to link:https://nodejs.org/api/esm.html#modules-ecmascript-modules[ESM]. When using Node `22.12+` and modern build tools, there should be no changes necessary to your bundler setup.
+
+Migrating your own application to ESM is not required, but recommended. Consult the documentation of your bundler for specifics.
+
+==== Updating to ES2024
+
+The javascript output of the npm artifacts was updated from `ES2020` to `ES2024` to be able to use latest language features. When using supported browsers, there is no change necessary. If support for older browsers is required, make sure to include necessary polyfills.

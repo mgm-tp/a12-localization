@@ -1,0 +1,145 @@
+{
+    "testCases": [
+        {
+            "id": "boolean_0",
+            "active": true,
+            "description": "template + default boolean type",
+            "parameters": {
+                "value": true,
+                "type": "boolean",
+                "conversionConfigId": "Bool_true_false"
+            },
+            "expectation": {
+                "convertedValue": "true"
+            }
+        },
+        {
+            "id": "boolean_1",
+            "active": true,
+            "description": "template + default boolean type without config",
+            "parameters": {
+                "value": true,
+                "type": "boolean",
+                "conversionConfigId": "Bool_default"
+            },
+            "expectation": {
+                "convertedValue": "true"
+            }
+        },
+        {
+            "id": "boolean_2",
+            "active": true,
+            "description": "boolean type false",
+            "parameters": {
+                "value": false,
+                "type": "boolean",
+                "conversionConfigId": "Bool_true_false"
+            },
+            "expectation": {
+                "convertedValue": "false"
+            }
+        },
+        {
+            "id": "boolean_3",
+            "active": true,
+            "description": "boolean type ja",
+            "parameters": {
+                "value": true,
+                "type": "boolean",
+                "conversionConfigId": "Bool_ja_nein"
+            },
+            "expectation": {
+                "convertedValue": "ja"
+            }
+        },
+        {
+            "id": "boolean_4",
+            "active": true,
+            "description": "boolean type nein",
+            "parameters": {
+                "value": false,
+                "type": "boolean",
+                "conversionConfigId": "Bool_ja_nein"
+            },
+            "expectation": {
+                "convertedValue": "nein"
+            }
+        },
+        {
+            "id": "boolean_5",
+            "active": true,
+            "description": "boolean type 1",
+            "parameters": {
+                "value": true,
+                "type": "boolean",
+                "conversionConfigId": "Bool_1_false"
+            },
+            "expectation": {
+                "convertedValue": "1"
+            }
+        },
+        {
+            "id": "boolean_6",
+            "active": true,
+            "description": "boolean type 1 false",
+            "parameters": {
+                "value": false,
+                "type": "boolean",
+                "conversionConfigId": "Bool_1_false"
+            },
+            "expectation": {
+                "convertedValue": "false"
+            }
+        },
+        {
+            "id": "boolean_7",
+            "active": true,
+            "description": "boolean type 1 10 true",
+            "parameters": {
+                "value": true,
+                "type": "boolean",
+                "conversionConfigId": "Bool_1_10"
+            },
+            "expectation": {
+                "convertedValue": "1"
+            }
+        },
+        {
+            "id": "boolean_8",
+            "active": true,
+            "description": "boolean type 1 10 false",
+            "parameters": {
+                "value": false,
+                "type": "boolean",
+                "conversionConfigId": "Bool_1_10"
+            },
+            "expectation": {
+                "convertedValue": "10"
+            }
+        },
+        {
+            "id": "boolean_null",
+            "active": true,
+            "description": "boolean type null",
+            "parameters": {
+                "value": null,
+                "conversionConfigId": "Bool_true_false"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        },
+        {
+            "id": "boolean_empty",
+            "active": true,
+            "description": "boolean type empty",
+            "parameters": {
+                "value": "",
+                "conversionConfigId": "Bool_true_false"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        }
+    ]
+}

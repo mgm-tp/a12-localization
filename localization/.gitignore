@@ -1,0 +1,11 @@
+# build dirs
+/lib
+
+# config
+.history/*
+
+# other
+LICENSE
+NOTICE
+THIRD_PARTY_NOTICES
+licenses/

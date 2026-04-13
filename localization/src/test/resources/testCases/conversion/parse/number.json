@@ -1,0 +1,921 @@
+{
+    "testCases": [
+        {
+            "id": "number_0",
+            "active": true,
+            "description": "template + default number type",
+            "parameters": {
+                "value": "40.5",
+                "conversionConfigId": "Num_default"
+            },
+            "expectation": {
+                "convertedValue": 40.5,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_1",
+            "active": true,
+            "description": "default number type",
+            "parameters": {
+                "value": "40",
+                "conversionConfigId": "Num_defaultValues"
+            },
+            "expectation": {
+                "convertedValue": 40,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_2",
+            "active": true,
+            "description": "decimalSeparator - , to .",
+            "parameters": {
+                "value": "40,50",
+                "conversionConfigId": "Num_dsc_dpof_tse_mfd0_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 40.5,
+                "convertedValueJava": "40.50",
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_3a",
+            "active": true,
+            "description": "decimalPlacesOptional - true",
+            "parameters": {
+                "value": "40.5",
+                "conversionConfigId": "Num_dsp_dpot_tse_mfd0_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 40.5,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_3b",
+            "active": true,
+            "description": "decimalPlacesOptional - true",
+            "parameters": {
+                "value": "40.50",
+                "conversionConfigId": "Num_dsp_dpot_tse_mfd0_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 40.5,
+                "convertedValueJava": "40.50",
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_4",
+            "active": true,
+            "description": "decimalPlacesOptional - true with 2 minFractionalDigits",
+            "parameters": {
+                "value": "40.5",
+                "conversionConfigId": "Num_dsp_dpot_tse_mfd2_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 40.5,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_5a",
+            "active": true,
+            "description": "decimalPlacesOptional - false",
+            "parameters": {
+                "value": "40.5",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 40.5,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_5b",
+            "active": true,
+            "description": "decimalPlacesOptional - false",
+            "parameters": {
+                "value": "40.50",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 40.5,
+                "convertedValueJava": "40.50",
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_6",
+            "active": true,
+            "description": "decimalPlacesOptional - true with 2 minFractionalDigits",
+            "parameters": {
+                "value": "40.00",
+                "conversionConfigId": "Num_dsp_dpot_tse_mfd2_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 40,
+                "convertedValueJava": "40.00",
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_7",
+            "active": true,
+            "description": "decimalPlacesOptional - false with 2 minFractionalDigits > missing fractional digits should be checked in validation not conversion",
+            "parameters": {
+                "value": "40",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd2_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 40,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_8",
+            "active": true,
+            "description": "thousandsSeparator . and decimalSeperator ,",
+            "parameters": {
+                "value": "1.234,5",
+                "conversionConfigId": "Num_dsc_dpof_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 1234.5,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_9",
+            "active": true,
+            "description": "thousandsSeparator ' '",
+            "parameters": {
+                "value": "1 234.5",
+                "conversionConfigId": "Num_dsp_dpof_tss_mfd0_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 1234.5,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_10",
+            "active": true,
+            "description": "thousandsSeparator ,",
+            "parameters": {
+                "value": "1,234.5",
+                "conversionConfigId": "Num_dsp_dpof_tsc_mfd0_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 1234.5,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_11a",
+            "active": true,
+            "description": "leadingZerosAllowed true",
+            "parameters": {
+                "value": "0.5",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": 0.5,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_11b",
+            "active": true,
+            "description": "leadingZerosAllowed true with leading zeros",
+            "parameters": {
+                "value": "040.5",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": "040.5",
+                "type": "string"
+            }
+        },
+        {
+            "id": "number_11c",
+            "active": true,
+            "description": "leadingZerosAllowed true with leading zeros -> special case",
+            "parameters": {
+                "value": "0",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": 0,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_11d",
+            "active": true,
+            "description": "leadingZerosAllowed true with leading zeros -> special case",
+            "parameters": {
+                "value": "00",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": "00",
+                "type": "string"
+            }
+        },
+        {
+            "id": "number_12a",
+            "active": true,
+            "description": "leadingZerosAllowed true without leading zeros",
+            "parameters": {
+                "value": "40.5",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": 40.5,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_12b",
+            "active": true,
+            "description": "leadingZerosAllowed true with leading zero",
+            "parameters": {
+                "value": "0458",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": "0458",
+                "type": "string"
+            }
+        },
+        {
+            "id": "number_12c",
+            "active": true,
+            "description": "leadingZerosAllowed false with leading zeros",
+            "parameters": {
+                "value": "040.5",
+                "conversionConfigId": "Num_dsp_dpof_tsc_mfd0_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 40.5,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_13",
+            "active": true,
+            "description": "conversion with big float numbers, number of digits == 15",
+            "parameters": {
+                "value": "9.99999999999999",
+                "conversionConfigId": "Num_defaultValues"
+            },
+            "expectation": {
+                "convertedValue": 9.99999999999999,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_14",
+            "active": true,
+            "description": "conversion with big float numbers, number of digits == 15, format to 2 fractional digits with no rounding",
+            "parameters": {
+                "value": "9.99999999999999",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd2_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 9.99999999999999,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_15a",
+            "active": true,
+            "description": "thousands separator .",
+            "parameters": {
+                "value": "12.345,",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd1_lzat"
+            },
+            "expectation": {
+                "convertedValue": 12345,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_15b",
+            "active": true,
+            "description": "thousands separator .",
+            "parameters": {
+                "value": "12345,",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd1_lzat"
+            },
+            "expectation": {
+                "convertedValue": 12345,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_15c",
+            "active": true,
+            "description": "decimal separator . at the end",
+            "parameters": {
+                "value": "12345.",
+                "conversionConfigId": "Num_default"
+            },
+            "expectation": {
+                "convertedValue": 12345,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_16a",
+            "active": true,
+            "description": "Special Thousands separator with omission",
+            "parameters": {
+                "value": "123$456789,01",
+                "conversionConfigId": "Num_dsc_dpot_tsd_mfd1_lzat"
+            },
+            "expectation": {
+                "convertedValue": 123456789.01,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_16b",
+            "active": true,
+            "description": "Special Thousands separator with omission",
+            "parameters": {
+                "value": "123$456$789,01",
+                "conversionConfigId": "Num_dsc_dpot_tsd_mfd1_lzat"
+            },
+            "expectation": {
+                "convertedValue": 123456789.01,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_17a",
+            "active": true,
+            "description": "Space as Thousands separator",
+            "parameters": {
+                "value": "123456 789,01",
+                "conversionConfigId": "Num_dsc_dpot_tss_mfd1_lzat"
+            },
+            "expectation": {
+                "convertedValue": 123456789.01,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_17b",
+            "active": true,
+            "description": "Space as Thousands separator",
+            "parameters": {
+                "value": "123 456 789,01",
+                "conversionConfigId": "Num_dsc_dpot_tss_mfd1_lzat"
+            },
+            "expectation": {
+                "convertedValue": 123456789.01,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_18",
+            "active": true,
+            "description": "Explicitely no Thousands separator",
+            "parameters": {
+                "value": "123456789.01",
+                "conversionConfigId": "Num_defaultValues"
+            },
+            "expectation": {
+                "convertedValue": 123456789.01,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_19a",
+            "active": true,
+            "description": "Nonbreakable space as Thousands separator",
+            "parameters": {
+                "value": "123&#xA0;456789,01",
+                "conversionConfigId": "Num_dsc_dpot_tsnbs_mfd1_lzat"
+            },
+            "expectation": {
+                "convertedValue": 123456789.01,
+                "type": "number"
+            }
+        },
+        {
+            "id": "error_number_19b",
+            "active": true,
+            "description": "Nonbreakable space as Thousands separator",
+            "parameters": {
+                "value": "123&#xA0;456&#xA0;789,01",
+                "conversionConfigId": "Num_dsc_dpot_tsnbs_mfd1_lzat"
+            },
+            "expectation": {
+                "convertedValue": 123456789.01,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_20a",
+            "active": true,
+            "description": "Thousands separator on wrong spot -> for a lenient base type conversion is OK (default value)",
+            "parameters": {
+                "value": "12.3456,789",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd1_lzat"
+            },
+            "expectation": {
+                "convertedValue": 123456.789,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_21",
+            "active": true,
+            "description": "negative number empty thousands separator",
+            "parameters": {
+                "value": "-123",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -123,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_22",
+            "active": true,
+            "description": "negative number empty thousands separator",
+            "parameters": {
+                "value": "-1234",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -1234,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_23a",
+            "active": true,
+            "description": "negative number with thousands separator ,",
+            "parameters": {
+                "value": "-123",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -123,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_23b",
+            "active": true,
+            "description": "negative number with thousands separator ,",
+            "parameters": {
+                "value": "-1234",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -1234,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_23bb",
+            "active": true,
+            "description": "negative number with thousands separator ,",
+            "parameters": {
+                "value": "-1,234",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -1234,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_23c",
+            "active": true,
+            "description": "negative number with thousands separator ,",
+            "parameters": {
+                "value": "-12345",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -12345,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_23cc",
+            "active": true,
+            "description": "negative number with thousands separator ,",
+            "parameters": {
+                "value": "-12,345",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -12345,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_23d",
+            "active": true,
+            "description": "negative number with thousands separator ,",
+            "parameters": {
+                "value": "-123456",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -123456,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_23dd",
+            "active": true,
+            "description": "negative number with thousands separator ,",
+            "parameters": {
+                "value": "-123,456",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -123456,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_23e",
+            "active": true,
+            "description": "negative number with thousands separator ,",
+            "parameters": {
+                "value": "-1234567",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -1234567,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_23ee",
+            "active": true,
+            "description": "negative number with thousands separator ,",
+            "parameters": {
+                "value": "-1,234,567",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -1234567,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_24a",
+            "active": true,
+            "description": "negative number with decimal separator .",
+            "parameters": {
+                "value": "-123.9",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -123.9,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_24b",
+            "active": true,
+            "description": "negative number with decimal separator .",
+            "parameters": {
+                "value": "-1234.9",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -1234.9,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_25a",
+            "active": true,
+            "description": "negative number with decimal separator . and thousands separator ,",
+            "parameters": {
+                "value": "-123.9",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -123.9,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_25b",
+            "active": true,
+            "description": "negative number with decimal separator . and thousands separator ,",
+            "parameters": {
+                "value": "-1234.9",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -1234.9,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_25bb",
+            "active": true,
+            "description": "negative number with decimal separator . and thousands separator ,",
+            "parameters": {
+                "value": "-1,234.9",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -1234.9,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_25c",
+            "active": true,
+            "description": "negative number with decimal separator . and thousands separator ,",
+            "parameters": {
+                "value": "-12345.9",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -12345.9,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_25cc",
+            "active": true,
+            "description": "negative number with decimal separator . and thousands separator ,",
+            "parameters": {
+                "value": "-12,345.9",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -12345.9,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_25d",
+            "active": true,
+            "description": "negative number with decimal separator . and thousands separator ,",
+            "parameters": {
+                "value": "-123456.9",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -123456.9,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_25dd",
+            "active": true,
+            "description": "negative number with decimal separator . and thousands separator ,",
+            "parameters": {
+                "value": "-123,456.9",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -123456.9,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_25e",
+            "active": true,
+            "description": "negative number with decimal separator . and thousands separator ,",
+            "parameters": {
+                "value": "-1234567.9",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -1234567.9,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_25ee",
+            "active": true,
+            "description": "negative number with decimal separator . and thousands separator ,",
+            "parameters": {
+                "value": "-1,234,567.9",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -1234567.9,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_26",
+            "active": true,
+            "description": "negative number with decimal separator . and thousands separator ,",
+            "parameters": {
+                "value": "-2,087.05",
+                "conversionConfigId": "Num_dsp_dpot_tsc_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": -2087.05,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_27",
+            "active": true,
+            "description": "conversion with very small numbers",
+            "parameters": {
+                "value": "0.0000001",
+                "conversionConfigId": "Num_defaultValues"
+            },
+            "expectation": {
+                "convertedValue": 0.0000001,
+                "convertedValueJava": "0.0000001",
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_28",
+            "active": true,
+            "description": "conversion with very small numbers",
+            "parameters": {
+                "value": "0,0000001",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 0.0000001,
+                "convertedValueJava": "0.0000001",
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_29",
+            "active": true,
+            "description": "conversion with very small numbers",
+            "parameters": {
+                "value": "0.00000000000001",
+                "conversionConfigId": "Num_defaultValues"
+            },
+            "expectation": {
+                "convertedValue": 0.00000000000001,
+                "convertedValueJava": "0.00000000000001",
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_30",
+            "active": true,
+            "description": "conversion with very small numbers",
+            "parameters": {
+                "value": "0,00000000000001",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 0.00000000000001,
+                "convertedValueJava": "0.00000000000001",
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_31",
+            "active": true,
+            "description": "conversion with big integer numbers, number of digits == 15",
+            "parameters": {
+                "value": "123456789012345",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 123456789012345,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_32",
+            "active": true,
+            "description": "conversion with big float numbers, number of digits == 15",
+            "parameters": {
+                "value": "0,12345678901234",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 0.12345678901234,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_33",
+            "active": true,
+            "description": "conversion with big numbers, number of digits == 15",
+            "parameters": {
+                "value": "1234567890,12345",
+                "conversionConfigId": "Num_dsc_dpot_tsp_mfd0_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 1234567890.12345,
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_34",
+            "active": true,
+            "description": "conversion with a number expecting 14 fractional digits",
+            "parameters": {
+                "value": "123.123000000000",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd14_lzaf"
+            },
+            "expectation": {
+                "convertedValue": 123.123,
+                "convertedValueJava": "123.123000000000",
+                "type": "number"
+            }
+        },
+        {
+            "id": "number_35a",
+            "active": true,
+            "description": "conversion with leadingZerosAllowed=true and decimalSeparator=','",
+            "parameters": {
+                "value": "00,00123",
+                "conversionConfigId": "Num_dsc_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": "00.00123",
+                "type": "string"
+            }
+        },
+        {
+            "id": "number_35b",
+            "active": true,
+            "description": "conversion with leadingZerosAllowed=true and decimalSeparator=','",
+            "parameters": {
+                "value": "-0020555",
+                "conversionConfigId": "Num_dsc_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": "-0020555",
+                "type": "string"
+            }
+        },
+        {
+            "id": "number_35c",
+            "active": true,
+            "description": "conversion with leadingZerosAllowed=true and decimalSeparator=','",
+            "parameters": {
+                "value": "-020876,05",
+                "conversionConfigId": "Num_dsc_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": "-020876.05",
+                "type": "string"
+            }
+        },
+        {
+            "id": "number_35d",
+            "active": true,
+            "description": "conversion with leadingZerosAllowed=true and decimalSeparator='.'",
+            "parameters": {
+                "value": "-087.0500",
+                "conversionConfigId": "Num_dsp_dpof_tse_mfd0_lzat"
+            },
+            "expectation": {
+                "convertedValue": "-087.0500",
+                "type": "string"
+            }
+        },
+        {
+            "id": "number_null",
+            "active": true,
+            "description": "number type null",
+            "parameters": {
+                "value": null,
+                "conversionConfigId": "Num_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        },
+        {
+            "id": "number_empty",
+            "active": true,
+            "description": "number type empty",
+            "parameters": {
+                "value": "",
+                "conversionConfigId": "Num_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        }
+    ]
+}

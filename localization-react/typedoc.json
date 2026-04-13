@@ -1,0 +1,14 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "Localization (React)",
+  "out": "../documentation/src/assets/localization-react-typedoc",
+  "entryPoints": [
+    "./src/main/*"
+  ],
+  "entryPointStrategy": "expand",
+  "exclude": [
+    "./src/test/**"
+  ],
+  "excludePrivate": true,
+  "theme": "default"
+}

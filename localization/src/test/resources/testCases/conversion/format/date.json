@@ -1,0 +1,392 @@
+{
+    "testCases": [
+        {
+            "id": "date_0",
+            "active": true,
+            "description": "template + default date type",
+            "parameters": {
+                "value": "2024-02-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_defaultValues"
+            },
+            "expectation": {
+                "convertedValue": "2024-02-14"
+            }
+        },
+        {
+            "id": "date_1",
+            "active": true,
+            "description": "template + default date type without config",
+            "parameters": {
+                "value": "2024-02-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_default"
+            },
+            "expectation": {
+                "convertedValue": "2024-02-14"
+            }
+        },
+        {
+            "id": "date_2a",
+            "active": true,
+            "description": "date type dd.MM.yyyy",
+            "parameters": {
+                "value": "2024-02-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_dd.MM.yyyy"
+            },
+            "expectation": {
+                "convertedValue": "14.02.2024"
+            }
+        },
+        {
+            "id": "date_2b",
+            "active": true,
+            "description": "date type dd.MM.yy -> the format only defines which date parts should be present",
+            "parameters": {
+                "value": "2024-02-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_dd.MM.yy"
+            },
+            "expectation": {
+                "convertedValue": "14.02.2024"
+            }
+        },
+        {
+            "id": "date_3",
+            "active": true,
+            "description": "date type day optional with no influence",
+            "parameters": {
+                "value": "2024-02-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_yyyy-MM-dd_oday"
+            },
+            "expectation": {
+                "convertedValue": "2024-02-14"
+            }
+        },
+        {
+            "id": "date_4",
+            "active": true,
+            "description": "date type day optional",
+            "parameters": {
+                "value": "2024-02-00",
+                "type": "string",
+                "conversionConfigId": "Date_yyyy-MM-dd_oday"
+            },
+            "expectation": {
+                "convertedValue": "2024-02-00"
+            }
+        },
+        {
+            "id": "date_5a",
+            "active": true,
+            "description": "date type day optional, but really nothing is set -> this is ok and will be managed by validation",
+            "parameters": {
+                "value": "0000-00-00",
+                "type": "string",
+                "conversionConfigId": "Date_yyyy-MM-dd_oday"
+            },
+            "expectation": {
+                "convertedValue": "0000-00-00"
+            }
+        },
+        {
+            "id": "date_5b",
+            "active": true,
+            "description": "date type with nothing set, but dateprecision FULL -> this is ok and will be managed by validation -> not parsable back",
+            "parameters": {
+                "value": "0000-00-00",
+                "type": "string",
+                "conversionConfigId": "Date_defaultValues"
+            },
+            "expectation": {
+                "convertedValue": "0000-00-00"
+            }
+        },
+        {
+            "id": "date_6",
+            "active": true,
+            "description": "date type day optional, but month and year are not set",
+            "parameters": {
+                "value": "0000-00-01",
+                "type": "string",
+                "conversionConfigId": "Date_yyyy-MM-dd_oday"
+            },
+            "expectation": {
+                "convertedValue": "0000-00-01"
+            }
+        },
+        {
+            "id": "date_7a",
+            "active": true,
+            "description": "date type month optional",
+            "parameters": {
+                "value": "2024-00-01",
+                "type": "string",
+                "conversionConfigId": "Date_yyyy-MM-dd_omonth"
+            },
+            "expectation": {
+                "convertedValue": "2024-00-01"
+            }
+        },
+        {
+            "id": "date_7b",
+            "active": true,
+            "description": "date type month optional",
+            "parameters": {
+                "value": "2024-00-00",
+                "type": "string",
+                "conversionConfigId": "Date_yyyy-MM-dd_omonth"
+            },
+            "expectation": {
+                "convertedValue": "2024-00-00"
+            }
+        },
+        {
+            "id": "date_8a",
+            "active": true,
+            "description": "date type year optional",
+            "parameters": {
+                "value": "0000-01-01",
+                "type": "string",
+                "conversionConfigId": "Date_yyyy-MM-dd_oyear"
+            },
+            "expectation": {
+                "convertedValue": "0000-01-01"
+            }
+        },
+        {
+            "id": "date_8b",
+            "active": true,
+            "description": "date type year optional format dd.MM.yyyy",
+            "parameters": {
+                "value": "01.01.0000",
+                "type": "string",
+                "conversionConfigId": "Date_dd.MM.yyyy_oyear"
+            },
+            "expectation": {
+                "convertedValue": "01.01.0000"
+            }
+        },
+        {
+            "id": "date_9a",
+            "active": true,
+            "description": "date type ddMMyyyy",
+            "parameters": {
+                "value": "2024-02-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_ddMMyyyy"
+            },
+            "expectation": {
+                "convertedValue": "14022024"
+            }
+        },        
+        {
+            "id": "date_9b",
+            "active": true,
+            "description": "date type dd.M.yyyy",
+            "parameters": {
+                "value": "2024-02-04T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_dd.M.yyyy"
+            },
+            "expectation": {
+                "convertedValue": "04.02.2024"
+            }
+        },
+        {
+            "id": "date_10",
+            "active": true,
+            "description": "date type d.MM.yyyy",
+            "parameters": {
+                "value": "2024-02-04T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_d.MM.yyyy"
+            },
+            "expectation": {
+                "convertedValue": "04.02.2024"
+            }
+        },
+        {
+            "id": "date_11",
+            "active": true,
+            "description": "date type yyyy.M.d",
+            "parameters": {
+                "value": "2024-02-04T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_yyyy.M.d"
+            },
+            "expectation": {
+                "convertedValue": "2024.02.04"
+            }
+        },
+        {
+            "id": "date_12",
+            "active": true,
+            "description": "date type Mdyy -> the format only defines which date parts should be present",
+            "parameters": {
+                "value": "2024-02-04T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_Mdyy"
+            },
+            "expectation": {
+                "convertedValue": "02042024"
+            }
+        },
+        {
+            "id": "date_13",
+            "active": true,
+            "description": "date type dd.MM",
+            "parameters": {
+                "value": "2000-02-04T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_dd.MM"
+            },
+            "expectation": {
+                "convertedValue": "04.02"
+            }
+        },
+        {
+            "id": "date_14",
+            "active": true,
+            "description": "date type dM",
+            "parameters": {
+                "value": "2000-02-04T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_dM"
+            },
+            "expectation": {
+                "convertedValue": "0402"
+            }
+        },
+        {
+            "id": "date_15a",
+            "active": true,
+            "description": "date type yyyyM",
+            "parameters": {
+                "value": "2001-01-01T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_yyyyM"
+            },
+            "expectation": {
+                "convertedValue": "200101"
+            }
+        },
+        {
+            "id": "date_15b",
+            "active": true,
+            "description": "date type yyyyM",
+            "parameters": {
+                "value": "2001-11-01T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_yyyyM"
+            },
+            "expectation": {
+                "convertedValue": "200111"
+            }
+        },
+        {
+            "id": "date_16",
+            "active": true,
+            "description": "date type MM/dd",
+            "parameters": {
+                "value": "2000-01-01T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_MM/dd"
+            },
+            "expectation": {
+                "convertedValue": "01/01"
+            }
+        },
+        {
+            "id": "date_17a",
+            "active": true,
+            "description": "date type d/M",
+            "parameters": {
+                "value": "2000-01-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_d/M"
+            },
+            "expectation": {
+                "convertedValue": "14/01"
+            }
+        },
+        {
+            "id": "date_17b",
+            "active": true,
+            "description": "date type d/M",
+            "parameters": {
+                "value": "2000-01-04T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_d/M"
+            },
+            "expectation": {
+                "convertedValue": "04/01"
+            }
+        },
+        {
+            "id": "date_18",
+            "active": true,
+            "description": "date type dd/MM/",
+            "parameters": {
+                "value": "2000-02-14T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_dd/MM/"
+            },
+            "expectation": {
+                "convertedValue": "14/02/"
+            }
+        },
+        {
+            "id": "date_19",
+            "active": true,
+            "description": "date type dd.MM.yyy -> the format only defines which date parts should be present",
+            "parameters": {
+                "value": "2024-04-17T00:00:00.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_dd.MM.yyy"
+            },
+            "expectation": {
+                "convertedValue": "17.04.2024"
+            }
+        },
+        {
+            "id": "date_20",
+            "active": true,
+            "description": "date type with a time format",
+            "parameters": {
+                "value": "2024-04-17T10:52:26.000Z",
+                "type": "Date",
+                "conversionConfigId": "Date_HH:mm:ss"
+            },
+            "expectation": {
+                "convertedValue": "10:52:26"
+            }
+        },
+        {
+            "id": "date_null",
+            "active": true,
+            "description": "date type null",
+            "parameters": {
+                "value": null,
+                "conversionConfigId": "Date_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        },
+        {
+            "id": "date_empty",
+            "active": true,
+            "description": "date type empty",
+            "parameters": {
+                "value": "",
+                "conversionConfigId": "Date_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        }
+    ]
+}

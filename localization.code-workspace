@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "localization (root)"
+		},
+		{
+			"path": "localization"
+		},
+		{
+			"path": "localization-react"
+		},
+		{
+			"path": "codemod"
+		},
+		{
+			"path": "documentation"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"codemod": true,
+			"documentation": true,
+			"localization": true,
+			"localization-react": true
+		}
+	}
+}

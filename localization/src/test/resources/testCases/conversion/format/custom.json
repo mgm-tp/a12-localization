@@ -1,0 +1,43 @@
+{
+    "testCases": [
+        {
+            "id": "custom_something",
+            "active": true,
+            "description": "custom type some string",
+            "parameters": {
+                "value": "test",
+                "type": "string",
+                "conversionConfigId": "Custom_default"
+            },
+            "expectation": {
+                "convertedValue": "test"
+            }
+        },
+        {
+            "id": "custom_null",
+            "active": true,
+            "description": "custom type null",
+            "parameters": {
+                "value": null,
+                "conversionConfigId": "Custom_default"
+            },
+            "expectation": {
+                "convertedValue": null
+            }
+        },
+        {
+            "id": "custom_empty",
+            "active": true,
+            "description": "custom type empty",
+            "parameters": {
+                "value": "",
+                "type": "string",
+                "conversionConfigId": "Custom_default"
+            },
+            "expectation": {
+                "convertedValue": "",
+                "type": "string"
+            }
+        }
+    ]
+}
