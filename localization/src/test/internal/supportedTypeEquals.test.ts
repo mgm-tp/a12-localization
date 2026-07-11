@@ -30,9 +30,8 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { strictEqual } from "node:assert/strict";
+import { describe, it } from "node:test";
 
 import { SupportedType } from "../../main/conversion.js";
 
@@ -46,7 +45,6 @@ describe("com.mgmtp.a12.conversion.supportedTypeEquals", () => {
 			true,
 			false,
 			null,
-			<any>undefined,
 			new Date("2023-11-21T15:59:42.698Z"),
 			[new Date("1999-12-31T08:01:07.008Z"), new Date("2023-11-21T15:59:42.698Z")]
 		];

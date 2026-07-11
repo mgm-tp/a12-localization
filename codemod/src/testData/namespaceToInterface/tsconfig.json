@@ -1,0 +1,8 @@
+{
+	"extends": "@com.mgmtp.a12.devtools/tsconfig",
+	"include": ["./input.ts", "./other.ts"],
+	"compilerOptions": {
+		"noEmit": true,
+		"noCheck": true
+	}
+}

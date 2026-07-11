@@ -1,12 +1,11 @@
 {
-	"include": ["convert.ts", "asciidoctor.d.ts"],
+	"extends": "@com.mgmtp.a12.devtools/tsconfig",
+	"include": ["convert.ts", "asciidoctor.d.ts", "./src/typescript"],
 	"compilerOptions": {
 		"erasableSyntaxOnly": true,
-		"isolatedModules": true,
-		"verbatimModuleSyntax": true,
 		"noEmit": true,
 		"module": "NodeNext",
 		"lib": ["ESNext"],
-		"resolveJsonModule": true
+		"skipLibCheck": true
 	}
 }

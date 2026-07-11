@@ -31,6 +31,7 @@
  */
 
 import { deepStrictEqual, strictEqual, throws } from "node:assert/strict";
+import { describe, it } from "node:test";
 
 import { localizableKeyFromSegments, segmentsFromLocalizableKey } from "../main/index.js";
 

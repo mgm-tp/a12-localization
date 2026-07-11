@@ -33,6 +33,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { strictEqual, throws } from "node:assert/strict";
+import { describe, it } from "node:test";
 
 import { defaultValueConversion } from "../../main/conversion.js";
 
@@ -61,8 +62,7 @@ describe("com.mgmtp.a12.conversion.expectedErrors", () => {
 			let parsed;
 			try {
 				parsed = defaultValueConversion(conversionConfig).parseValue(value, conversionConfig);
-				// eslint-disable-next-line @typescript-eslint/no-unused-vars
-			} catch (e) {
+			} catch {
 				// eslint-disable-next-line no-console
 				console.error(testCase.description);
 			}

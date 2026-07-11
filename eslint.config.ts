@@ -31,13 +31,14 @@
  */
 
 import { readFile } from "node:fs/promises";
+
 import { EOL } from "node:os";
 
 import importPlugin from "eslint-plugin-import";
-import noNull from "eslint-plugin-no-null";
+import jsdoc from "eslint-plugin-jsdoc";
 import notice from "eslint-plugin-notice";
 import workspaces from "eslint-plugin-workspaces";
-import { defineConfig } from "eslint/config";
+import { defineConfig, globalIgnores } from "eslint/config";
 
 import { reactStrict } from "@com.mgmtp.a12.devtools/eslint-config";
 
@@ -57,12 +58,21 @@ const ignores = [
 	"codemod/src/testData"
 ];
 
-export default defineConfig(
-	...reactStrict,
+const RESTRICTED_IMPORT_PATTERNS = [
 	{
-		name: "root/ignores",
-		ignores
+		regex: "node:assert$",
+		message: "Use 'node:assert/strict' instead."
 	},
+	{
+		regex: "node:*",
+		importNames: ["*", "default"],
+		message: "Use the specific named exports instead."
+	}
+];
+
+export default defineConfig(
+	globalIgnores(ignores, "root/ignores"),
+	...reactStrict,
 	{
 		name: "root/base",
 		languageOptions: {
@@ -72,6 +82,7 @@ export default defineConfig(
 		},
 		plugins: {
 			importPlugin,
+			jsdoc,
 			notice,
 			workspaces
 		},
@@ -83,8 +94,26 @@ export default defineConfig(
 			"@typescript-eslint/no-empty-object-type": "warn",
 			"@typescript-eslint/no-invalid-void-type": "warn",
 			"@typescript-eslint/no-non-null-assertion": "warn",
-			"@typescript-eslint/no-unused-vars": ["error", { ignoreRestSiblings: true }],
+			"@typescript-eslint/no-unused-vars": [
+				"error",
+				{
+					args: "all",
+					argsIgnorePattern: "^_",
+					caughtErrors: "all",
+					caughtErrorsIgnorePattern: "^_",
+					destructuredArrayIgnorePattern: "^_",
+					varsIgnorePattern: "^_",
+					ignoreRestSiblings: true
+				}
+			],
+			"jsdoc/no-undefined-types": "error",
 			"no-console": "error",
+			"no-restricted-imports": [
+				"error",
+				{
+					patterns: RESTRICTED_IMPORT_PATTERNS
+				}
+			],
 			"no-inner-declarations": "off",
 			"notice/notice": [
 				"error",
@@ -97,7 +126,12 @@ export default defineConfig(
 			"workspaces/no-absolute-imports": "error",
 			"workspaces/no-cross-imports": [
 				"error",
-				{ allow: ["@com.mgmtp.a12.utils/utils-localization"] }
+				{
+					allow: [
+						"@com.mgmtp.a12.utils/utils-localization",
+						"@com.mgmtp.a12.utils/utils-localization-react"
+					]
+				}
 			],
 			"workspaces/no-relative-imports": "error",
 			"workspaces/require-dependency": "error",
@@ -124,7 +158,7 @@ export default defineConfig(
 	},
 	{
 		name: "files-with-license-header-and-interpreter-line",
-		files: ["**/cli.ts", "codemod/scripts/runner.ts"],
+		files: ["**/cli.ts"],
 		rules: {
 			"notice/notice": [
 				"error",
@@ -142,9 +176,6 @@ export default defineConfig(
 	{
 		name: "localization/specific",
 		files: ["localization/src/**"],
-		plugins: {
-			noNull
-		},
 		rules: {
 			"@typescript-eslint/no-extraneous-class": "off",
 			"no-control-regex": "off"

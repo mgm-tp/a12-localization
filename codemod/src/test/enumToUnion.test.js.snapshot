@@ -1,0 +1,47 @@
+exports[`codemod.recipes.enumToUnion > Converts enums to unions of string literals > should migrate enumUsage.ts correctly 1`] = `
+const precision1 = "FULL";
+const precision2 = "DAY_OPTIONAL";
+const precision3 = "MONTH_OPTIONAL";
+const precision4 = "YEAR_OPTIONAL";
+const interpretation1 = "FROM";
+const interpretation2 = "TO";
+if (currentPrecision === "FULL") {
+    console.log("full precision");
+}
+const config = {
+    precision: "DAY_OPTIONAL",
+    interpretation: "FROM"
+};
+
+`;
+
+exports[`codemod.recipes.enumToUnion > Converts enums to unions of string literals > should migrate otherPackage.ts correctly 1`] = `
+import { DatePrecision, InterpretationOfYear } from "some-other-package";
+const interpretation1 = InterpretationOfYear.FROM;
+const interpretation2 = InterpretationOfYear.TO;
+if (currentPrecision === DatePrecision.FULL) {
+    console.log("full precision");
+}
+
+`;
+
+exports[`codemod.recipes.enumToUnion > Converts enums to unions of string literals > should migrate typeAndValue.ts correctly 1`] = `
+import { type DatePrecision } from "@com.mgmtp.a12.utils/utils-localization";
+// DatePrecision used as both value and type
+function handlePrecision(precision: DatePrecision): void {
+    if (precision === "FULL") {
+        console.error("Error!");
+    }
+}
+const myPrecision: DatePrecision = "DAY_OPTIONAL";
+
+`;
+
+exports[`codemod.recipes.enumToUnion > Converts enums to unions of string literals > should migrate typeOnly.ts correctly 1`] = `
+import type { DatePrecision } from "@com.mgmtp.a12.utils/utils-localization";
+// Already type-only import, used as type annotation
+function logPrecision(precision: DatePrecision): void {
+    console.log(precision);
+}
+
+`;

@@ -30,17 +30,21 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-import { DataFormats, defaultDataFormats } from "./localization/DataFormats.js";
+import type { DataFormats } from "./localization/DataFormats.js";
+import { defaultDataFormats } from "./localization/DataFormats.js";
 import { defaultLocalizerFactory } from "./localization/defaultLocalizerFactory.js";
-import {
-	createTextResolverForTreeMap,
-	defaultTranslationFinderFactory,
+import type {
 	TextResolver,
 	TranslationFinder,
 	TranslationWithArgs
 } from "./localization/defaultTranslationFinder.js";
-import { Locale, PartialLocale } from "./localization/Locale.js";
 import {
+	createTextResolverForTreeMap,
+	defaultTranslationFinderFactory
+} from "./localization/defaultTranslationFinder.js";
+import type { PartialLocale } from "./localization/Locale.js";
+import { Locale } from "./localization/Locale.js";
+import type {
 	DataFormatPlaceholder,
 	DataFormatProperties,
 	FormatProperties,
@@ -61,50 +65,50 @@ import {
 	removeDotEscaping,
 	segmentsFromLocalizableKey
 } from "./localization/LocalizableKeyFactory.js";
-import {
-	initializeKeys,
+import type {
 	LocalizationKeyTree,
 	LocalizationTree,
-	LocalizationTreeMap,
-	resolveLocalizationText
+	LocalizationTreeMap
 } from "./localization/LocalizationTree.js";
-import { LocalizedModelText, LocalizedText } from "./localization/LocalizedModelText.js";
-import { Localizer } from "./localization/Localizer.js";
+import { initializeKeys, resolveLocalizationText } from "./localization/LocalizationTree.js";
+import type { LocalizedModelText, LocalizedText } from "./localization/LocalizedModelText.js";
+import type { Localizer } from "./localization/Localizer.js";
 import { resolvePlaceholders } from "./localization/resolvePlaceholders.js";
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-exports
 export {
 	addDotEscaping,
 	createTextResolverForTreeMap,
-	DataFormatPlaceholder,
-	DataFormatProperties,
-	DataFormats,
 	defaultDataFormats,
 	defaultLocalizerFactory,
 	defaultTranslationFinderFactory,
-	FormatProperties,
-	FormattablePlaceholder,
 	initializeKeys,
 	Locale,
-	Localizable,
-	LocalizableArgs,
 	localizableFromLocalizationTreeMap,
 	localizableFromModel,
 	localizableKeyFromSegments,
-	LocalizablePlaceholder,
-	Localizer,
-	LocalizedModelText,
-	LocalizedText,
-	LocalizationKeyTree,
-	LocalizationTree,
-	LocalizationTreeMap,
-	PartialLocale,
-	Placeholder,
-	PlainPlaceholder,
 	removeDotEscaping,
 	resolveLocalizationText,
 	resolvePlaceholders,
-	segmentsFromLocalizableKey,
+	segmentsFromLocalizableKey
+};
+export type {
+	DataFormatPlaceholder,
+	DataFormatProperties,
+	DataFormats,
+	FormatProperties,
+	FormattablePlaceholder,
+	Localizable,
+	LocalizableArgs,
+	LocalizablePlaceholder,
+	LocalizationKeyTree,
+	LocalizationTree,
+	LocalizationTreeMap,
+	LocalizedModelText,
+	LocalizedText,
+	Localizer,
+	PartialLocale,
+	Placeholder,
+	PlainPlaceholder,
 	TextResolver,
 	TranslationFinder,
 	TranslationWithArgs

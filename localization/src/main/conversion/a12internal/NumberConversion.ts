@@ -33,7 +33,7 @@
 import type {
 	NumberConversionConfig,
 	SupportedTypeWithoutNull,
-	ValueConversion
+	ValueConversionParseError
 } from "../../conversion.js";
 
 import type { DataFormatPlaceholder, LocalizableArgs } from "../../localization/Localizable.js";
@@ -75,9 +75,7 @@ export class NumberConversion {
 		}
 		const inputDecimalSeparator = NumberConversion._getDecimalSeparator(srcDataType);
 		if (srcDataType.thousandsSeparator) {
-			// following non-null assertion is fine, since we make sure that is not empty in the if statement
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			value = value.replaceAll(srcDataType.thousandsSeparator!, "");
+			value = value.replaceAll(srcDataType.thousandsSeparator, "");
 		}
 		const outputDecimalSeparator = NumberConversion._getDecimalSeparator(destDataType);
 		value = value.replace(inputDecimalSeparator, outputDecimalSeparator);
@@ -94,9 +92,7 @@ export class NumberConversion {
 		if (destDataType.thousandsSeparator) {
 			value = NumberUtil.addThousandsSeparator(
 				value,
-				// following non-null assertion is fine, since we make sure that is not empty in the if statement
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				destDataType.thousandsSeparator!,
+				destDataType.thousandsSeparator,
 				outputDecimalSeparator
 			);
 		}
@@ -123,7 +119,7 @@ export class NumberConversion {
 		srcDataType: NumberConversionConfig & DataFormats
 	): {
 		value?: number | string | null;
-		parseError?: ValueConversion.ParseError;
+		parseError?: ValueConversionParseError;
 	} {
 		if (!value) {
 			return { value: null };
@@ -168,13 +164,7 @@ export class NumberConversion {
 		const resultWithDot: string = value.toFixed(fractionalDigits);
 		let result = resultWithDot.replace(".", decimalSeparator);
 		if (thousandsSeparator) {
-			result = NumberUtil.addThousandsSeparator(
-				result,
-				// following non-null assertion is fine, since we make sure that is not empty in the if statement
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				thousandsSeparator!,
-				decimalSeparator
-			);
+			result = NumberUtil.addThousandsSeparator(result, thousandsSeparator, decimalSeparator);
 		}
 		return result;
 	}
@@ -200,7 +190,7 @@ export class NumberConversion {
 	private static _sanityCheck(
 		value: string,
 		srcDataType: NumberConversionConfig & DataFormats
-	): ValueConversion.ParseError | undefined {
+	): ValueConversionParseError | undefined {
 		const decimalSeparator = NumberConversion._getDecimalSeparator(srcDataType);
 		const thousandsSeparator = srcDataType.thousandsSeparator;
 		NumberConversion._checkSeparators(decimalSeparator, thousandsSeparator);
@@ -293,7 +283,7 @@ export class NumberConversion {
 		errorId: string,
 		errorTextDefaults: LocalizableDefaults,
 		decimalSeparator: string
-	): ValueConversion.ParseError {
+	): ValueConversionParseError {
 		const decimalSeparatorPlaceholder: DataFormatPlaceholder = {
 			type: "dataFormat",
 			value: decimalSeparator,

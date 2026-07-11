@@ -41,17 +41,21 @@ export class DatePart {
 	static readonly MINUTE: DatePart = new DatePart("m", "00");
 	static readonly SECOND: DatePart = new DatePart("s", "00");
 
+	private readonly _formatName: string;
+	private readonly _unknownString: string;
+	private readonly _alternativeFormats?: string[];
+
 	/**
 	 * Represents a part of a date.
 	 * @param _formatName the name of the date part (e.g. "y" for year)
 	 * @param _unknownString the string with which an unknown date part should be replaced
 	 * @param _alternativeFormats an optional array of alternative names of the date part for formatting
 	 */
-	constructor(
-		private readonly _formatName: string,
-		private readonly _unknownString: string,
-		private readonly _alternativeFormats?: string[]
-	) {}
+	constructor(_formatName: string, _unknownString: string, _alternativeFormats?: string[]) {
+		this._formatName = _formatName;
+		this._unknownString = _unknownString;
+		this._alternativeFormats = _alternativeFormats;
+	}
 
 	/**
 	 * @returns the name of the date part (e.g. "y" for year)

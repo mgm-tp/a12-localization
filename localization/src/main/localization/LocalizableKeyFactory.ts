@@ -30,7 +30,6 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Localizable } from "./Localizable.js";
 
 /**

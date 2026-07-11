@@ -40,40 +40,38 @@ import type { DataFormats } from "./localization/DataFormats.js";
 import { InternalDefaultDataFormats } from "./localization/DataFormats.js";
 import type { Localizable } from "./localization/Localizable.js";
 
-export namespace ValueConversion {
+/**
+ * Data structure to define an error while parsing a value.
+ * This error can happen if the user input is invalid,
+ * e.g. the user input "test" should be parsed to a number.
+ */
+export interface ValueConversionParseError {
 	/**
-	 * Data structure to define an error while parsing a value.
-	 * This error can happen if the user input is invalid,
-	 * e.g. the user input "test" should be parsed to a number.
+	 * A key to identify the kind of error, e.g. for localization.
 	 */
-	export interface ParseError {
-		/**
-		 * A key to identify the kind of error, e.g. for localization.
-		 */
-		readonly errorKey: string;
+	readonly errorKey: string;
 
-		/**
-		 * A localizable error message.
-		 */
-		readonly errorText: Localizable;
+	/**
+	 * A localizable error message.
+	 */
+	readonly errorText: Localizable;
 
-		/**
-		 * The error code of the syntactical validation.
-		 */
-		readonly errorCode: string;
+	/**
+	 * The error code of the syntactical validation.
+	 */
+	readonly errorCode: string;
 
-		/**
-		 * The severity of the error.
-		 */
-		readonly severity: "ERROR" | "WARNING" | "INFO";
-	}
+	/**
+	 * The severity of the error.
+	 */
+	readonly severity: "ERROR" | "WARNING" | "INFO";
 }
 
 /**
  * Provides conversion logic:
  * <ul>
- * <li>parse string value to the corresponding typed value, see {@link ValueConversion.parseValue}</li>
- * <li>format typed value to the corresponding string representation, see {@link ValueConversion.formatValue}</li>
+ * <li>parse string value to the corresponding typed value, see {@link ValueConversion#parseValue}</li>
+ * <li>format typed value to the corresponding string representation, see {@link ValueConversion#formatValue}</li>
  * </ul>
  */
 export interface ValueConversion {
@@ -81,12 +79,12 @@ export interface ValueConversion {
 	 * Parses the given string value to the corresponding typed value.
 	 * @param value string value to be parsed
 	 * @param inputFormat configuration which describes the given value
-	 * @returns the corresponding typed value or a {@link ValueConversion.ParseError} occurred while parsing the given value
+	 * @returns the corresponding typed value or a {@link ValueConversionParseError} occurred while parsing the given value
 	 */
 	parseValue(
 		value: string,
 		inputFormat: ValueConversionConfig
-	): { value?: SupportedType; parseError?: ValueConversion.ParseError };
+	): { value?: SupportedType; parseError?: ValueConversionParseError };
 
 	/**
 	 * Formats the given typed value.
@@ -211,12 +209,12 @@ export const defaultValueConversion: (dataFormats?: Partial<DataFormats>) => Val
 	 * </ul>
 	 * @param value string value to be parsed
 	 * @param inputFormat configuration which describes the given value
-	 * @returns the corresponding typed value or a {@link ValueConversion.ParseError} occurred while parsing the given value, see also the method description
+	 * @returns the corresponding typed value or a {@link ValueConversionParseError} occurred while parsing the given value, see also the method description
 	 */
 	parseValue(
 		value: string,
 		inputFormat: ValueConversionConfig
-	): { value?: SupportedType; parseError?: ValueConversion.ParseError } {
+	): { value?: SupportedType; parseError?: ValueConversionParseError } {
 		const df: DataFormats = {
 			...InternalDefaultDataFormats,
 			...dataFormats
@@ -376,8 +374,8 @@ export const defaultValueConversion: (dataFormats?: Partial<DataFormats>) => Val
  */
 export type SupportedTypeWithoutNull = number | Date | Date[] | boolean | string;
 export type SupportedType = SupportedTypeWithoutNull | null;
-export namespace SupportedType {
-	export function equals(valueA: SupportedType, valueB: SupportedType): boolean {
+export const SupportedType = {
+	equals(valueA: SupportedType, valueB: SupportedType): boolean {
 		if (typeof valueA !== typeof valueB) {
 			return false;
 		}
@@ -405,18 +403,15 @@ export namespace SupportedType {
 
 				// Date
 				return SupportedType.dateEquals(valueA, valueB as object);
-			default:
-				// undefined
-				return valueA === undefined && valueB === undefined;
 		}
-	}
+	},
 
-	export function dateEquals(valueA: object, valueB: object): boolean {
+	dateEquals(valueA: object, valueB: object): boolean {
 		return (
 			valueA instanceof Date && valueB instanceof Date && valueA.getTime() === valueB.getTime()
 		);
 	}
-}
+};
 
 /**
  * Models the basic configuration needed for conversion.
@@ -475,12 +470,7 @@ export interface ConfirmConversionConfig extends BasicConversionConfig {
 /**
  * For partially known dates only. Definition of the date parts which are allowed to be unknown.
  */
-export enum DatePrecision {
-	FULL = "FULL",
-	DAY_OPTIONAL = "DAY_OPTIONAL",
-	MONTH_OPTIONAL = "MONTH_OPTIONAL",
-	YEAR_OPTIONAL = "YEAR_OPTIONAL"
-}
+export type DatePrecision = "FULL" | "DAY_OPTIONAL" | "MONTH_OPTIONAL" | "YEAR_OPTIONAL";
 
 /**
  * Data type for all dates (date, date fragment, date range, date time and time).
@@ -503,7 +493,7 @@ export interface DateConversionConfig extends DateBasicConversionConfig {
 	readonly type: "DateType";
 	readonly format: "yyyy-MM-dd";
 	/**
-	 * @defaultValue {@link DatePrecision.FULL}
+	 * @defaultValue "FULL"
 	 */
 	readonly datePrecision?: DatePrecision;
 }
@@ -511,10 +501,7 @@ export interface DateConversionConfig extends DateBasicConversionConfig {
 /**
  * For date ranges with date format <code>MM-dd</code> only. Definition of how to interpret the base year.
  */
-export enum InterpretationOfYear {
-	FROM = "FROM",
-	TO = "TO"
-}
+export type InterpretationOfYear = "FROM" | "TO";
 
 /**
  * Data type for date ranges.

@@ -30,40 +30,15 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-import { unlink } from "node:fs/promises";
+import { join } from "node:path";
+import { describe } from "node:test";
 
-/**
- * see https://pnpm.io/pnpmfile
- *
- * Switching branches might introduce new lint errors (e.g. due to new deprecations).
- * If eslint already ran, the cache file is not invalidated -> new errors are not visible.
- *
- * To fix this, we just remove the cache file every time the lockfile is resolved.
- */
-export const hooks = {
-	/**
-	 * @param {any} lockfile
-	 * @param {Context} context
-	 */
-	async afterAllResolved(lockfile, context) {
-		try {
-			context.log("Removing .eslintcache...");
-			await unlink(".eslintcache");
-		} finally {
-			// There is a pnpm setting for this, but it does not apply for our registry
-			for (const key in lockfile.packages) {
-				if (lockfile.packages[key].resolution?.tarball) {
-					delete lockfile.packages[key].resolution.tarball;
-				}
-			}
+import { enumToUnionRecipe } from "../recipes/enumToUnion.js";
 
-			// eslint-disable-next-line no-unsafe-finally
-			return lockfile;
-		}
-	}
-};
+import { testRecipe } from "./testReceipe.js";
 
-/**
- * @typedef {Object} Context
- * @property {(msg: string) => void} log
- */
+describe("codemod.recipes.enumToUnion", () => {
+	describe("Converts enums to unions of string literals", () => {
+		testRecipe(enumToUnionRecipe, join("enumToUnion", "tsconfig.json"));
+	});
+});

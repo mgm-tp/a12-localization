@@ -31,6 +31,7 @@
  */
 
 import { deepStrictEqual, ok, strictEqual, throws } from "node:assert/strict";
+import { describe, it } from "node:test";
 
 import type { PartialLocale } from "../main/index.js";
 import { Locale } from "../main/index.js";

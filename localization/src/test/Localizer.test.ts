@@ -30,10 +30,8 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import { strictEqual } from "node:assert/strict";
+import { describe, it } from "node:test";
 
 import type { Localizable } from "../main/index.js";
 import { defaultLocalizerFactory, Locale } from "../main/index.js";
@@ -65,7 +63,10 @@ describe("com.mgmtp.a12.localization.Localizer", () => {
 					}
 				];
 
-				strictEqual(localizer(...localizables), localizables[0].defaults![Locale.toString(LOCALE)]);
+				strictEqual(
+					localizer(...localizables),
+					localizables[0].defaults?.[Locale.toString(LOCALE)]
+				);
 			});
 
 			it("returns the translation from a later localizable when called with a list of localizables that do not all contain defaults", () => {
@@ -90,7 +91,10 @@ describe("com.mgmtp.a12.localization.Localizer", () => {
 					}
 				];
 
-				strictEqual(localizer(...localizables), localizables[2].defaults![Locale.toString(LOCALE)]);
+				strictEqual(
+					localizer(...localizables),
+					localizables[2].defaults?.[Locale.toString(LOCALE)]
+				);
 			});
 
 			it("returns undefined when called with a list of localizables that do not contain any defaults", () => {
@@ -222,7 +226,7 @@ describe("com.mgmtp.a12.localization.Localizer", () => {
 				// test with custom translation finder function as external translation source
 				const localizer2 = defaultLocalizerFactory({
 					locale: LOCALE,
-					translationSource: defaultTranslationFinderFactory((localizableKey, locale) => {
+					translationSource: defaultTranslationFinderFactory((_localizableKey, locale) => {
 						if (Locale.toString(locale) === "en_GB") {
 							return undefined;
 						} else {
@@ -268,7 +272,9 @@ describe("com.mgmtp.a12.localization.Localizer", () => {
 				// test with custom translation finder function as external translation source
 				const localizer2 = defaultLocalizerFactory({
 					locale: LOCALE,
-					translationSource: defaultTranslationFinderFactory((localizableKey, locale) => undefined)
+					translationSource: defaultTranslationFinderFactory(
+						(_localizableKey, _locale) => undefined
+					)
 				});
 
 				strictEqual(localizer2(...localizables), "translation [en_GB]");
@@ -303,7 +309,7 @@ describe("com.mgmtp.a12.localization.Localizer", () => {
 				// test with custom translation finder function as external translation source
 				const localizer2 = defaultLocalizerFactory({
 					locale: LOCALE,
-					translationSource: defaultTranslationFinderFactory((localizableKey, locale) => "")
+					translationSource: defaultTranslationFinderFactory((_localizableKey, _locale) => "")
 				});
 
 				strictEqual(localizer2(...localizables), "");
@@ -344,7 +350,9 @@ describe("com.mgmtp.a12.localization.Localizer", () => {
 				// test with custom translation finder function as external translation source
 				const localizer2 = defaultLocalizerFactory({
 					locale: LOCALE,
-					translationSource: defaultTranslationFinderFactory((localizableKey, locale) => undefined)
+					translationSource: defaultTranslationFinderFactory(
+						(_localizableKey, _locale) => undefined
+					)
 				});
 
 				strictEqual(localizer2(...localizables), undefined);

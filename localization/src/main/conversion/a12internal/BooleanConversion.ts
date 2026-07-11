@@ -34,7 +34,7 @@ import type {
 	BooleanConversionConfig,
 	ConfirmConversionConfig,
 	SupportedTypeWithoutNull,
-	ValueConversion
+	ValueConversionParseError
 } from "../../conversion.js";
 
 import type { DataFormats } from "../../localization/DataFormats.js";
@@ -77,7 +77,7 @@ export class BooleanConversion {
 	public static convertStringToBoolean(
 		value: string,
 		srcDataType: BooleanConversionConfig & DataFormats
-	): { value?: boolean | null; parseValue?: ValueConversion.ParseError } {
+	): { value?: boolean | null; parseValue?: ValueConversionParseError } {
 		const srcTrueValue = BooleanConversion.getTrueValue(srcDataType);
 		if (srcTrueValue === value) {
 			return { value: true };

@@ -33,7 +33,7 @@
 import type {
 	ConfirmConversionConfig,
 	SupportedTypeWithoutNull,
-	ValueConversion
+	ValueConversionParseError
 } from "../../conversion.js";
 
 import type { DataFormats } from "../../localization/DataFormats.js";
@@ -73,7 +73,7 @@ export class ConfirmConversion {
 	public static convertStringToConfirm(
 		value: string,
 		srcDataType: ConfirmConversionConfig & DataFormats
-	): { value?: true | null; parseError?: ValueConversion.ParseError } {
+	): { value?: true | null; parseError?: ValueConversionParseError } {
 		const srcTrueValue = BooleanConversion.getTrueValue(srcDataType);
 		if (srcTrueValue === value) {
 			return { value: true };

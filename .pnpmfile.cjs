@@ -30,15 +30,43 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-const Mocha = require("mocha");
+const { unlink } = require("node:fs/promises");
 
-const { EVENT_RUN_END } = Mocha.Runner.constants;
+/**
+ * see https://pnpm.io/pnpmfile
+ *
+ * Switching branches might introduce new lint errors (e.g. due to new deprecations).
+ * If eslint already ran, the cache file is not invalidated -> new errors are not visible.
+ *
+ * To fix this, we just remove the cache file every time the lockfile is resolved.
+ */
+module.exports = {
+	hooks: {
+		/**
+		 * @param {object} lockfile
+		 * @param {Context} context
+		 */
+		async afterAllResolved(lockfile, context) {
+			try {
+				context.log("Removing .eslintcache...");
+				await unlink(".eslintcache");
+			} finally {
+				// There is a pnpm setting for this, but its buggy
+				// see https://github.com/pnpm/pnpm/issues/6667
+				for (const key in lockfile.packages) {
+					if (lockfile.packages[key].resolution?.tarball) {
+						delete lockfile.packages[key].resolution.tarball;
+					}
+				}
 
-class MinimalReporter extends Mocha.reporters.Base {
-	constructor(runner) {
-		super(runner);
-		runner.once(EVENT_RUN_END, this.epilogue.bind(this));
+				// eslint-disable-next-line no-unsafe-finally
+				return lockfile;
+			}
+		}
 	}
-}
+};
 
-module.exports = MinimalReporter;
+/**
+ * @typedef {Object} Context
+ * @property {(msg: string) => void} log
+ */

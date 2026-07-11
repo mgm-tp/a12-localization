@@ -77,8 +77,7 @@ export class ValidationDateParser {
 	public static parseDateWithoutSyntaxCheck(param: DateAndFormat): Date {
 		try {
 			return ValidationDateParser._parseDate(param.date, param.format, param.timeZone, false);
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		} catch (error) {
+		} catch {
 			throw new Error("Error while parsing Date.");
 		}
 	}

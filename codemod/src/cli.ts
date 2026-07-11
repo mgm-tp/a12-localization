@@ -35,11 +35,13 @@ import { createCodemodCLI } from "@com.mgmtp.a12.devtools/codemod";
 
 import pkg from "../package.json" with { type: "json" };
 
+import { enumToUnionRecipe } from "./recipes/enumToUnion.js";
+import { namespaceToInterfaceRecipe } from "./recipes/namespaceToInterface.js";
 import { preferTopLevelImportsRecipe } from "./recipes/preferTopLevel.js";
 
 createCodemodCLI({
 	name: pkg.name,
 	version: pkg.version,
 	description: "Codemod tooling for assisting migrations of A12 Localization",
-	recipes: [preferTopLevelImportsRecipe]
+	recipes: [preferTopLevelImportsRecipe, namespaceToInterfaceRecipe, enumToUnionRecipe]
 });

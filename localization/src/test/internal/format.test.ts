@@ -33,6 +33,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { strictEqual, throws } from "node:assert/strict";
+import { describe, it } from "node:test";
 
 import type { SupportedType } from "../../main/conversion.js";
 import { defaultValueConversion } from "../../main/conversion.js";

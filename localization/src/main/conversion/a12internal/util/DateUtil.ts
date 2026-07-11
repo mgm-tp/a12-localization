@@ -30,8 +30,7 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-import type { SupportedTypeWithoutNull } from "../../../conversion.js";
-import { InterpretationOfYear } from "../../../conversion.js";
+import type { InterpretationOfYear, SupportedTypeWithoutNull } from "../../../conversion.js";
 
 import { DateAndFormat } from "./DateAndFormat.js";
 import { PartiallyKnownDatesUtil } from "./PartiallyKnownDatesUtil.js";
@@ -46,7 +45,11 @@ export class DateInterval {
 	static readonly INTERVAL_START: DateInterval = new DateInterval(0);
 	static readonly INTERVAL_END: DateInterval = new DateInterval(1);
 
-	constructor(private readonly _value: number) {}
+	private readonly _value: number;
+
+	constructor(value: number) {
+		this._value = value;
+	}
 
 	public getIndex(): number {
 		// Difference to java otherwise TS-Lint show an error
@@ -206,8 +209,7 @@ export class DateUtil {
 			const dateRangeStartDate: Date = ValidationDateParser.parseDate(dateRangeStart);
 			const dateRangeEndDate = ValidationDateParser.parseDate(dateRangeEnd);
 			return DateUtil.dateBefore(dateRangeEndDate, dateRangeStartDate);
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		} catch (e) {
+		} catch {
 			// If one of the dates is not valid with a leap year,
 			// the error will be reported later; the base year is ok as a year.
 			return false;
@@ -308,10 +310,10 @@ export class DateUtil {
 			)
 		) {
 			// the method in the if-statement makes sure that interpretationOfYear is not undefined
-			if (interpretationOfYear === InterpretationOfYear.TO) {
+			if (interpretationOfYear === "TO") {
 				supplementaryYears[0]--;
 			}
-			if (interpretationOfYear === InterpretationOfYear.FROM) {
+			if (interpretationOfYear === "FROM") {
 				supplementaryYears[1]++;
 			}
 		}

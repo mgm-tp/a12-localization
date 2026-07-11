@@ -31,6 +31,7 @@
  */
 
 import { strictEqual, throws } from "node:assert/strict";
+import { describe, it } from "node:test";
 
 import { defaultLocalizerFactory } from "../main/index.js";
 

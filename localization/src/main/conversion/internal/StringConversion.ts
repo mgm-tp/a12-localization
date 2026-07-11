@@ -30,12 +30,11 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import type { SupportedTypeWithoutNull } from "../../index.js";
-import {
+import type {
 	CustomStringConversionConfig,
 	EnumerationConversionConfig,
-	StringConversionConfig
+	StringConversionConfig,
+	SupportedTypeWithoutNull
 } from "../../index.js";
 
 /**

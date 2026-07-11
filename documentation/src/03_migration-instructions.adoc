@@ -32,6 +32,107 @@ LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
 
 = Migration Instructions
 
+== 2026.06
+
+=== Breaking Changes
+
+==== Updating to ES2025
+
+The javascript output of the npm artifacts was updated from `ES2024` to `ES2025` to be able to use latest language features. When using supported browsers, there is no change necessary. If support for older browsers is required, make sure to include necessary polyfills.
+
+==== Removal of Deep Import Paths
+
+Deep import paths from `@com.mgmtp.a12.utils/utils-localization` and `@com.mgmtp.a12.utils/utils-localization-react` (e.g. `@com.mgmtp.a12.utils/utils-localization/lib/main/index.js`) have been removed.
+All exports must now be imported directly from the package root. For detailed migration instructions, see the link:/docs/2025.06/ext4/utils_localization/utils-localization#_deep_import_paths_of_a12_localization_npm_packages[deprecation,role=external] note.
+
+[NOTE]
+====
+The package now uses the `exports` field instead of `main`/`types`. This should be transparent for most consumers but may require configuration updates for older bundlers.
+====
+
+==== Conversion of Enums and Namespaces to Union Types
+
+All enums and namespaces have been converted to union types and const objects. This was done to improve treeshaking and to unblock users from using the link:https://www.typescriptlang.org/tsconfig/#erasableSyntaxOnly[erasableSyntaxOnly flag].
+
+[cols="1,1"]
+|===
+|Before |After
+
+|`enum DatePrecision`
+|Union type `"FULL" \| "DAY_OPTIONAL" \| "MONTH_OPTIONAL" \| "YEAR_OPTIONAL"`
+
+|`enum InterpretationOfYear`
+|Union type `"FROM" \| "TO"`
+
+|`namespace SupportedType`
+|Const object with same name
+
+|`namespace Locale`
+|Const object with same name
+
+|`namespace ValueConversion`
+|Interface `ValueConversionParseError`
+
+|`namespace LocalizerContext`
+|Interface `LocalizerContextProps`
+
+|`namespace DefaultLocalizerContextProvider`
+|Interface `DefaultLocalizerContextProviderProps`
+|===
+
+**Migration:**
+
+* Replace enum member access with string literals:
++
+[source,typescript]
+----
+// Before
+if (datePrecision === DatePrecision.FULL) { ... }
+
+// After
+if (datePrecision === "FULL") { ... }
+----
+
+* Replace enum default values with string literals:
++
+[source,typescript]
+----
+// Before
+const precision: DatePrecision = DatePrecision.FULL;
+
+// After
+const precision: DatePrecision = "FULL";
+----
+
+* Update type imports if using `ValueConversion.ParseError`:
++
+[source,typescript]
+----
+// Before
+import { ValueConversion } from "@com.mgmtp.a12.utils/utils-localization";
+const error: ValueConversion.ParseError = ...;
+
+// After
+import { ValueConversionParseError } from "@com.mgmtp.a12.utils/utils-localization";
+const error: ValueConversionParseError = ...;
+----
+
+Codemod recipes are provided for both change types. First install or update the codemod with your preferred package manager, e.g. with `pnpm`:
+[source,bash]
+----
+pnpm install -g @com.mgmtp.a12.utils/utils-localization-codemod
+----
+
+Then run the recipes:
+[source,bash]
+----
+// to migrate enums to unions of string literals
+utils-localization-codemod enumToUnion <path to directory with tsconfig.json>
+
+// to migrate namespaces to interface
+utils-localization-codemod namespaceToInterface <path to directory with tsconfig.json>
+----
+
 == 2025.06-ext4
 
 === Deprecation

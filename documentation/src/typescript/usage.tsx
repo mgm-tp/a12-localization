@@ -30,8 +30,7 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
+// tag::imports[]
 import { useMemo, type JSX } from "react";
 
 import type {
@@ -49,68 +48,16 @@ import {
 	Locale
 } from "@com.mgmtp.a12.utils/utils-localization";
 
-import { DefaultLocalizerContextProvider, LocalizerContext } from "./LocalizerContext.js";
+import { LocalizerContext } from "@com.mgmtp.a12.utils/utils-localization-react";
 
-/********************* EXAMPLE 1 **********************************************/
+// end::imports[]
 
-/** @internal */
-export function SimpleExample(props: { locale: Locale }): JSX.Element {
-	return (
-		<DefaultLocalizerContextProvider locale={props.locale}>
-			<LocalizerContext.Consumer>
-				{
-					context =>
-						context.localizer({
-							key: "abc",
-							args: {},
-							defaults: { en: "Button Label" }
-						})
-					/*
-					 * This is equivalent to writing
-					 *
-					 *		const localizer = React.useContext(LocalizerContext).localizer;
-					 *		const localizedText = localizer({ key: "abc", args: {}, defaults: {} });
-					 *
-					 *
-					 * inside of your React component
-					 */
-				}
-			</LocalizerContext.Consumer>
-		</DefaultLocalizerContextProvider>
-	);
-}
-
-/********************* EXAMPLE 2 **********************************************/
-
-// always use hard-coded locale
-const US_LOCALE = { language: "en", country: "US" };
-
-/** @internal */
-export function AlwaysInEnglish(): JSX.Element {
-	return (
-		<DefaultLocalizerContextProvider locale={US_LOCALE}>
-			<LocalizerContext.Consumer>
-				{context =>
-					context.localizer({
-						key: "abc",
-						args: {},
-						defaults: {}
-					})
-				}
-			</LocalizerContext.Consumer>
-		</DefaultLocalizerContextProvider>
-	);
-}
-
-/********************* EXAMPLE 3 **********************************************/
-
-// override A12-default translations & fallback locale(s)
+// tag::ex1[]
 interface CustomTranslationsProps {
 	readonly locale: Locale;
 	readonly translations: LocalizationTree;
 }
 
-/** @internal */
 export function CustomTranslations(props: CustomTranslationsProps): JSX.Element {
 	const { locale, translations } = props;
 
@@ -146,10 +93,9 @@ export function CustomTranslations(props: CustomTranslationsProps): JSX.Element 
 		</LocalizerContext.Provider>
 	);
 }
+// end::ex1[]
 
-/********************* EXAMPLE 4 **********************************************/
-
-// model-dependent localizer approach with fallback to default localizer
+// tag::ex2[]
 interface ModelDependent {
 	readonly model: { header: { id: string } };
 	readonly locale: Locale;
@@ -157,7 +103,6 @@ interface ModelDependent {
 	readonly translations: LocalizationTree[];
 }
 
-/** @internal */
 export function ModelDependent(props: ModelDependent): JSX.Element {
 	const { locale, model } = props;
 
@@ -189,56 +134,18 @@ export function ModelDependent(props: ModelDependent): JSX.Element {
 		</LocalizerContext.Provider>
 	);
 }
+// end::ex2[]
 
-/********************* EXAMPLE 5 **********************************************/
-
-// custom localizer approach
-function myLocalizerFactory(locale: Locale): Localizer {
-	// implement custom localizer approach
-	return (...localizables) => "foo";
-}
-
-/** @internal */
-export function MyExampleComponent(props: { locale: Locale }): JSX.Element {
-	const { locale } = props;
-
-	const localizerContext = useMemo(() => {
-		const localizer = myLocalizerFactory(locale);
-		return {
-			locale,
-			dataFormats: defaultDataFormats(locale),
-			localizer,
-			conversion: defaultValueConversion(defaultDataFormats(locale))
-		};
-	}, [locale]);
-
-	return (
-		<LocalizerContext.Provider value={localizerContext}>
-			<LocalizerContext.Consumer>
-				{context =>
-					context.localizer({
-						key: "abc",
-						args: {},
-						defaults: {}
-					})
-				}
-			</LocalizerContext.Consumer>
-		</LocalizerContext.Provider>
-	);
-}
-
-/********************* EXAMPLE 5 **********************************************/
-
-// fully custom localizer & conversion approach
+// tag::ex3[]
 const myValueConversion: ValueConversion = {
-	parseValue: (value, inputFormat) => {
+	parseValue: (_value, _inputFormat) => {
 		// implement your string -> SupportedType parsing logic here
 		return {
 			value: undefined,
 			parseError: undefined
 		};
 	},
-	formatValue: (value, outputFormat) => {
+	formatValue: (_value, _outputFormat) => {
 		// implement your SupportedType -> string formatting logic here
 		// you can match specific cases by e.g.
 		// - identifying document model fields based on outputFormat.modelId & outputFormat.modelPath
@@ -249,19 +156,17 @@ const myValueConversion: ValueConversion = {
 	}
 };
 
-function myComplexLocalizerFactory(locale: Locale, valueConversion: ValueConversion): Localizer {
+function myComplexLocalizerFactory(_locale: Locale, _valueConversion: ValueConversion): Localizer {
 	// implement custom localizer approach
 	// you might need to use your custom conversion logic as well in here in case the localizables contain formattable placeholders
-	return (...localizables) => "foo";
+	return (..._localizables) => "foo";
 }
 
-/** @internal */
 export function MyExampleComponent2(props: { locale: Locale }): JSX.Element {
 	const { locale } = props;
 
 	const localizerContext = useMemo(() => {
 		const localizer = myComplexLocalizerFactory(locale, myValueConversion);
-
 		return {
 			locale,
 			dataFormats: defaultDataFormats(locale),
@@ -296,3 +201,4 @@ export function MyExampleComponent2(props: { locale: Locale }): JSX.Element {
 		</LocalizerContext.Provider>
 	);
 }
+// end::ex3[]

@@ -30,15 +30,15 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-const Mocha = require("mocha");
+import { join } from "node:path";
+import { describe } from "node:test";
 
-const { EVENT_RUN_END } = Mocha.Runner.constants;
+import { namespaceToInterfaceRecipe } from "../recipes/namespaceToInterface.js";
 
-class MinimalReporter extends Mocha.reporters.Base {
-	constructor(runner) {
-		super(runner);
-		runner.once(EVENT_RUN_END, this.epilogue.bind(this));
-	}
-}
+import { testRecipe } from "./testReceipe.js";
 
-module.exports = MinimalReporter;
+describe("codemod.recipes.namespaceToInterface", () => {
+	describe("Converts namespaces to interfaces correctly", () => {
+		testRecipe(namespaceToInterfaceRecipe, join("namespaceToInterface", "tsconfig.json"));
+	});
+});

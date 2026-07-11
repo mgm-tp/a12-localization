@@ -35,7 +35,7 @@ import { Locale } from "./Locale.js";
 import type { Localizable, LocalizableArgs } from "./Localizable.js";
 import { localizableFromLocalizationTreeMap } from "./LocalizableFactory.js";
 import type { LocalizationTreeMap } from "./LocalizationTree.js";
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import type { defaultLocalizerFactory } from "./defaultLocalizerFactory.js";
 
 /**

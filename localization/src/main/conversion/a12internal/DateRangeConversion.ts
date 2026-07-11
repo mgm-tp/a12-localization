@@ -33,7 +33,7 @@
 import type {
 	DateRangeConversionConfig,
 	SupportedTypeWithoutNull,
-	ValueConversion
+	ValueConversionParseError
 } from "../../conversion.js";
 
 import type { DataFormatPlaceholder, LocalizableArgs } from "../../localization/Localizable.js";
@@ -111,7 +111,7 @@ export class DateRangeConversion {
 		value: string,
 		srcDataType: DateRangeConversionConfig & DataFormats,
 		syntaxCheck: boolean
-	): { value?: Date[] | null; parseError?: ValueConversion.ParseError } {
+	): { value?: Date[] | null; parseError?: ValueConversionParseError } {
 		if (!value) {
 			return { value: null };
 		}
@@ -130,8 +130,7 @@ export class DateRangeConversion {
 				timeZone,
 				syntaxCheck
 			);
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		} catch (e) {
+		} catch {
 			return {
 				parseError: DateRangeConversion._createParseErrorForDateRange(
 					"datumBereichFormatFalsch",
@@ -151,7 +150,7 @@ export class DateRangeConversion {
 		srcDataType: DateRangeConversionConfig & DataFormats
 	): {
 		value?: Date | Date[] | string | null;
-		parseError?: ValueConversion.ParseError;
+		parseError?: ValueConversionParseError;
 	} {
 		if (!value) {
 			return { value: null };
@@ -264,7 +263,7 @@ export class DateRangeConversion {
 		errorId: string,
 		format: string,
 		separator: string
-	): ValueConversion.ParseError {
+	): ValueConversionParseError {
 		const value = {
 			// DateRangeValue, but the type is currently non-public in utils-localization
 			dateFormat: format,

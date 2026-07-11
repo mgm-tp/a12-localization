@@ -32,6 +32,8 @@
 
 import { strictEqual, throws } from "node:assert/strict";
 
+import { describe, it } from "node:test";
+
 import { defaultDataFormats, defaultLocalizerFactory } from "../main/index.js";
 
 describe("com.mgmtp.a12.localization.dateFormatFormatting", () => {

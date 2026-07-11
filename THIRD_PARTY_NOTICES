@@ -1,7 +1,7 @@
 THIRD_PARTY_NOTICES
 
 Component: A12 Utils (localization)
-Generated: 2026-03-10 for mgm A12 Platform 2025.06-ext5
+Generated: 2026-04-29 for mgm A12 Platform 2026.06
 
 The mgm A12 Platform is developed by mgm technology partners GmbH.
 
@@ -26,37 +26,34 @@ The following third-party components are included in this distribution:
 - big.js 7.0.1, licensed under MIT
 	Copyright © <2025> Michael Mclaughlin
 	Source: https://github.com/MikeMcl/big.js
-- @com.mgmtp.a12.devtools/codemod 2.0.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.devtools/codemod 2.2.2, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.devtools/eslint-config 2.0.2, licensed under EUPL v1.2
+- @com.mgmtp.a12.devtools/eslint-config 3.1.2, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.devtools/prettier-config 1.0.1, licensed under EUPL v1.2
+- @com.mgmtp.a12.devtools/prettier-config 1.1.1, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- @com.mgmtp.a12.devtools/tsconfig 1.0.0, licensed under EUPL v1.2
+- @com.mgmtp.a12.devtools/tsconfig 2.0.1, licensed under EUPL v1.2
 	Copyright (C) 2012-2026 mgm technology partners GmbH
 	Source: https://github.com/mgm-tp
-- cspell 9.6.4, licensed under MIT
+- cspell 9.7.0, licensed under MIT
 	Copyright (c) 2017 Jason Dent
 	Source: https://github.com/streetsidesoftware/cspell
-- eslint 9.39.2, licensed under MIT
+- eslint 9.39.4, licensed under MIT
 	Copyright OpenJS Foundation and other contributors, <www.openjsf.org>
 	Source: https://github.com/eslint/eslint
-- @eslint/config-inspector 1.4.2, licensed under Apache-2.0
-	Copyright OpenJS Foundation and other contributors, <www.openjsf.org>
-	Source: https://github.com/eslint/config-inspector
 - eslint-plugin-import 2.32.0, licensed under MIT
 	Copyright (c) 2015 Ben Mosher
 	Source: https://github.com/import-js/eslint-plugin-import
-- eslint-plugin-jsdoc 62.5.5, licensed under BSD-3-Clause
+- eslint-plugin-jsdoc 62.8.0, licensed under BSD-3-Clause
 	Copyright (c) 2018, Gajus Kuizinas (http://gajus.com/)
-	Source: eslint-plugin-jsdoc
-- eslint-plugin-notice 1.0.0, licensed under MIT
+	Source: https://github.com/gajus/eslint-plugin-jsdoc
+- eslint-plugin-notice 1.1.0-rc1, licensed under MIT
 	Copyright (c) 2017 Nick Deis
 	Source: https://github.com/nickdeis/eslint-plugin-notice
-- eslint-plugin-workspaces 0.12.0, licensed under MIT
+- eslint-plugin-workspaces 0.12.1, licensed under MIT
 	Copyright (c) 2019 Joshua Jacobowitz
 	Source: https://github.com/joshuajaco/eslint-plugin-workspaces
 - highlight.js 11.11.1, licensed under BSD-3-Clause
@@ -65,9 +62,9 @@ The following third-party components are included in this distribution:
 - luxon 3.7.2, licensed under MIT
 	Copyright 2019 JS Foundation and other contributors
 	Source: https://github.com/moment/luxon
-- @microsoft/api-extractor 7.56.3, licensed under MIT
-	Copyright (c) Microsoft Corporation. All rights reserved
-	Source: https://github.com/microsoft/rushstack/tree/main/apps/api-extractor
+- @microsoft/api-extractor 7.57.7, licensed under MIT
+	Copyright (c) Microsoft Corporation. All rights reserved.
+	Source: https://github.com/microsoft/rushstack
 - prettier 3.8.1, licensed under MIT
 	Copyright © James Long and contributors
 	Source: https://github.com/prettier/prettier
@@ -77,23 +74,23 @@ The following third-party components are included in this distribution:
 - ts-morph 27.0.2, licensed under MIT
 	Copyright (c) 2017 David Sherret
 	Source: https://github.com/dsherret/ts-morph
-- typedoc 0.28.15, licensed under Apache-2.0
+- typedoc 0.28.18, licensed under Apache-2.0
 	Copyright (c) 2020 Oliver Nightingale
 	Source: https://github.com/TypeStrong/TypeDoc
 - @types/big.js 6.2.2, licensed under MIT
-	Copyright (c) Microsoft Corporation
+	Copyrights are respective of each contributor listed at the beginning of each definition file
 	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
-- typescript 5.9.3, licensed under Apache-2.0
+- typescript 6.0.3, licensed under Apache-2.0
 	Copyright (c) Microsoft Corporation
 	Source: https://github.com/microsoft/TypeScript
-- @types/luxon 3.6.2, licensed under MIT
-	Copyright (c) Microsoft Corporation
+- @types/luxon 3.7.1, licensed under MIT
+	Copyrights are respective of each contributor listed at the beginning of each definition file
 	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
-- @types/node 24.10.4, licensed under MIT
-	Copyright Node.js contributors and (c) Microsoft Corporation
+- @types/node 24.12.0, licensed under MIT
+	Copyright Node.js contributors
 	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
-- @types/react 19.2.7, licensed under MIT
-	Copyright (c) Microsoft Corporation
+- @types/react 19.2.14, licensed under MIT
+	Copyrights are respective of each contributor listed at the beginning of each definition file
 	Source: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 
@@ -110,8 +107,7 @@ General Notice
 The mgm A12 Platform is dual-licensed under the EUPL-1.2 or a
 commercial license. Third-party components remain under their
 respective licenses. For details, see the file LICENSE.
-
-“mgm A12” is a registered trademark of mgm technology partners GmbH
+"mgm A12" is a registered trademark of mgm technology partners GmbH
 (EU/DE). All other trademarks are the property of their respective
 owners.
 

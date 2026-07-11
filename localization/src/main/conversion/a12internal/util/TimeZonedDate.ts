@@ -36,10 +36,13 @@ import { DateTime } from "luxon";
 export class TimeZonedDate {
 	private static readonly TIMEZONE_UTC = "UTC";
 
-	private constructor(
-		private readonly _date: DateTime,
-		private readonly _timeZone: string
-	) {}
+	private readonly _date: DateTime;
+	private readonly _timeZone: string;
+
+	private constructor(date: DateTime, timeZone: string) {
+		this._date = date;
+		this._timeZone = timeZone;
+	}
 
 	public toDate(): Date {
 		return this._date.toJSDate();

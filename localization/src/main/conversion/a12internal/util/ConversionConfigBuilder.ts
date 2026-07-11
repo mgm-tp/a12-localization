@@ -40,7 +40,7 @@ import type {
 	NumberConversionConfig,
 	TimeConversionConfig
 } from "../../../conversion.js";
-import { DatePrecision } from "../../../conversion.js";
+import type { DatePrecision } from "../../../conversion.js";
 
 /**
  * Data type builder for all dates (date, date fragment, date range, date time and time).
@@ -78,7 +78,7 @@ export class DateConversionConfigBuilder extends DateBasicConversionConfigBuilde
 	public constructor(other?: DateConversionConfig) {
 		super(other);
 		this._format = other?.format ?? "yyyy-MM-dd";
-		this._datePrecision = other?.datePrecision ?? DatePrecision.FULL;
+		this._datePrecision = other?.datePrecision ?? "FULL";
 	}
 	public withDatePrecision(datePrecision: DatePrecision): this {
 		this._datePrecision = datePrecision;

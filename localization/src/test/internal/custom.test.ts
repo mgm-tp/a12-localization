@@ -31,6 +31,7 @@
  */
 
 import { ok, strictEqual } from "node:assert/strict";
+import { describe, it } from "node:test";
 
 import type {
 	SupportedType,
@@ -44,7 +45,7 @@ import {
 	NumberConversionConfigBuilder,
 	TimeZonedDate
 } from "../../main/conversion/a12internal/index.js";
-import type { DataFormats } from "../../main/index.js";
+import type { DataFormats, ValueConversionParseError } from "../../main/index.js";
 import {
 	InternalDefaultDataFormats,
 	defaultDataFormats
@@ -143,7 +144,7 @@ function customParseDate(
 	value: string,
 	srcDataType: ValueConversionConfig,
 	dataFormats: DataFormats
-): { value?: SupportedType; parseError?: ValueConversion.ParseError } {
+): { value?: SupportedType; parseError?: ValueConversionParseError } {
 	const lastDateSepIdx = value.lastIndexOf("-");
 	const day = value.substring(lastDateSepIdx + 1);
 	const newValue = value.substring(0, lastDateSepIdx + 1) + (Number(day) + 1);
@@ -155,8 +156,10 @@ function customFormatDate(
 	destDataType: ValueConversionConfig,
 	dataFormats: DataFormats
 ): string | undefined {
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-	const defaultConverted = defaultValueConversion(dataFormats).formatValue(value, destDataType)!;
+	const defaultConverted = defaultValueConversion(dataFormats).formatValue(value, destDataType);
+	if (defaultConverted === undefined) {
+		return undefined;
+	}
 	const lastDateSepIdx = defaultConverted.lastIndexOf(".");
 	const twoDigitYear = defaultConverted.substring(lastDateSepIdx + 3);
 	return defaultConverted.substring(0, lastDateSepIdx + 1) + twoDigitYear;

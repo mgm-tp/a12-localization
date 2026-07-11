@@ -1,12 +1,12 @@
 {
   "name": "@com.mgmtp.a12.utils/utils-localization-documentation",
-  "version": "7.3.0-SNAPSHOT",
+  "version": "8.0.1",
   "description": "AsciiDoc Sources and TypeDoc for A12 Localization",
   "author": "mgm technology partners",
   "license": "(EUPL-1.2 OR LicenseRef-commercial)",
   "type": "module",
   "scripts": {
-    "clean": "rimraf build",
+    "clean": "git clean -fx .",
     "build": "node --run createHtml",
     "compile": "tsc",
     "createHtml": "node convert.ts"
@@ -14,11 +14,15 @@
   "files": [
     "src"
   ],
+  "exports": null,
   "devDependencies": {
-    "asciidoctor": "catalog:ranges",
+    "@com.mgmtp.a12.devtools/tsconfig": "catalog:a12ranges",
+    "@com.mgmtp.a12.utils/utils-localization-react": "workspace:*",
+    "@com.mgmtp.a12.utils/utils-localization": "workspace:*",
+    "@types/react": "catalog:ranges",
     "asciidoctor-highlight.js": "catalog:ranges",
+    "asciidoctor": "catalog:ranges",
     "highlight.js": "catalog:ranges",
-    "typescript": "catalog:ranges",
-    "rimraf": "catalog:ranges"
+    "typescript": "catalog:ranges"
   }
 }

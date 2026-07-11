@@ -12,13 +12,15 @@
 	"editor.rulers": [80, 120],
 	"path-intellisense.extensionOnImport": false,
 	"testExplorer.mergeSuites": true,
-	"typescript.format.enable": true,
-	"typescript.tsdk": "./localization/node_modules/typescript/lib",
-	"typescript.validate.enable": true,
-	"typescript.preferences.importModuleSpecifierEnding": "js",
+	"js/ts.validate.enabled": true,
+	"js/ts.preferences.importModuleSpecifierEnding": "js",
+	"js/ts.tsdk.path": "./localization/node_modules/typescript/lib",
 	"[javascript][typescript][typescriptreact][jsonc]": {
 		"editor.formatOnSave": true,
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll.eslint"]
+	"editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll.eslint"],
+	"eslint.options": {
+		"flags": ["unstable_native_nodejs_ts_config"]
+	}
 }

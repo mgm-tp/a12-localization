@@ -30,9 +30,8 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import type { Localizable } from "./Localizable.js";
 import type { Locale, PartialLocale } from "./Locale.js";
+import type { Localizable } from "./Localizable.js";
 
 /**
  * Provides localized texts in a tree structure.

@@ -30,7 +30,8 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-import { strictEqual } from "node:assert";
+import { strictEqual } from "node:assert/strict";
+import { describe, it } from "node:test";
 
 import { StringUtil } from "../../main/conversion/a12internal/index.js";
 

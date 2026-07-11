@@ -33,6 +33,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { ok, strictEqual } from "node:assert/strict";
+import { describe, it } from "node:test";
 
 import { defaultValueConversion } from "../../main/conversion.js";
 
@@ -121,8 +122,7 @@ function testParsePositive(testCase: any) {
 				testCase.parameters.value,
 				conversionConfig
 			).value;
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		} catch (e) {
+		} catch {
 			// eslint-disable-next-line no-console
 			console.error(testCase.description);
 		}

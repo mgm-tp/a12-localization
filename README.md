@@ -50,7 +50,7 @@ The following tools are required in order to build this repository.
 | Tool   | Version |
 | ------ | ------- |
 | [Node] | `^24`   |
-| [pnpm] | `^11`   |
+| [pnpm] | `^10.6` |
 
 #### Install Dependencies
 
@@ -97,7 +97,7 @@ There are no applications or showcases to execute.
 
 **The mgm A12 Team**
 
-[mgm technology partners GmbH](https://www.mgm-tp.com) | [Imprint](https://www.mgm-tp.com/imprint.html)
+[mgm technology partners GmbH](https://www.mgm-tp.com) • [Imprint](https://www.mgm-tp.com/imprint.html)
 
 <!-- References -->
 

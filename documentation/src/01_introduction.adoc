@@ -463,6 +463,23 @@ const message = localizer(messageLocalizable);
 
 The function `resolvePlaceholders` can be used to replace all placeholder occurrences in a given string with the values from a given object that maps the placeholder names to their respective values.
 
+== Usage Examples
+
+[source,tsx,title="Overriding the A12-default translations & fallback locale(s)"]
+----
+include::./typescript/usage.tsx[indent=0,tags=imports;ex1]
+----
+
+[source,tsx,title="Implementing a model-dependent localizer"]
+----
+include::./typescript/usage.tsx[indent=0,tags=imports;ex2]
+----
+
+[source,tsx,title="Customizing everything"]
+----
+include::./typescript/usage.tsx[indent=0,tags=imports;ex3]
+----
+
 = API Documentation
 
 The API documentation for the `@com.mgmtp.a12.utils/utils-localization` can be found by following this link:./assets/localization-typedoc/index.html[link,role=external,window=_blank].

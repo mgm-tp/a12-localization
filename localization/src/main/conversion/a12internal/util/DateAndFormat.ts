@@ -38,15 +38,19 @@ import { StringUtil } from "./StringUtil.js";
  * The class bundles the common use of the value and format of a date.
  */
 export class DateAndFormat {
+	private _dateString: string;
+	private _dateFormat: string;
+	private readonly _timeZone: string;
+
 	/**
 	 * It is assumed that the value and format match.
 	 * This means in particular that all parameters are not empty and not undefined.
 	 */
-	constructor(
-		private _dateString: string,
-		private _dateFormat: string,
-		private readonly _timeZone: string
-	) {}
+	constructor(dateString: string, dateFormat: string, timeZone: string) {
+		this._dateString = dateString;
+		this._dateFormat = dateFormat;
+		this._timeZone = timeZone;
+	}
 
 	public get date(): string {
 		return this._dateString;

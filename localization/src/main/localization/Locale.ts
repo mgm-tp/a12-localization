@@ -56,15 +56,13 @@ export interface Locale extends PartialLocale {
 	country: string;
 }
 
-export namespace Locale {
-	export function isLocale(object: unknown): object is Locale {
+export const Locale = {
+	isLocale(object: unknown): object is Locale {
 		return isRecord(object) && object.language !== undefined && object.country !== undefined;
-	}
-
-	export function isPartialLocale(object: unknown): object is PartialLocale {
+	},
+	isPartialLocale(object: unknown): object is PartialLocale {
 		return isRecord(object) && object.language !== undefined;
-	}
-
+	},
 	/**
 	 * Converts a locale from string representation into a Locale or PartialLocale object
 	 *
@@ -75,7 +73,7 @@ export namespace Locale {
 	 * @param localeString
 	 * @returns the deserialized {@link Locale} or {@link PartialLocale} object
 	 */
-	export function fromString(localeString: string): PartialLocale | Locale {
+	fromString(localeString: string): PartialLocale | Locale {
 		const PARTIAL_LOCALE_REGEX = /^[a-z]{2,8}$/g;
 		const LOCALE_REGEX = /^([a-z]{2,8})_([A-Z]{2}|[0-9]{3})$/g;
 
@@ -98,17 +96,16 @@ export namespace Locale {
 		}
 
 		throw new Error(`Cannot deserialize locale from '${localeString}'.`);
-	}
-
+	},
 	/**
 	 * Converts a {@link Locale}/{@link PartialLocale} object into its string representation
 	 * @param locale the locale object to convert
 	 * @returns the string representation of the given locale object
 	 */
-	export function toString(locale: PartialLocale | Locale): string {
-		if (isLocale(locale)) {
+	toString(locale: PartialLocale | Locale): string {
+		if (Locale.isLocale(locale)) {
 			return `${locale.language}_${locale.country}`;
 		}
 		return locale.language;
 	}
-}
+};

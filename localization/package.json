@@ -1,18 +1,22 @@
 {
   "name": "@com.mgmtp.a12.utils/utils-localization",
-  "version": "7.3.0-SNAPSHOT",
+  "version": "8.0.1",
   "description": "Flexible JavaScript localization solution",
   "type": "module",
   "sideEffects": false,
-  "main": "./lib/main/index.js",
-  "types": "./lib/main/index.d.ts",
+  "exports": {
+    ".": "./lib/main/index.js",
+    "./a12internal": "./lib/main/conversion/a12internal/index.js"
+  },
   "scripts": {
-    "clean": "rimraf ./lib cyclonedx.json",
-    "build": "node --run compile && node --run dist",
-    "test": "mocha",
+    "clean": "git clean -fx .",
+    "build": "node --run compile && node --run dist && node --run validate:api",
+    "test": "node --test --test-reporter dot \"**/*.test.js\"",
     "compile": "tsc",
     "dist": "typedoc ./src",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "validate:api": "api-extractor run --verbose",
+    "update:api": "api-extractor run --local"
   },
   "author": "mgm technology partners",
   "license": "(EUPL-1.2 OR LicenseRef-commercial)",
@@ -21,15 +25,12 @@
     "luxon": "catalog:ranges"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "catalog:ranges",
     "@com.mgmtp.a12.devtools/tsconfig": "catalog:a12ranges",
     "@types/big.js": "catalog:ranges",
     "@types/luxon": "catalog:ranges",
-    "@types/mocha": "catalog:ranges",
     "@types/node": "catalog:ranges",
-    "mocha": "catalog:ranges",
     "prettier": "catalog:ranges",
-    "rimraf": "catalog:ranges",
-    "source-map-support": "catalog:ranges",
     "typedoc": "catalog:ranges",
     "typescript": "catalog:ranges"
   },

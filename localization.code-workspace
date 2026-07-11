@@ -18,6 +18,7 @@
 		}
 	],
 	"settings": {
+		"js/ts.tsdk.path": "localization/node_modules/typescript/lib",
 		"files.exclude": {
 			"codemod": true,
 			"documentation": true,

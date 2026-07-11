@@ -33,13 +33,13 @@
 import type {
 	DateConversionConfig,
 	DateFragmentConversionConfig,
+	DatePrecision,
 	DateRangeConversionConfig,
 	DateTimeConversionConfig,
 	SupportedTypeWithoutNull,
 	TimeConversionConfig,
-	ValueConversion
+	ValueConversionParseError
 } from "../../conversion.js";
-import { DatePrecision } from "../../conversion.js";
 
 import type { DataFormats } from "../../localization/DataFormats.js";
 import { calculateDateFormat } from "../../localization/DataFormats.js";
@@ -136,7 +136,7 @@ export class DateConversion {
 	public static parseDate(
 		value: string,
 		srcDataType: GeneralDateConversionConfig & DataFormats
-	): { value?: Date | string | null; parseError?: ValueConversion.ParseError } {
+	): { value?: Date | string | null; parseError?: ValueConversionParseError } {
 		if (!value) {
 			return { value: null };
 		}
@@ -181,7 +181,7 @@ export class DateConversion {
 	 * 		if the February 29th is a valid input or not.
 	 *      Default value is `2000`.
 	 * @param timeZone the time zone the date should be interpreted in. Default value is `"UTC"`.
-	 * @param datePrecision the new date precision. Default value is {@link DatePrecision.FULL}
+	 * @param datePrecision the new date precision. Default value is "FULL"
 	 * @returns the converted string value
 	 */
 	public static createDateConversionConfig(
@@ -206,12 +206,11 @@ export class DateConversion {
 	private static _sanityCheck(
 		dateWithFormat: DateAndFormat,
 		errorMessageFormat?: string
-	): ValueConversion.ParseError | undefined {
+	): ValueConversionParseError | undefined {
 		try {
 			// more exact check while parsing
 			ValidationDateParser.parseDate(dateWithFormat);
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		} catch (e) {
+		} catch {
 			return DateConversion.createParseErrorForDate(errorMessageFormat ?? dateWithFormat.format);
 		}
 		return undefined;
@@ -269,7 +268,7 @@ export class DateConversion {
 	private static _isPartiallyKnownDateAllowed(dataType: GeneralDateConversionConfig): boolean {
 		switch (dataType.type) {
 			case "DateType":
-				return dataType.datePrecision ? dataType.datePrecision !== DatePrecision.FULL : false;
+				return dataType.datePrecision ? dataType.datePrecision !== "FULL" : false;
 			case "DateTimeType":
 			case "DateFragmentType":
 			case "TimeType":
@@ -286,7 +285,7 @@ export class DateConversion {
 		return new DateAndFormat(value, format, timeZone);
 	}
 
-	public static createParseErrorForDate(format: string): ValueConversion.ParseError {
+	public static createParseErrorForDate(format: string): ValueConversionParseError {
 		const dateFormatPlaceholder: DataFormatPlaceholder = {
 			type: "dataFormat",
 			value: format,

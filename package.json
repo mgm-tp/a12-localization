@@ -1,7 +1,7 @@
 {
   "name": "@com.mgmtp.a12.utils/utils-localization-parent",
-  "version": "7.3.0-SNAPSHOT",
-  "a12ReleaseLine": "2025.06",
+  "version": "8.0.1",
+  "a12ReleaseLine": "2026.06",
   "description": "utils-localization umbrella project",
   "author": "mgm technology partners",
   "license": "(EUPL-1.2 OR LicenseRef-commercial)",
@@ -19,29 +19,29 @@
     "audit": "pnpm audit --prod",
     "format": "prettier \"**/src/**/*.{ts,tsx}\" --check --cache --cache-strategy metadata",
     "format:fix": "prettier \"**/src/**/*.{ts,tsx}\" --check -w",
-    "lint": "eslint . --cache",
     "lint:onlyErrors": "node --run lint -- --quiet",
     "lint:inspect": "pnpm dlx @eslint/config-inspector",
-    "lint:fix": "eslint . --fix",
+    "lint:fix": "node --run lint -- --fix",
+    "lint": "eslint --flag unstable_native_nodejs_ts_config . --cache",
     "spellcheck": "cspell ./documentation"
   },
   "engines": {
     "node": "^24",
-    "pnpm": "^11"
+    "pnpm": ">=10.6"
   },
   "devDependencies": {
     "@com.mgmtp.a12.devtools/eslint-config": "catalog:a12ranges",
     "@com.mgmtp.a12.devtools/prettier-config": "catalog:a12ranges",
     "@types/node": "catalog:ranges",
     "cspell": "catalog:ranges",
-    "eslint": "catalog:ranges",
     "eslint-plugin-import": "catalog:ranges",
-    "eslint-plugin-no-null": "catalog:ranges",
+    "eslint-plugin-jsdoc": "catalog:ranges",
     "eslint-plugin-notice": "catalog:ranges",
     "eslint-plugin-workspaces": "catalog:ranges",
+    "eslint": "catalog:ranges",
     "prettier": "catalog:ranges",
     "react": "catalog:fix",
     "typescript": "catalog:ranges"
   },
-  "packageManager": "pnpm@11.1.2"
+  "packageManager": "pnpm@10.33.2"
 }

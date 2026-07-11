@@ -31,6 +31,7 @@
  */
 
 import { strictEqual } from "node:assert/strict";
+import { describe, it } from "node:test";
 
 import { resolvePlaceholders } from "../main/index.js";
 

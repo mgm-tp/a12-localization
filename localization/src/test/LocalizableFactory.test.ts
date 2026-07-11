@@ -31,6 +31,7 @@
  */
 
 import { deepStrictEqual, fail, strictEqual, throws } from "node:assert/strict";
+import { describe, it } from "node:test";
 
 import type { LocalizableArgs, LocalizationTreeMap, LocalizedModelText } from "../main/index.js";
 import { localizableFromLocalizationTreeMap, localizableFromModel } from "../main/index.js";

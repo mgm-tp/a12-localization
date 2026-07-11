@@ -32,15 +32,19 @@
 
 import { deepStrictEqual, strictEqual } from "node:assert/strict";
 
+import { describe, it } from "node:test";
+
 import type { DataFormats } from "@com.mgmtp.a12.utils/utils-localization";
 import { defaultDataFormats } from "@com.mgmtp.a12.utils/utils-localization";
 
-import type { DefaultLocalizerContextProvider } from "../main/index.js";
-import { getLocalizerContextDefaults } from "../main/internal/LocalizerContext.js";
+import {
+	getLocalizerContextDefaults,
+	type DefaultLocalizerContextProviderProps
+} from "../LocalizerContext.js";
 
 describe("com.mgmtp.a12.localization-react.defaults", () => {
 	it("when given only a locale returns the locale and the respective defaults for DataFormats, ValueConversion and localizer", () => {
-		const input: DefaultLocalizerContextProvider.Props = {
+		const input: DefaultLocalizerContextProviderProps = {
 			locale: { language: "de", country: "DE" }
 		};
 
@@ -69,7 +73,7 @@ describe("com.mgmtp.a12.localization-react.defaults", () => {
 			thousandsSeparator: "~"
 		};
 
-		const input: DefaultLocalizerContextProvider.Props = {
+		const input: DefaultLocalizerContextProviderProps = {
 			locale,
 			dataFormats
 		};
@@ -103,7 +107,7 @@ describe("com.mgmtp.a12.localization-react.defaults", () => {
 			parseValue: () => ({ value: undefined })
 		};
 
-		const input: DefaultLocalizerContextProvider.Props = {
+		const input: DefaultLocalizerContextProviderProps = {
 			locale,
 			dataFormats,
 			valueConversion

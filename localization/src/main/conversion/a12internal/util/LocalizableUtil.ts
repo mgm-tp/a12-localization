@@ -30,9 +30,9 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-import type { ValueConversion } from "../../../conversion.js";
+import type { ValueConversionParseError } from "../../../conversion.js";
 import type { LocalizableArgs } from "../../../localization/Localizable.js";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 import type { Localizable } from "../../../localization/Localizable.js";
 
 /**
@@ -54,7 +54,7 @@ export class LocalizableUtil {
 	}
 
 	/**
-	 * @returns a {@link ValueConversion.ParseError} with the given error key, error code,
+	 * @returns a {@link ValueConversionParseError} with the given error key, error code,
 	 * {@link LocalizableArgs} and localizable default error texts.
 	 */
 	public static createParseError(
@@ -62,7 +62,7 @@ export class LocalizableUtil {
 		errorCode: string,
 		args: LocalizableArgs,
 		errorTextDefaults: LocalizableDefaults
-	): ValueConversion.ParseError {
+	): ValueConversionParseError {
 		const formalErrorKey = LocalizableUtil.createFormalErrorKeyFromString(errorKey);
 		const localizableErrorText = {
 			key: formalErrorKey,

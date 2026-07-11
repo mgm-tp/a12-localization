@@ -30,6 +30,7 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
+import type { ComponentType, ReactNode } from "react";
 import { createContext, useMemo } from "react";
 
 import type {
@@ -45,12 +46,12 @@ import {
 } from "@com.mgmtp.a12.utils/utils-localization";
 /**
  * A React context that can be used to pass a common localization configuration to all child components.
- * This configuration consists of a locale, data formats for data conversion and a {@link Localizer} function.
+ * This configuration consists of a locale, data formats for data conversion and a `Localizer` function.
  *
  * The context can either be used with the {@link DefaultLocalizerContextProvider} or directly with the standard provider.
- * If the A12-default {@link Localizer} does not fit your use case, use the standard provider to pass a fully custom {@link Localizer} implementation.
+ * If the A12-default `Localizer` does not fit your use case, use the standard provider to pass a fully custom `Localizer` implementation.
  */
-export const LocalizerContext = createContext<LocalizerContext.Type>({
+export const LocalizerContext = createContext<LocalizerContextProps>({
 	dataFormats: {},
 	locale: { language: "en", country: "US" },
 	localizer: () => undefined,
@@ -60,31 +61,27 @@ export const LocalizerContext = createContext<LocalizerContext.Type>({
 	}
 });
 
-export namespace LocalizerContext {
-	export interface Type {
-		readonly dataFormats: Partial<DataFormats>;
-		readonly locale: Locale;
-		readonly localizer: Localizer;
-		readonly conversion: ValueConversion;
-	}
+export interface LocalizerContextProps {
+	readonly dataFormats: Partial<DataFormats>;
+	readonly locale: Locale;
+	readonly localizer: Localizer;
+	readonly conversion: ValueConversion;
 }
 
-export namespace DefaultLocalizerContextProvider {
-	export interface Props {
-		readonly locale: Locale;
-		readonly valueConversion?: ValueConversion;
-		readonly dataFormats?: Partial<DataFormats>;
-		readonly children?: React.ReactNode;
-	}
+export interface DefaultLocalizerContextProviderProps {
+	readonly locale: Locale;
+	readonly valueConversion?: ValueConversion;
+	readonly dataFormats?: Partial<DataFormats>;
+	readonly children?: ReactNode;
 }
 
 /**
  * Provides the {@link LocalizerContext} based on the given locale.
  * Optionally, a value conversion object and data formats can passed as well to configure
- * the {@link Localizer} function that will be provided with the context.
+ * the `Localizer` function that will be provided with the context.
  */
-export const DefaultLocalizerContextProvider: React.ComponentType<
-	DefaultLocalizerContextProvider.Props
+export const DefaultLocalizerContextProvider: ComponentType<
+	DefaultLocalizerContextProviderProps
 > = props => {
 	const { locale, valueConversion, dataFormats } = props;
 	const defaults = useMemo(
@@ -100,8 +97,8 @@ export const DefaultLocalizerContextProvider: React.ComponentType<
  * note: only exported for tests!
  */
 export function getLocalizerContextDefaults(
-	props: Omit<DefaultLocalizerContextProvider.Props, "children">
-): LocalizerContext.Type {
+	props: Omit<DefaultLocalizerContextProviderProps, "children">
+): LocalizerContextProps {
 	const { locale, valueConversion, dataFormats } = props;
 
 	const df = dataFormats ?? defaultDataFormats(locale);

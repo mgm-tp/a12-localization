@@ -30,4 +30,8 @@
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
 
-export { DefaultLocalizerContextProvider, LocalizerContext } from "./internal/LocalizerContext.js";
+export type {
+	DefaultLocalizerContextProviderProps,
+	LocalizerContextProps
+} from "./LocalizerContext.js";
+export { DefaultLocalizerContextProvider, LocalizerContext } from "./LocalizerContext.js";
