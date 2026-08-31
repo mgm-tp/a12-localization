@@ -50,7 +50,7 @@ The following tools are required in order to build this repository.
 | Tool   | Version |
 | ------ | ------- |
 | [Node] | `^24`   |
-| [pnpm] | `^10.6` |
+| [pnpm] | `^11`   |
 
 #### Install Dependencies
 

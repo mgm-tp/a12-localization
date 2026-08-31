@@ -1,6 +1,6 @@
 {
   "name": "@com.mgmtp.a12.utils/utils-localization-parent",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "a12ReleaseLine": "2026.06",
   "description": "utils-localization umbrella project",
   "author": "mgm technology partners",
@@ -19,29 +19,31 @@
     "audit": "pnpm audit --prod",
     "format": "prettier \"**/src/**/*.{ts,tsx}\" --check --cache --cache-strategy metadata",
     "format:fix": "prettier \"**/src/**/*.{ts,tsx}\" --check -w",
-    "lint:onlyErrors": "node --run lint -- --quiet",
+    "lint:root": "eslint --flag unstable_native_nodejs_ts_config -c eslint.root.config.ts . --cache",
+    "lint": "pnpm run -r --sequential lint && node --run lint:root",
+    "lint:fix": "pnpm run -r --sequential lint:fix && node --run lint:root -- --fix",
+    "lint:onlyErrors": "pnpm run -r --sequential lint:onlyErrors && node --run lint:root -- --quiet",
     "lint:inspect": "pnpm dlx @eslint/config-inspector",
-    "lint:fix": "node --run lint -- --fix",
-    "lint": "eslint --flag unstable_native_nodejs_ts_config . --cache",
     "spellcheck": "cspell ./documentation"
   },
   "engines": {
     "node": "^24",
-    "pnpm": ">=10.6"
+    "pnpm": "^11"
   },
   "devDependencies": {
-    "@com.mgmtp.a12.devtools/eslint-config": "catalog:a12ranges",
-    "@com.mgmtp.a12.devtools/prettier-config": "catalog:a12ranges",
-    "@types/node": "catalog:ranges",
-    "cspell": "catalog:ranges",
-    "eslint-plugin-import": "catalog:ranges",
-    "eslint-plugin-jsdoc": "catalog:ranges",
-    "eslint-plugin-notice": "catalog:ranges",
-    "eslint-plugin-workspaces": "catalog:ranges",
-    "eslint": "catalog:ranges",
-    "prettier": "catalog:ranges",
-    "react": "catalog:fix",
-    "typescript": "catalog:ranges"
+    "@com.mgmtp.a12.devtools/eslint-config": "catalog:a12",
+    "@com.mgmtp.a12.devtools/prettier-config": "catalog:a12",
+    "@eslint/compat": "catalog:",
+    "@types/node": "catalog:",
+    "cspell": "catalog:",
+    "eslint-plugin-import": "catalog:",
+    "eslint-plugin-jsdoc": "catalog:",
+    "eslint-plugin-notice": "catalog:",
+    "eslint-plugin-workspaces": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "react": "catalog:",
+    "typescript": "catalog:"
   },
-  "packageManager": "pnpm@10.33.2"
+  "packageManager": "pnpm@11.17.0"
 }

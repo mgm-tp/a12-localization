@@ -1,6 +1,6 @@
 {
   "name": "@com.mgmtp.a12.utils/utils-localization-react",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "React-adapter for localization library",
   "type": "module",
   "sideEffects": false,
@@ -13,22 +13,26 @@
     "watch": "tsc -w",
     "validate:api": "api-extractor run --verbose",
     "update:api": "api-extractor run --local",
-    "test": "node --test --test-reporter dot \"**/*.test.js\""
+    "test": "node --test --test-reporter dot \"**/*.test.js\"",
+    "lint:onlyErrors": "node --run lint -- --quiet",
+    "lint:fix": "node --run lint -- --fix",
+    "lint": "eslint --flag unstable_native_nodejs_ts_config . --cache"
   },
   "author": "mgm technology partners",
   "license": "(EUPL-1.2 OR LicenseRef-commercial)",
   "devDependencies": {
-    "@microsoft/api-extractor": "catalog:ranges",
-    "@com.mgmtp.a12.devtools/tsconfig": "catalog:a12ranges",
+    "@microsoft/api-extractor": "catalog:",
+    "@com.mgmtp.a12.devtools/tsconfig": "catalog:a12",
     "@com.mgmtp.a12.utils/utils-localization": "workspace:*",
-    "@types/node": "catalog:ranges",
-    "@types/react": "catalog:ranges",
-    "react": "catalog:fix",
-    "typedoc": "catalog:ranges",
-    "typescript": "catalog:ranges"
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "eslint": "catalog:",
+    "react": "catalog:",
+    "typedoc": "catalog:",
+    "typescript": "catalog:"
   },
   "peerDependencies": {
-    "react": "catalog:ranges"
+    "react": "catalog:"
   },
   "files": [
     "lib",

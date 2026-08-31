@@ -27,9 +27,7 @@
 		"**/*.code-workspace",
 		"**/.editorconfig",
 		"**/.gitignore",
-		"**/.dockerignore",
-		// contains asciidoc attributes
-		"documentation/convert.ts"
+		"**/.dockerignore"
 	],
 	"words": [
 		"actioncontentbox",
@@ -41,6 +39,7 @@
 		"devapp",
 		"enablements",
 		"leveloffset",
+		"licence",
 		"localizable",
 		"localizables",
 		"mgmtp",
@@ -50,5 +49,7 @@
 		"unmarshalling"
 	],
 	"useGitignore": true,
-	"flagWords": ["wether->whether"]
+	"flagWords": [
+		"wether->whether"
+	]
 }

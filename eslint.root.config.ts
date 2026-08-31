@@ -29,3 +29,13 @@
  * NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
  * LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
  */
+
+
+import { defineConfig, globalIgnores } from "eslint/config";
+
+import baseConfig from "./eslint.config.ts";
+
+export default defineConfig(
+	globalIgnores(["codemod", "documentation", "localization", "localization-react"], "root/ignores"),
+	...baseConfig
+);

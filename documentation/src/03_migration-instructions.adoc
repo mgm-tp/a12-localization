@@ -8,7 +8,7 @@ Dual License
 This source file is part of the mgm A12 Platform and available under
 a choice of two different licenses:
 
-1. Open-Source License – EUPL v1.2
+1. Open-Source License - EUPL v1.2
    You may redistribute and/or modify this file under the terms of the
    European Union Public License, version 1.2 - see https://eupl.eu/.
 
@@ -23,7 +23,7 @@ You must select and comply with exactly one of the above license options.
 
 Warranty Disclaimer (applies to either option)
 ----------------------------------------------
-THIS SOFTWARE IS PROVIDED “AS IS” AND WITHOUT WARRANTY OF ANY KIND,
+THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT WARRANTY OF ANY KIND,
 WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
 OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 NON-INFRINGEMENT, EXCEPT WHERE SUCH DISCLAIMERS ARE HELD TO BE
@@ -36,9 +36,28 @@ LEGALLY INVALID. SEE THE RESPECTIVE LICENSE TEXT FOR DETAILS.
 
 === Breaking Changes
 
+Codemod recipes exist for some of the breaking changes. To use them, first install or update the codemod with your preferred package manager, e.g. with `pnpm`:
+[source,bash]
+----
+pnpm install -g @com.mgmtp.a12.utils/utils-localization-codemod
+----
+
+Then run the specific recipe:
+[source,bash]
+----
+utils-localization-codemod <recipe> <path to directory with tsconfig.json>
+
+// or as a single command
+pnpx @com.mgmtp.a12.utils/utils-localization-codemod <recipe> <path to directory with tsconfig.json>
+----
+
 ==== Updating to ES2025
 
 The javascript output of the npm artifacts was updated from `ES2024` to `ES2025` to be able to use latest language features. When using supported browsers, there is no change necessary. If support for older browsers is required, make sure to include necessary polyfills.
+
+Required:: Depending on whether support for older browsers is required.
+Migration:: Manual, no codemod available.
+Result:: Depending on your bundler setup, consult its documentation on how to include polyfills.
 
 ==== Removal of Deep Import Paths
 
@@ -49,6 +68,24 @@ All exports must now be imported directly from the package root. For detailed mi
 ====
 The package now uses the `exports` field instead of `main`/`types`. This should be transparent for most consumers but may require configuration updates for older bundlers.
 ====
+
+Required:: Yes.
+Migration::
++
+[source,bash]
+----
+utils-localization-codemod preferTopLevel <path to directory with tsconfig.json>
+----
+Result::
++
+[source,js]
+----
+// before
+import { ValueConversion } from "@com.mgmtp.a12.utils/utils-localization/lib/main/index.js"
+
+// after
+import { ValueConversion } from "@com.mgmtp.a12.utils/utils-localization";
+----
 
 ==== Conversion of Enums and Namespaces to Union Types
 
@@ -80,8 +117,19 @@ All enums and namespaces have been converted to union types and const objects. T
 |Interface `DefaultLocalizerContextProviderProps`
 |===
 
-**Migration:**
+Required:: Yes.
+Migration::
++
+[source,bash]
+----
+// to migrate enums to unions of string literals
+utils-localization-codemod enumToUnion <path to directory with tsconfig.json>
 
+// to migrate namespaces to interface
+utils-localization-codemod namespaceToInterface <path to directory with tsconfig.json>
+----
+Result::
++
 * Replace enum member access with string literals:
 +
 [source,typescript]
@@ -115,22 +163,6 @@ const error: ValueConversion.ParseError = ...;
 // After
 import { ValueConversionParseError } from "@com.mgmtp.a12.utils/utils-localization";
 const error: ValueConversionParseError = ...;
-----
-
-Codemod recipes are provided for both change types. First install or update the codemod with your preferred package manager, e.g. with `pnpm`:
-[source,bash]
-----
-pnpm install -g @com.mgmtp.a12.utils/utils-localization-codemod
-----
-
-Then run the recipes:
-[source,bash]
-----
-// to migrate enums to unions of string literals
-utils-localization-codemod enumToUnion <path to directory with tsconfig.json>
-
-// to migrate namespaces to interface
-utils-localization-codemod namespaceToInterface <path to directory with tsconfig.json>
 ----
 
 == 2025.06-ext4

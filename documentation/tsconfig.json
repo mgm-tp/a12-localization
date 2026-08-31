@@ -1,6 +1,6 @@
 {
 	"extends": "@com.mgmtp.a12.devtools/tsconfig",
-	"include": ["convert.ts", "asciidoctor.d.ts", "./src/typescript"],
+	"include": ["./src/typescript"],
 	"compilerOptions": {
 		"erasableSyntaxOnly": true,
 		"noEmit": true,

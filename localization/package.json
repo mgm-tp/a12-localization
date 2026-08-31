@@ -1,6 +1,6 @@
 {
   "name": "@com.mgmtp.a12.utils/utils-localization",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Flexible JavaScript localization solution",
   "type": "module",
   "sideEffects": false,
@@ -16,23 +16,27 @@
     "dist": "typedoc ./src",
     "watch": "tsc -w",
     "validate:api": "api-extractor run --verbose",
-    "update:api": "api-extractor run --local"
+    "update:api": "api-extractor run --local",
+    "lint:onlyErrors": "node --run lint -- --quiet",
+    "lint:fix": "node --run lint -- --fix",
+    "lint": "eslint --flag unstable_native_nodejs_ts_config . --cache"
   },
   "author": "mgm technology partners",
   "license": "(EUPL-1.2 OR LicenseRef-commercial)",
   "dependencies": {
-    "big.js": "catalog:ranges",
-    "luxon": "catalog:ranges"
+    "big.js": "catalog:",
+    "luxon": "catalog:"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "catalog:ranges",
-    "@com.mgmtp.a12.devtools/tsconfig": "catalog:a12ranges",
-    "@types/big.js": "catalog:ranges",
-    "@types/luxon": "catalog:ranges",
-    "@types/node": "catalog:ranges",
-    "prettier": "catalog:ranges",
-    "typedoc": "catalog:ranges",
-    "typescript": "catalog:ranges"
+    "@microsoft/api-extractor": "catalog:",
+    "@com.mgmtp.a12.devtools/tsconfig": "catalog:a12",
+    "@types/big.js": "catalog:",
+    "@types/luxon": "catalog:",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typedoc": "catalog:",
+    "typescript": "catalog:"
   },
   "files": [
     "lib",

@@ -6,34 +6,31 @@ packages:
   - documentation
 
 catalogs:
-  a12ranges:
-    "@com.mgmtp.a12.devtools/codemod": 2.2.2
-    "@com.mgmtp.a12.devtools/eslint-config": 3.1.2
-    "@com.mgmtp.a12.devtools/prettier-config": 1.1.1
-    "@com.mgmtp.a12.devtools/tsconfig": 2.0.1
-  fix:
-    react: 19.2.4
-  ranges:
-    "@microsoft/api-extractor": ^7.57.7
-    "@types/big.js": ^6.2.2
-    "@types/luxon": ^3.6.2
-    "@types/node": ^24.12.0
-    "@types/react": ^19.2.14
-    asciidoctor: ^3.0.4
-    asciidoctor-highlight.js: ^0.4.0
+  a12:
+    "@com.mgmtp.a12.devtools/codemod": ^2.2.2
+    "@com.mgmtp.a12.devtools/docu": ^0.1.0
+    "@com.mgmtp.a12.devtools/eslint-config": ^4.0.0
+    "@com.mgmtp.a12.devtools/prettier-config": ^1.1.1
+    "@com.mgmtp.a12.devtools/tsconfig": ^2.0.1
+  default:
+    "@eslint/compat": ^2.1.0
+    "@microsoft/api-extractor": ^7.58.9
+    "@types/big.js": ^7.0.0
+    "@types/luxon": ^3.7.2
+    "@types/node": ^26.1.1
+    "@types/react": ^19.2.17
     big.js: ^7.0.1
-    cspell: ^9.7.0
-    eslint: ^9.39.4
+    cspell: ^10.0.1
+    eslint: ^10.7.0
     eslint-plugin-import: ^2.32.0
-    eslint-plugin-jsdoc: ^62.8.0
-    eslint-plugin-notice: 1.1.0-rc1
+    eslint-plugin-jsdoc: ^62.9.0
+    eslint-plugin-notice: ^1.1.0-rc1
     eslint-plugin-workspaces: ^0.12.1
-    highlight.js: ^11.11.1
-    luxon: ^3.6.1
-    prettier: ^3.8.1
-    react: ^19.0.0
+    luxon: ^3.7.2
+    prettier: ^3.9.5
+    react: ^19.2.6
     ts-morph: ^27.0.2
-    typedoc: ^0.28.18
+    typedoc: ^0.28.20
     typescript: ^6.0.3
 
 # cleanup unused catalog entries during install
@@ -50,41 +47,46 @@ failIfNoMatch: true
 # do not check git status when publishing
 gitChecks: false
 
-ignoredBuiltDependencies:
-  - esbuild
-
-ignoredOptionalDependencies:
-  - libxmljs2
+# do not allow any postinstall scripts
+allowBuilds:
+  esbuild: false
 
 # CI sets this to warn by default
 loglevel: info
 
 # prevent pnpm >10 from self-upgrading,
 # since it doesn't use the global node_modules as target
-managePackageManagerVersions: false
+pmOnFail: ignore
 
 # enforce new packages to be at least 1 week old, except our own
 minimumReleaseAge: 10080
 minimumReleaseAgeExclude:
   - '@com.mgmtp.a12.*/*'
+  # security patch deliberately pinned ahead of the age gate
+  # (GHSA-rgw5-rvv9-x895). Can be dropped once the patched
+  # versions age out on 2026-08-06.
+  - brace-expansion
 
-overrides:
-  lodash: ">=4.17.24"
-
-packageManagerStrict: true
+patchedDependencies:
+  # see https://github.com/typescript-eslint/typescript-eslint/issues/12322#issuecomment-4448903268
+  '@typescript-eslint/typescript-estree@8.59.3': patches/@typescript-eslint__typescript-estree@8.59.3.patch
 
 peerDependencyRules:
   allowedVersions:
-    "asciidoctor-highlight.js@0.4>@asciidoctor/core": "3"
+    "eslint-plugin-import>eslint": "10"
+    "eslint-plugin-react>eslint": "10"
 
 # ensure latest deps are installed when updating for audit
 resolutionMode: highest
 
-# ensure dependency build scripts (e.g. postinstall) are either ignored or approved
-strictDepBuilds: true
+# (for now), only trusted authors can change the lockfile
+trustLockfile: true
 
 # do not install packages where trust level decreased
 trustPolicy: no-downgrade
+
+# 90d - only police recent publishes; older provenance gaps predate npm attestations
+trustPolicyIgnoreAfter: 129600
 
 # before "pnpm run" calls, checks if node_modules are up-to-date
 # (e.g. after rebasing / checking out a branch and forgetting "pnpm install")

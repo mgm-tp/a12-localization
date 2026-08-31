@@ -1,0 +1,23 @@
+diff --git a/dist/parseSettings/createParseSettings.js b/dist/parseSettings/createParseSettings.js
+index 01091805e57baa3b5f2541ea34f9962b9eb1ff1b..fa1e681ef0bdc1baeb67a4eb0f50edffbba3778e 100644
+--- a/dist/parseSettings/createParseSettings.js
++++ b/dist/parseSettings/createParseSettings.js
+@@ -248,5 +248,17 @@ function populateProjectService(optionsRaw, settings) {
+         options,
+         ...settings,
+     });
+-    return TSSERVER_PROJECT_SERVICE;
++    const singleton = TSSERVER_PROJECT_SERVICE;
++    return {
++        allowDefaultProject: options.allowDefaultProject,
++        get lastReloadTimestamp() {
++            return singleton.lastReloadTimestamp;
++        },
++        set lastReloadTimestamp(value) {
++            singleton.lastReloadTimestamp = value;
++        },
++        maximumDefaultProjectFileMatchCount: options.maximumDefaultProjectFileMatchCount_THIS_WILL_SLOW_DOWN_LINTING ??
++            singleton.maximumDefaultProjectFileMatchCount,
++        service: singleton.service,
++    };
+ }
